@@ -1,12 +1,19 @@
 import { CLASSES, type ClassInfo } from "./plan-data";
 
-/** HK1 2026–2027: giảng dạy từ 07/9/2026; khung học kỳ đến 20/12/2026. */
+/**
+ * HK1 2026–2027: giảng dạy từ 07/9/2026, 11 tuần (theo quy định — thầy
+ * Phan Anh Tú xác nhận, không phải 12 như đề cương cũ); khung học kỳ đến
+ * 20/12/2026.
+ */
 export const SEMESTER = {
   label: "NH 2026–2027 · HK1",
   start: "2026-09-07",
-  week12End: "2026-11-29",
+  lastTeachingWeekEnd: "2026-11-22",
   examUntil: "2026-12-20",
 } as const;
+
+/** Tổng số tuần dạy — 11, không phải 12 (xem SEMESTER doc-comment). */
+export const TEACHING_WEEKS = 11;
 
 const DAY_VI = ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"] as const;
 const DAY_SHORT = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"] as const;
@@ -71,7 +78,7 @@ export function teachingWeekOf(iso = todayIso()): number {
   const diff = Math.floor((d.getTime() - start.getTime()) / 86400000);
   if (diff < 0) return 0;
   const w = Math.floor(diff / 7) + 1;
-  if (w > 12) return 13;
+  if (w > TEACHING_WEEKS) return TEACHING_WEEKS + 1;
   return w;
 }
 
@@ -92,7 +99,7 @@ export function nextSession(classKey: ClassInfo["key"], iso = todayIso()): {
 } | null {
   const klass = CLASSES[classKey];
   const today = parseIso(iso);
-  for (let w = 1; w <= 12; w++) {
+  for (let w = 1; w <= TEACHING_WEEKS; w++) {
     const s = sessionDates(w, klass);
     for (const slot of ["first", "second"] as const) {
       const dt = parseIso(s[slot].iso);
@@ -104,7 +111,7 @@ export function nextSession(classKey: ClassInfo["key"], iso = todayIso()): {
   return null;
 }
 
-export const WEEK_CALENDAR = Array.from({ length: 12 }, (_, i) => {
+export const WEEK_CALENDAR = Array.from({ length: TEACHING_WEEKS }, (_, i) => {
   const week = i + 1;
   const f1 = sessionDates(week, CLASSES.F1);
   const f2 = sessionDates(week, CLASSES.F2);

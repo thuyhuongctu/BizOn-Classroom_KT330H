@@ -17,7 +17,7 @@ function Home() {
   const klass = CLASSES[classKey];
   const weekNow = teachingWeekOf();
   const next = nextSession(classKey);
-  const cal = WEEK_CALENDAR.find((w) => w.week === (weekNow === 0 ? 1 : Math.min(weekNow, 12)));
+  const cal = WEEK_CALENDAR.find((w) => w.week === (weekNow === 0 ? 1 : Math.min(weekNow, 11)));
   const t = useT();
 
   return (
@@ -41,7 +41,7 @@ function Home() {
         <div className="flex flex-wrap gap-2">
           <Button asChild>
             <Link to="/lich">
-              {t("Xem lịch 12 tuần", "View the 12-week calendar")} <ArrowRight />
+              {t("Xem lịch 11 tuần", "View the 11-week calendar")} <ArrowRight />
             </Link>
           </Button>
           <Button asChild variant="outline">
@@ -65,9 +65,9 @@ function Home() {
             <p className="text-[11px] uppercase tracking-wider text-terracotta">
               {weekNow === 0
                 ? t("Học kỳ bắt đầu thứ Hai 07/9", "Term starts Monday, Sep 7")
-                : weekNow > 12
-                  ? t("Hết 12 tuần giảng dạy", "12 teaching weeks complete")
-                  : t(`Tuần giảng dạy ${weekNow} / 12`, `Teaching week ${weekNow} / 12`)}
+                : weekNow > 11
+                  ? t("Hết 11 tuần giảng dạy", "11 teaching weeks complete")
+                  : t(`Tuần giảng dạy ${weekNow} / 11`, `Teaching week ${weekNow} / 11`)}
             </p>
             <h2 className="mt-1 text-xl font-semibold text-ink">
               {weekNow === 0
@@ -94,7 +94,7 @@ function Home() {
           <Badge variant={weekNow === 0 ? "warn" : "soft"}>
             {weekNow === 0
               ? t("Tuần 0 · chuẩn bị", "Week 0 · prep")
-              : t(`Tuần ${Math.min(weekNow, 12)}`, `Week ${Math.min(weekNow, 12)}`)}
+              : t(`Tuần ${Math.min(weekNow, 11)}`, `Week ${Math.min(weekNow, 11)}`)}
           </Badge>
         </div>
         {cal ? (
@@ -135,7 +135,7 @@ function Home() {
             k: t("Đội", "Teams"),
             v: t(`${CLASSES.F1.teams + CLASSES.F2.teams} đội · 5 vai`, `${CLASSES.F1.teams + CLASSES.F2.teams} teams · 5 roles`),
           },
-          { k: t("Lịch", "Calendar"), v: t("12 tuần · 6 chu kỳ", "12 weeks · 6 cycles") },
+          { k: t("Lịch", "Calendar"), v: t("11 tuần · 6 chu kỳ", "11 weeks · 6 cycles") },
         ].map((s) => (
           <div key={s.k} className="rounded-xl border border-border bg-card p-4 shadow-soft">
             <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{s.k}</p>
@@ -184,11 +184,11 @@ function Home() {
 
       <section className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold text-ink">{t("Lịch 12 tuần — ngày thật", "12-week calendar — real dates")}</h2>
+          <h2 className="text-xl font-semibold text-ink">{t("Lịch 11 tuần — ngày thật", "11-week calendar — real dates")}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             {t(
-              "Tuần 1 = 07/9–13/9. Tuần 12 kết thúc 29/11. Thi trong khung đến 20/12.",
-              "Week 1 = Sep 7–13. Week 12 ends Nov 29. Exams run through Dec 20.",
+              "Tuần 1 = 07/9–13/9. Tuần 11 kết thúc 22/11. Thi trong khung đến 20/12.",
+              "Week 1 = Sep 7–13. Week 11 ends Nov 22. Exams run through Dec 20.",
             )}
           </p>
         </div>
@@ -219,7 +219,7 @@ function Home() {
                         ? `C${cycle.n} ${cycle.city}`
                         : w.week <= 2
                           ? t("Chuẩn bị", "Prep")
-                          : w.week === 12
+                          : w.week === 11
                             ? "Pitch"
                             : t("Thu hoạch", "Wrap-up")}
                     </td>

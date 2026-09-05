@@ -24,7 +24,7 @@ function CheckPage() {
       `Thực hành: ${klass.meetings.second.day} tiết ${klass.meetings.second.periods} ${klass.meetings.second.room} · ${klass.meetings.second.time}`,
       `Lưu ý F1 Thứ Ba: ${CLASSES.F1.meetings.first.note}`,
       "",
-      "## 12 tuần",
+      "## 11 tuần",
       ...WEEKS.flatMap((w) => {
         const d = sessionDates(w.week, klass);
         return [
@@ -40,7 +40,7 @@ function CheckPage() {
       `Sổ tay: ${LINKS.guide}`,
     ];
     void navigator.clipboard.writeText(lines.join("\n"));
-    toast.success("Đã sao chép kế hoạch 12 tuần");
+    toast.success("Đã sao chép kế hoạch 11 tuần");
   }
 
   return (
@@ -61,7 +61,7 @@ function CheckPage() {
           />
         </div>
         <Button type="button" variant="outline" onClick={exportPlan}>
-          Sao chép kế hoạch 12 tuần
+          Sao chép kế hoạch 11 tuần
         </Button>
       </header>
 
@@ -105,7 +105,7 @@ function CheckPage() {
       <section className="rounded-xl border border-border bg-card p-5">
         <h2 className="font-medium text-ink">Nghiên cứu — làm sau khi lớp chạy</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          T0 trước tuần 1 và T2 sau tuần 12 dùng cùng mã ẩn danh. T1 (sau vòng 3) tối đa 5 phút. Tách ba
+          T0 trước tuần 1 và T2 sau tuần 11 dùng cùng mã ẩn danh. T1 (sau vòng 3) tối đa 5 phút. Tách ba
           tệp: danh tính, master nghiên cứu, điểm. Từ chối nghiên cứu không ảnh hưởng điểm. Event log
           (đổi thanh, Nếu–Thì, Lumina, commit) là dữ liệu hành vi — không công bố log thô.
         </p>

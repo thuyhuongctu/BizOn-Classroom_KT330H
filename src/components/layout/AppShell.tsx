@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { to: "/", vi: "Tổng quan", en: "Overview", icon: LayoutDashboard },
-  { to: "/lich", vi: "12 tuần", en: "12 Weeks", icon: BookOpen },
+  { to: "/lich", vi: "11 tuần", en: "11 Weeks", icon: BookOpen },
   { to: "/giai-dieu", vi: "Giai điệu", en: "Soundtrack", icon: Music2 },
   { to: "/doi", vi: "Lớp & đội", en: "Class & Teams", icon: Users },
   { to: "/dieu-hanh", vi: "Điều hành", en: "Facilitation", icon: Timer },

@@ -332,7 +332,7 @@ export const WEEKS: WeekPlan[] = [
 			"CO12",
 		],
 		gv: [
-			"Công bố kế hoạch 12 tuần (TKB 07/9–29/11) và rubric 10/40/50 trước khi chơi.",
+			"Công bố kế hoạch 11 tuần (TKB 07/9–22/11) và rubric 10/40/50 trước khi chơi.",
 			"Cấp Class ID, tạo 7–8 đội, phát vốn khởi điểm giống nhau (game mở với tiền mặt 0₫).",
 			"F1: Thứ Ba 08/9 tiết 6–8 (chiều liền) — chỉ luật + demo ngắn; game thử để Thứ Năm 10/9.",
 			"F2: Thứ Tư 09/9 luật + chia đội; Thứ Sáu 11/9 demo 1 vòng (kết quả không tính).",
@@ -510,7 +510,7 @@ export const WEEKS: WeekPlan[] = [
 		gv: [
 			"Không spoil công thức trên lớp — để đội giải thích tại sao thua/thắng.",
 			"Sao lưu xếp hạng, số cờ, P&L ngay khi khóa.",
-			"Giao đề pitch tuần 12.",
+			"Giao đề pitch tuần 11.",
 		],
 		sv: [
 			"Phân tích tỷ số từ 6 vòng; xuất CSV nhật ký; dàn ý báo cáo cuối.",
@@ -541,49 +541,31 @@ export const WEEKS: WeekPlan[] = [
 	},
 	{
 		week: 10,
-		chapter: "Ch. 10 Chiến lược tài trợ",
-		theory: "Nợ vs vốn chủ, nguồn vốn, cổ phiếu/trái phiếu như lựa chọn đầu tư.",
-		practice: "Viết chương tài chính của business plan từ dữ liệu game (không bịa số).",
+		chapter: "Ch. 10 Chiến lược tài trợ & Ch. 11 Vận hành, pháp lý",
+		theory: "Nợ vs vốn chủ, nguồn vốn, cổ phiếu/trái phiếu như lựa chọn đầu tư. Loại hình DN, hợp đồng, IP, rủi ro, disaster recovery.",
+		practice: "Viết chương tài chính của business plan từ dữ liệu game (không bịa số). COO + SEC: từ biến cố 6 vòng, viết 1 trang quản trị rủi ro và lựa chọn loại hình DN.",
 		cycle: "Thu hoạch",
 		cycleKind: "harvest",
-		hours: "3 LT · 5 TH",
+		hours: "6 LT · 5 TH",
 		clos: [
 			"CO4",
 			"CO9",
 			"CO10",
-		],
-		gv: [
-			"Cấm số liệu không truy xuất từ 6 vòng. Đội phải chú thích nguồn (vòng nào, biến nào).",
-		],
-		sv: [
-			"Nợ/vốn chủ đã dùng; phương án tài trợ nếu scale ra Hà Nội.",
-		],
-		debrief: "Vay 8,5%/vòng đắt hay rẻ so với cơ hội mất thị phần? Đội có đang dùng nợ như thói quen không?",
-		textbook: "Mariotti Ch.10 §10.1–10.5",
-	},
-	{
-		week: 11,
-		chapter: "Ch. 11 Vận hành & pháp lý",
-		theory: "Loại hình DN, hợp đồng, IP, rủi ro, disaster recovery.",
-		practice: "COO + SEC: từ biến cố 6 vòng, viết 1 trang quản trị rủi ro và lựa chọn loại hình DN.",
-		cycle: "Thu hoạch",
-		cycleKind: "harvest",
-		hours: "3 LT · 5 TH",
-		clos: [
-			"CO10",
 			"CO12",
 		],
 		gv: [
+			"Cấm số liệu không truy xuất từ 6 vòng. Đội phải chú thích nguồn (vòng nào, biến nào).",
 			"Nối biến cố game với pháp lý thật (hợp đồng, IP, tài sản hữu hình).",
 		],
 		sv: [
+			"Nợ/vốn chủ đã dùng; phương án tài trợ nếu scale ra Hà Nội.",
 			"Loại hình DN; 3 rủi ro lớn nhất đã gặp; kế hoạch phục hồi.",
 		],
-		debrief: "SEC chỉ ghi chép hay đã làm cổng tuân thủ? Nếu biến cố đạo đức (nếu có), đội đã chọn gì?",
-		textbook: "Mariotti Ch.11 §11.1–11.6",
+		debrief: "Vay 8,5%/vòng đắt hay rẻ so với cơ hội mất thị phần? SEC chỉ ghi chép hay đã làm cổng tuân thủ?",
+		textbook: "Mariotti Ch.10–11 §10.1–10.5, §11.1–11.6",
 	},
 	{
-		week: 12,
+		week: 11,
 		chapter: "Ch. 12 Lãnh đạo & pitch",
 		theory: "Vận hành, chuỗi, tồn kho, địa điểm, chất lượng, công nghệ — tóm tắt + lãnh đạo.",
 		practice: "Pitch 7 phút / đội: hành trình 6 vòng, 1 sai lầm đắt, 1 quyết định đúng, kế hoạch tiếp. Khảo sát T2.",
@@ -785,25 +767,25 @@ export const RUBRIC_PROCESS = [
 		name: "Business plan / BMC từ dữ liệu game",
 		pct: 10,
 		of: 40,
-		detail: "Số liệu phải truy xuất được từ 6 vòng. Tuần 9–11.",
+		detail: "Số liệu phải truy xuất được từ 6 vòng. Tuần 9–10.",
 	},
 	{
 		name: "Pitch cuối kỳ + hợp tác",
 		pct: 6,
 		of: 40,
-		detail: "7 phút, đồng đẳng, đóng góp cá nhân. Tuần 12.",
+		detail: "7 phút, đồng đẳng, đóng góp cá nhân. Tuần 11.",
 	},
 ];
 export const OPTIONS = [
 	{
 		id: "A",
-		title: "Mô hình đề xuất — 12 tuần",
+		title: "Mô hình đề xuất — 11 tuần",
 		badge: "Nên dùng",
 		points: [
 			"Buổi 1 mỗi tuần: lý thuyết Mariotti. F1: Thứ Ba tiết 6–8 chiều liền, 104/KT.",
 			"Buổi 2: thực hành. Tuần 3–8 = đúng 6 chu kỳ, mỗi chu kỳ 150 phút có debrief.",
-			"Tuần 9–11 thu hoạch thành plan. Tuần 12 pitch.",
-			"72 tiết trên lớp (2×3 tiết × 12 tuần). 60 giờ TH đề cương gồm đồ án ngoài lớp.",
+			"Tuần 9–10 thu hoạch thành plan (Ch.10+Ch.11 gộp tuần 10). Tuần 11 pitch.",
+			"66 tiết trên lớp (2×3 tiết × 11 tuần) — đúng quy định 11 tuần dạy. 60 giờ TH đề cương gồm đồ án ngoài lớp.",
 		],
 	},
 	{
@@ -946,7 +928,7 @@ export const CHECKS = [
 		],
 	},
 	{
-		group: "Sau tuần 8 và tuần 12",
+		group: "Sau tuần 8 và tuần 11",
 		items: [
 			{
 				id: "csv",
@@ -958,7 +940,7 @@ export const CHECKS = [
 			},
 			{
 				id: "pitch",
-				label: "Pitch tuần 12 + đồng đẳng + khảo sát T2.",
+				label: "Pitch tuần 11 + đồng đẳng + khảo sát T2.",
 			},
 			{
 				id: "grade",
@@ -1242,13 +1224,18 @@ export const RUBRIC_TEAM = [
 export const DIFFS = [
 	{
 		from: "Kế hoạch nghiên cứu 4 buổi",
-		to: "Kế hoạch giảng dạy 12 tuần KT330H",
-		why: "TKB thật: 2 buổi × 3 tiết × 12 tuần (07/9–29/11). Dồn 6 vòng/4 buổi làm mất debrief — đúng thứ game cần để ra CLO.",
+		to: "Kế hoạch giảng dạy 11 tuần KT330H",
+		why: "TKB thật: 2 buổi × 3 tiết × 11 tuần (07/9–22/11). Dồn 6 vòng/4 buổi làm mất debrief — đúng thứ game cần để ra CLO.",
 	},
 	{
 		from: "Đề cương 13 tuần (2019)",
 		to: "Nén thành 12 tuần TKB: Ch.6+Ch.7 gộp tuần 7",
 		why: "TKB cán bộ đánh dấu tuần 1–12. 45 tiết LT + thực hành trên lớp = 72 tiết; 60 giờ TH của đề cương gồm đồ án ngoài lớp.",
+	},
+	{
+		from: "12 tuần TKB (Ch.6+Ch.7 gộp tuần 7)",
+		to: "Nén tiếp còn 11 tuần: Ch.10+Ch.11 gộp tuần 10",
+		why: "Thầy Phan Anh Tú xác nhận: quy định chỉ 11 tuần dạy, không phải 12. Tuần Pitch lùi từ 12 xuống 11; 66 tiết trên lớp (2×3 tiết × 11 tuần).",
 	},
 	{
 		from: "F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (đọc TKB lần đầu bị lệch)",
@@ -1334,24 +1321,18 @@ export const BACKUP_CASES = [
 	},
 	{
 		week: 10,
-		unit: "Unit 10",
-		cases: "Chilly Dilly's · Lee's Ice Cream",
-		clos: "CO9, CO10",
+		unit: "Unit 10–11",
+		cases: "Chilly Dilly's · Lee's Ice Cream + The Bun Company · Airbnb",
+		clos: "CO9, CO10, CO12",
 	},
 	{
 		week: 11,
-		unit: "Unit 11",
-		cases: "The Bun Company · Airbnb",
-		clos: "CO10, CO12",
-	},
-	{
-		week: 12,
 		unit: "Unit 12",
 		cases: "ONLC · AYZH · Agritechno Hybrid",
 		clos: "CO11, CO12",
 	},
 ];
-export const OUTLINE_NOTE = "Đề cương 2019 có 13 tuần (45 LT + 60 TH). TKB HK1 2026–2027 đánh 12 tuần, 2 buổi × 3 tiết = 72 tiết trên lớp. Ch.6 và Ch.7 gộp tuần 7. 60 giờ TH gồm đồ án ngoài lớp (BMC, plan, pitch).";
+export const OUTLINE_NOTE = "Đề cương 2019 có 13 tuần (45 LT + 60 TH). TKB HK1 2026–2027 đánh 11 tuần (theo quy định — thầy Phan Anh Tú xác nhận), 2 buổi × 3 tiết = 66 tiết trên lớp. Ch.6+Ch.7 gộp tuần 7; Ch.10+Ch.11 gộp tuần 10. 60 giờ TH gồm đồ án ngoài lớp (BMC, plan, pitch).";
 /** Sáu vòng = CONQUEST_STOPS (js/app.js) × MARKET_EVENTS (js/engine.js). `expand` = Mariotti / sư phạm — không đổi tên biến cố trong engine. */
 export const CYCLES = [
 	{
@@ -1451,7 +1432,7 @@ export const CYCLES = [
 		subtitle: "Việt Nam Hóa Rồng",
 		flag: "Cờ 6",
 		engine: "Cầu ×1,25 · thương hiệu ×1,5 · lương ×1,1 · co giãn ×0,85 · marketing ×1,2",
-		goal: "Vòng quyết định. Xuất CSV. Không spoil công thức. Giao đề pitch tuần 12.",
+		goal: "Vòng quyết định. Xuất CSV. Không spoil công thức. Giao đề pitch tuần 11.",
 		trap: "Đội tối ưu xếp hạng thay vì giải thích được vì sao thắng/thua.",
 		evidence: "Tỷ số 6 vòng, CSV nhật ký, dàn ý báo cáo, cờ Hà Nội.",
 		expand: "P&L và tỷ số (Mariotti Ch.8) từ đúng 6 vòng game.",
@@ -1507,7 +1488,7 @@ export const SURVEYS = [
 	},
 	{
 		id: "T2",
-		when: "Sau pitch tuần 12",
+		when: "Sau pitch tuần 11",
 		minutes: 8,
 		items: [
 			"Tôi mô tả được các bước tạo một doanh nghiệp nhỏ.",

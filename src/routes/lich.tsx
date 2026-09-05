@@ -25,7 +25,7 @@ function LichPage() {
   const setGameSlot = usePlanStore((s) => s.setGameSlot);
   const klass = CLASSES[classKey];
   const now = teachingWeekOf();
-  const [open, setOpen] = useState(now === 0 ? 1 : Math.min(Math.max(now, 1), 12));
+  const [open, setOpen] = useState(now === 0 ? 1 : Math.min(Math.max(now, 1), 11));
   const week = WEEKS.find((w) => w.week === open) ?? WEEKS[0]!;
   const theory = gameSlot === "second" ? klass.meetings.first : klass.meetings.second;
   const practice = gameSlot === "second" ? klass.meetings.second : klass.meetings.first;
@@ -39,9 +39,9 @@ function LichPage() {
     <div className="space-y-8">
       <header className="space-y-2">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-          {klass.code} · 12 tuần theo TKB · {fmtRange(week.week)}
+          {klass.code} · 11 tuần theo TKB · {fmtRange(week.week)}
         </p>
-        <h1 className="text-3xl font-semibold text-ink">Lịch 12 tuần · 6 vòng game trước, Mariotti mở rộng</h1>
+        <h1 className="text-3xl font-semibold text-ink">Lịch 11 tuần · 6 vòng game trước, Mariotti mở rộng</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Tuần 3–8 chạy đúng bản đồ Cần Thơ → Hà Nội và 6 biến cố engine. Chương textbook là lớp mở rộng
           sau khi đã commit — không đặt tên vòng theo Mariotti.
