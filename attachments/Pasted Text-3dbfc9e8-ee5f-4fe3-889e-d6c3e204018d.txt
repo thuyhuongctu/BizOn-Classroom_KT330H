@@ -1,0 +1,382 @@
+https://thuyhuongctu.github.io/BizOn/
+https://thuyhuongctu.github.io/BizOn/game.html
+Và game cần triển khai
+
+Đúng, **game cần triển khai là BizOn Bật Nghiệp 2026 tại trang `game.html`**, còn trang `BizOn/` là cổng giới thiệu hệ sinh thái. Kế hoạch trước cần được điều chỉnh theo đúng cấu trúc thực tế của game: **6 chu kỳ kinh doanh, đội có 5 vai trò, cạnh tranh với 3 đối thủ AI, ra quyết định liên chức năng và phản tư bằng nhật ký đội/Lumina AI**.[1][2]
+
+## Mô hình triển khai
+
+Tôi đề xuất thí điểm với **1–2 lớp, mỗi lớp 30–60 sinh viên**, chia đội gồm khoảng 5 thành viên tương ứng với năm vai trò CEO, CMO, COO, CFO và SEC. Mỗi đội điều hành một doanh nghiệp qua sáu chu kỳ, hướng đến thị phần cao nhất nhưng đồng thời phải duy trì lợi nhuận dương, dòng tiền và năng lực phát triển dài hạn.[2]
+
+Hình thức phù hợp nhất cho nghiên cứu là triển khai trong **4 buổi**, thay vì cho sinh viên tự chơi hoàn toàn hoặc dồn cả sáu chu kỳ vào một buổi. Cấu trúc này tạo đủ thời gian để giảng viên briefing, sinh viên thảo luận, ra quyết định, nhận kết quả và debrief; nghiên cứu thực nghiệm về business game cho thấy debriefing có thể nâng cao đáng kể mức học tập được người tham gia cảm nhận.[3][4]
+
+| Buổi | Nội dung | Thời lượng gợi ý |
+|---|---|---:|
+| Buổi 0 | Khảo sát đầu kỳ, hướng dẫn luật, chơi thử | 60–90 phút |
+| Buổi 1 | Chu kỳ 1–2: làm quen và tìm chiến lược | 150 phút |
+| Buổi 2 | Chu kỳ 3–4: cạnh tranh và thích nghi | 150 phút |
+| Buổi 3 | Chu kỳ 5–6: tăng trưởng và hoàn tất bản đồ | 150 phút |
+| Buổi 4 | Báo cáo đội, debriefing và khảo sát cuối kỳ | 120–150 phút |
+
+Nếu game được tích hợp vào một học phần chính thức, có thể giãn thành **6 tuần, mỗi tuần một chu kỳ**. Nếu triển khai dưới dạng ngoại khóa hoặc cuộc thi, có thể tổ chức trong một ngày, nhưng dữ liệu phản tư và khả năng quan sát quá trình học sẽ hạn chế hơn.
+
+## Chuẩn bị thí điểm
+
+### Phạm vi pilot
+
+Giai đoạn đầu chỉ nên kiểm tra bốn yếu tố: game có vận hành ổn định không; sinh viên có hiểu luật không; mỗi chu kỳ có hoàn thành đúng giờ không; và dữ liệu có được lưu đầy đủ không. Chưa nên dùng pilot đầu tiên để kết luận BizOn làm tăng năng lực hoặc ý định khởi nghiệp.
+
+Tiêu chí hoàn thành pilot có thể đặt như sau:
+
+| Chỉ số khả thi | Ngưỡng đề xuất |
+|---|---:|
+| Sinh viên hoàn thành đủ 6 chu kỳ | Từ 80% |
+| Đội hoàn thành đủ nhật ký | Từ 80% |
+| Dữ liệu quyết định và kết quả ghép được theo đội–chu kỳ | Từ 95% |
+| Sự cố làm gián đoạn một chu kỳ | Không quá 10% số đội |
+| Sinh viên hiểu mục tiêu và luật chơi | Trung bình từ 3,5/5 |
+| Giảng viên hoàn thành debrief sau mỗi hai chu kỳ | 100% lớp |
+
+Các ngưỡng trên là tiêu chí quản trị dự án đề xuất, không phải chuẩn hiệu quả đã được BizOn kiểm định.
+
+### Kiểm thử kỹ thuật
+
+Trước buổi chính thức, nhóm dự án phải chạy thử toàn bộ sáu chu kỳ bằng ít nhất hai đội thử nghiệm. Cần kiểm tra việc khóa quyết định, giới hạn hai lượt mô phỏng “Nếu–Thì”, ba lượt hỏi Lumina mỗi chu kỳ, kết quả của ba đối thủ AI, hoạt động cấp vốn, khóa vòng từ màn hình giảng viên và lỗi `ERR_ROUND_LOCKED`.[2]
+
+Đặc biệt cần xác minh:
+
+- Mỗi đội có tài khoản hoặc mã đội riêng.
+- Một quyết định đã commit không thể sửa.
+- Hệ thống lưu cả thời điểm nhập và thời điểm commit.
+- Các biến giá, marketing, sản lượng, nhân sự, đào tạo, vốn vay và R&D đều được lưu.
+- Kết quả có thể xuất theo từng chu kỳ.
+- Nhật ký SEC không bị mất khi chuyển vòng.
+- Thông tin từ Lumina AI có thể truy nguyên tới đội, chu kỳ và loại câu hỏi.
+- Màn hình giảng viên hiển thị đúng đội, trạng thái và giao dịch cấp vốn.
+- Bảng xếp hạng không vô tình làm lộ thông tin cá nhân.
+
+## Tổ chức đội chơi
+
+Mỗi đội nên có năm thành viên để tất cả vai trò thực tế của game đều có người đảm nhận. Nếu đội có bốn người, CEO có thể kiêm SEC; nếu đội có sáu người, thành viên thứ sáu đảm nhiệm vai trò chuyên viên phân tích dữ liệu hoặc quan sát viên nghiên cứu.
+
+| Vai trò | Trách nhiệm trong game | Minh chứng học tập |
+|---|---|---|
+| CEO | Điều phối, chạy kịch bản và commit | Biên bản quyết định cuối cùng |
+| CMO | Đề xuất giá, marketing, đọc dự báo thị phần | Phân tích khách hàng, giá và thị phần |
+| COO | Sản lượng, nhân sự, đào tạo, năng suất | Bảng công suất và rủi ro vận hành |
+| CFO | Vốn vay, dòng tiền, R&D và hiệu quả tài chính | Phân tích CVP, lợi nhuận và dòng tiền |
+| SEC | Đọc biến cố, ghi lý do và bài học | Nhật ký đội, dữ liệu phản tư |
+
+Game đã thiết kế các quyết định liên chức năng: giá và marketing ảnh hưởng sức hút thị trường; sản lượng, nhân sự và đào tạo ảnh hưởng vận hành; vay vốn và R&D ảnh hưởng dòng tiền, chi phí và giá trị thương hiệu.[2] Vì vậy, giảng viên không nên để CEO tự thao tác tất cả biến mà phải yêu cầu mỗi vai trò trình bày khuyến nghị trước khi đội commit.
+
+Vai trò nên được giữ ổn định trong hai chu kỳ đầu để sinh viên hiểu nhiệm vụ, sau đó luân chuyển ở chu kỳ 3 hoặc 4. Biến “vai trò ban đầu” và “vai trò sau luân chuyển” cần được lưu để nghiên cứu xem trải nghiệm chức năng khác nhau có tạo ra kết quả học tập khác nhau hay không.
+
+## Quy trình mỗi chu kỳ
+
+Mỗi chu kỳ nên kéo dài khoảng 50–60 phút. Giảng viên công bố thời gian cho từng bước và chỉ sử dụng chức năng khóa vòng sau khi đã cảnh báo còn 5 phút.
+
+| Bước | Thời lượng | Giảng viên làm gì? | Sinh viên làm gì? |
+|---|---:|---|---|
+| Briefing | 5 phút | Công bố mục tiêu và thời gian | Kiểm tra trạng thái doanh nghiệp |
+| Đọc thị trường | 5 phút | Không giải thích thay đội | SEC đọc biến cố và dữ liệu thị trường |
+| Phân tích vai trò | 10 phút | Quan sát, đặt câu hỏi | CMO, COO, CFO lập đề xuất |
+| Thảo luận đội | 10 phút | Kiểm soát sự tham gia | CEO điều phối, đội thống nhất giả định |
+| Nếu–Thì | 5 phút | Nhắc giới hạn lượt thử | Đội chạy tối đa hai kịch bản |
+| Lumina AI | 5 phút | Không dùng AI để cung cấp đáp án | Hỏi, đánh giá và ghi nhận khuyến nghị |
+| Commit | 5 phút | Khóa vòng đúng thời điểm | CEO commit; SEC ghi lý do |
+| Xem kết quả | 5 phút | Mở báo cáo kết quả | So sánh dự báo với kết quả |
+| Debrief nhanh | 10 phút | Dẫn dắt phản tư | Ghi bài học và điều chỉnh chiến lược |
+
+Chu trình học tập thực tế phải là:
+
+$$
+\text{Dữ liệu}
+\rightarrow
+\text{Giả định}
+\rightarrow
+\text{Quyết định}
+\rightarrow
+\text{Kết quả}
+\rightarrow
+\text{Giải thích}
+\rightarrow
+\text{Điều chỉnh}
+$$
+
+Không nên tổ chức game theo chu trình “kéo thanh trượt – xem dự báo – chọn phương án có điểm cao nhất”. Nếu chỉ tối ưu theo dự báo tức thời, sinh viên có thể thắng game nhưng không chứng minh được khả năng phân tích, lập luận hoặc học từ sai lầm.
+
+## Hoạt động giảng viên
+
+### Trước khi chơi
+
+Giảng viên giới thiệu mục tiêu học tập, cấu trúc sáu chu kỳ, tiêu chí thắng và mối quan hệ giữa các bộ phận. Cần giải thích rằng mục tiêu không chỉ là cắm đủ cờ hoặc đứng đầu bảng xếp hạng, mà còn là bảo vệ lợi nhuận, dòng tiền, thương hiệu và khả năng giải thích quyết định.[2]
+
+Giảng viên cần thực hiện:
+
+- Cấp mã lớp và mã đội.
+- Phân đội ngẫu nhiên hoặc phân tầng theo chuyên ngành/kinh nghiệm.
+- Hướng dẫn năm vai trò.
+- Cho sinh viên thao tác ở chế độ chơi thử.
+- Tổ chức bài kiểm tra luật chơi ngắn.
+- Thu phiếu đồng thuận nghiên cứu độc lập với việc chấm điểm.
+- Thực hiện khảo sát trước can thiệp.
+- Công bố rubric chấm điểm.
+- Thống nhất nguyên tắc sử dụng Lumina AI.
+
+### Trong khi chơi
+
+Giảng viên dùng màn hình quản lý để theo dõi đội, cấp vốn khi kịch bản giảng dạy yêu cầu và khóa vòng khi hết thời gian.[2] Việc cấp vốn không nên thực hiện tùy ý; mỗi giao dịch phải có lý do, điều kiện và thời điểm để tránh làm sai lệch kết quả giữa các đội.
+
+Giảng viên không nói “hãy tăng marketing” hoặc “giá này quá cao”, mà dùng các câu hỏi:
+
+- Nhóm đang tối ưu thị phần hay lợi nhuận?
+- Dự báo dựa trên giả định nào?
+- Nếu bán không hết, dòng tiền và tồn kho sẽ thay đổi ra sao?
+- R&D tạo tác động tức thời hay tích lũy?
+- Nhóm có đang vay tiền chỉ để xử lý thiếu hụt ngắn hạn?
+- Kết quả khác dự báo vì biến cố, đối thủ hay sai giả định?
+- Bằng chứng nào khiến nhóm đổi chiến lược ở vòng sau?
+
+### Sau mỗi vòng
+
+Giảng viên xuất hoặc sao lưu dữ liệu ngay khi vòng kết thúc. Sau mỗi hai chu kỳ, nên thực hiện một phiên debrief 15–20 phút vì business simulation không tự động tạo ra phản tư sâu nếu thiếu sự can thiệp sư phạm phù hợp.[3][4]
+
+Khung debrief gồm bốn câu:
+
+1. **What?** Đội đã quyết định gì và kết quả ra sao?
+2. **Why?** Tại sao kết quả khác hoặc giống dự báo?
+3. **So what?** Điều này liên quan lý thuyết kinh doanh nào?
+4. **Now what?** Đội sẽ thay đổi điều gì ở chu kỳ tiếp theo?
+
+## Hoạt động sinh viên
+
+Trước mỗi lần commit, các thành viên phải hoàn thành một **phiếu quyết định đội**. Phiếu này có thể được tích hợp vào nhật ký SEC hoặc dùng biểu mẫu ngoài trong giai đoạn pilot.
+
+| Nội dung | Yêu cầu trả lời |
+|---|---|
+| Mục tiêu chu kỳ | Đội ưu tiên thị phần, lợi nhuận, tiền mặt hay thương hiệu? |
+| Quyết định chính | Giá, marketing, sản lượng, nhân sự, đào tạo, vốn vay, R&D |
+| Giả định | Đội tin điều gì sẽ xảy ra? |
+| Dự báo | Thị phần, lợi nhuận và dòng tiền dự kiến |
+| Rủi ro | Biến nào có thể khiến dự báo sai? |
+| Bất đồng | Các thành viên bất đồng ở quyết định nào? |
+| Quyết định cuối | CEO chọn phương án gì và vì sao? |
+
+Sau khi có kết quả, SEC bổ sung:
+
+- Kết quả thực tế.
+- Sai lệch giữa dự báo và kết quả.
+- Nguyên nhân được đội đưa ra.
+- Điều đội làm tốt.
+- Sai lầm hoặc điều bất ngờ.
+- Thay đổi dự kiến ở vòng sau.
+- Ý kiến nào của Lumina được sử dụng hoặc bác bỏ.
+
+Sinh viên phải được yêu cầu **đánh giá khuyến nghị của AI**, không sao chép khuyến nghị một cách tự động. Điều này phù hợp với định hướng của BizOn là sử dụng AI để giải thích, chất vấn và hỗ trợ phản tư, trong khi engine chấm điểm cốt lõi vẫn mang tính xác định và có thể xem xét lại.[1]
+
+## Rubric đánh giá
+
+Kết quả xếp hạng chỉ nên chiếm 20% tổng điểm. Phần lớn điểm phải phản ánh chất lượng quyết định, khả năng phân tích và phản tư.
+
+| Thành phần | Tỷ trọng |
+|---|---:|
+| Kết quả hoạt động qua 6 chu kỳ | 20% |
+| Chất lượng lập luận trước quyết định | 20% |
+| Phân tích tài chính và vận hành | 15% |
+| Khả năng thích nghi qua các vòng | 15% |
+| Nhật ký SEC và phản tư | 15% |
+| Hợp tác và đóng góp cá nhân | 10% |
+| Báo cáo/pitch cuối kỳ | 5% |
+
+Điểm kết quả game không nên chỉ dựa trên lợi nhuận cuối kỳ. Có thể hình thành chỉ số tổng hợp từ lợi nhuận, tiền mặt, thị phần, thương hiệu, số cờ, mức độ hoàn thành nhiệm vụ và tính bền vững của chiến lược, nhưng công thức phải được công bố trước hoặc mô tả đầy đủ trong tài liệu nghiên cứu.
+
+## Dữ liệu hệ thống
+
+Learning analytics trong serious game có thể sử dụng dấu vết tương tác để quan sát quá trình học và cung cấp thông tin đánh giá, nhưng cần xác định rõ mỗi sự kiện trong game tương ứng với năng lực hoặc hành vi nào.[5][6][7] Vì vậy, BizOn nên lưu dữ liệu theo dạng **event log**, thay vì chỉ lưu kết quả cuối cùng.
+
+### Cấu trúc event log
+
+Mỗi dòng dữ liệu nên tương ứng với một hành động:
+
+| Trường dữ liệu | Ví dụ |
+|---|---|
+| `event_id` | EV000124 |
+| `timestamp` | 2026-09-05 08:35:20 |
+| `class_id` | BN26_A01 |
+| `team_id` | TEAM_03 |
+| `student_id_hash` | STD_xxxx |
+| `round_id` | R2 |
+| `role` | CFO |
+| `event_type` | CHANGE_LOAN |
+| `old_value` | 20.000.000 |
+| `new_value` | 40.000.000 |
+| `device_session` | SESSION_xxxx |
+| `committed` | 0 hoặc 1 |
+
+Các sự kiện tối thiểu gồm đăng nhập, xem biến cố, xem dự báo, thay đổi thanh trượt, chạy “Nếu–Thì”, hỏi Lumina, ghi nhật ký, mở báo cáo, mua vật phẩm, sử dụng vật phẩm, thực hiện nhiệm vụ, commit, bị từ chối do khóa vòng và nhận vốn từ giảng viên.
+
+### Dữ liệu quyết định
+
+Mỗi đội–chu kỳ cần có một dòng tổng hợp gồm:
+
+- Giá bán.
+- Ngân sách marketing.
+- Sản lượng.
+- Số nhân sự.
+- Ngân sách đào tạo.
+- Khoản vay hoặc thấu chi.
+- Đầu tư R&D.
+- Lượt chạy “Nếu–Thì”.
+- Dự báo thị phần.
+- Dự báo lợi nhuận.
+- Dự báo dòng tiền.
+- Thời điểm commit.
+- Thời gian ra quyết định.
+- Người thực hiện commit.
+- Tình trạng đúng hạn hay trễ hạn.
+
+Đây là nhóm dữ liệu quan trọng nhất để nghiên cứu cách đội chuyển từ thông tin sang quyết định.
+
+### Dữ liệu kết quả
+
+Mỗi đội–chu kỳ cần lưu:
+
+- Thị phần thực tế và thứ hạng.
+- Doanh thu.
+- Chi phí sản xuất.
+- Chi phí marketing.
+- Chi phí lao động và đào tạo.
+- Chi phí tài chính.
+- Chi phí R&D.
+- Lợi nhuận ròng.
+- Dòng tiền vào, dòng tiền ra và tiền mặt cuối kỳ.
+- Sản lượng sản xuất, bán được và tồn kho.
+- Năng suất/OEE và phế phẩm nếu engine có tính.
+- Điểm thương hiệu.
+- Cờ giành được.
+- XP, vật phẩm, thành tựu và nhiệm vụ hoàn thành.
+- Quyết định và kết quả của ba đối thủ AI.
+- Biến cố thị trường áp dụng ở chu kỳ đó.
+
+Cần lưu cả dữ liệu của đối thủ AI và tham số biến cố để người nghiên cứu có thể tái lập lý do một đội thắng hoặc thua. Điều này đặc biệt phù hợp với tuyên bố của BizOn về engine xác định, dấu vết quyết định và kết quả có thể giải thích.[1]
+
+## Dữ liệu học tập
+
+### Khảo sát ba thời điểm
+
+| Thời điểm | Dữ liệu |
+|---|---|
+| T0 – trước chơi | Kiến thức, tự hiệu quả, thái độ và ý định khởi nghiệp |
+| T1 – sau vòng 3 | Engagement, flow, khó khăn, cảm nhận công bằng |
+| T2 – sau vòng 6 | Kiến thức, tự hiệu quả, năng lực quyết định, thái độ, ý định |
+| T3 – sau 3–6 tháng | Hoạt động khởi nghiệp, cuộc thi, dự án hoặc ý tưởng tiếp tục |
+
+T0 và T2 phải dùng cùng mã sinh viên ẩn danh để ghép cặp. T1 nên ngắn, không quá 5 phút, nhằm tránh làm gián đoạn quá trình chơi.
+
+### Sản phẩm quan sát được
+
+Ngoài khảo sát tự báo cáo, cần thu:
+
+- Bài kiểm tra kiến thức trước–sau.
+- Phiếu quyết định mỗi vòng.
+- Nhật ký SEC.
+- Bản ghi khuyến nghị của từng vai trò.
+- Reflection cá nhân.
+- Đánh giá đồng đẳng.
+- Báo cáo chiến lược cuối kỳ.
+- Video hoặc điểm rubric phần trình bày.
+- Nhật ký quan sát của giảng viên.
+- Phỏng vấn nhóm sau khi hoàn thành.
+
+BizOn định hướng việc học thông qua quyết định, phản tư và kết quả, đồng thời xem dấu vết quyết định là dữ liệu cho debriefing, rubric và phân tích lớp học.[1] Do đó, ba nguồn **log hệ thống – sản phẩm học tập – khảo sát** phải được ghép bằng mã ẩn danh thống nhất.
+
+## Câu hỏi nghiên cứu
+
+### Hiệu quả học tập
+
+**RQ1:** Sau sáu chu kỳ BizOn, kiến thức kinh doanh và tự hiệu quả khởi nghiệp của sinh viên có thay đổi không?
+
+**RQ2:** Mức độ thay đổi có khác nhau theo chuyên ngành, giới tính, kinh nghiệm kinh doanh hoặc vai trò trong đội không?
+
+Thiết kế phù hợp là đo trước–sau; nghiên cứu giai đoạn sau nên có lớp đối chứng học bằng tình huống truyền thống. Các tổng quan về simulation game trong giáo dục khởi nghiệp ghi nhận kết quả tích cực đối với kiến thức, kỹ năng và tự hiệu quả, nhưng bằng chứng về ý định khởi nghiệp chưa hoàn toàn nhất quán.[8][9]
+
+### Hành vi quyết định
+
+**RQ3:** Việc sử dụng dự báo và mô phỏng “Nếu–Thì” có giúp giảm sai lệch giữa lợi nhuận dự báo và thực tế không?
+
+**RQ4:** Các đội điều chỉnh chiến lược theo dữ liệu có cải thiện kết quả nhanh hơn các đội giữ nguyên quyết định không?
+
+Có thể xây dựng chỉ số thích nghi:
+
+$$
+Adaptation_{t}
+=
+\sum_{k=1}^{K}
+\left|
+Decision_{k,t}-Decision_{k,t-1}
+\right|
+$$
+
+Chỉ số này phải được chuẩn hóa theo phạm vi của từng biến, nếu không thay đổi tiền marketing sẽ lấn át thay đổi giá hoặc nhân sự.
+
+### Vai trò Lumina
+
+**RQ5:** Tần suất và loại câu hỏi gửi Lumina AI có liên quan đến chất lượng reflection và kết quả ra quyết định không?
+
+**RQ6:** Sinh viên có biết đánh giá, bác bỏ và điều chỉnh khuyến nghị AI hay chỉ làm theo?
+
+Không nên kết luận Lumina gây ra kết quả tốt hơn chỉ từ tương quan giữa số lần hỏi và điểm số. Những đội yếu có thể hỏi AI nhiều hơn; do đó cần kiểm soát kết quả ban đầu, kinh nghiệm và mức độ khó mà đội gặp phải.
+
+### Động lực trò chơi
+
+**RQ7:** Bảng xếp hạng, cờ, XP, nhiệm vụ, vật phẩm và cây kỹ năng ảnh hưởng thế nào đến engagement?
+
+**RQ8:** Những cơ chế này làm sinh viên tập trung hơn vào học tập hay khiến họ tối ưu điểm ngắn hạn?
+
+Để trả lời, cần kết hợp dữ liệu hành vi với phỏng vấn và reflection. Chỉ dùng thời gian chơi hoặc số lượt nhấp không đủ để phân biệt engagement có ý nghĩa với hành vi thử nghiệm ngẫu nhiên.
+
+## Quản trị nghiên cứu
+
+Learning analytics tạo cơ hội đánh giá liên tục từ log tương tác, nhưng đồng thời phát sinh các vấn đề về riêng tư, bảo mật và ẩn danh dữ liệu học tập.[6] Sinh viên phải được thông báo rõ dữ liệu nào được ghi, dùng cho mục đích gì, ai có quyền truy cập và việc từ chối nghiên cứu có ảnh hưởng điểm học phần hay không.
+
+Cần tách ba tệp:
+
+1. **Identity file:** mã nghiên cứu, họ tên và thông tin liên hệ.
+2. **Research master:** dữ liệu ẩn danh dùng phân tích.
+3. **Grade file:** điểm học phần, chỉ ghép khi được phê duyệt.
+
+Nên quy định trước thời hạn lưu trữ, người quản trị, cơ chế sao lưu, quy trình xử lý yêu cầu rút dữ liệu và cách công bố dữ liệu mở. “Khoa học mở” không có nghĩa là công khai log thô hoặc nội dung trò chuyện có thể nhận diện sinh viên.
+
+## Trình tự thực hiện
+
+| Giai đoạn | Công việc chính | Kết quả |
+|---|---|---|
+| 1. Audit game | Kiểm tra sáu vòng, công thức, log và lỗi | Biên bản kiểm thử |
+| 2. Thiết kế dạy học | Lesson plan, vai trò, rubric, debrief | Bộ hướng dẫn triển khai |
+| 3. Thiết kế dữ liệu | Event schema, survey, codebook | Data management plan |
+| 4. Pilot kỹ thuật | 2–3 đội chơi thử | Danh sách lỗi và điều chỉnh |
+| 5. Pilot lớp học | 1 lớp hoàn thành sáu vòng | Báo cáo khả thi |
+| 6. Hiệu chỉnh | Sửa engine, luật, thời lượng, thang đo | BizOn phiên bản nghiên cứu |
+| 7. Nghiên cứu chính | Nhiều lớp, có nhóm so sánh | Bộ dữ liệu phân tích |
+| 8. Công bố | Phân tích, bài báo, tài liệu mở | Sản phẩm khoa học |
+
+Như vậy, **không triển khai một game khởi nghiệp chung**, mà triển khai chính xác **BizOn Bật Nghiệp 2026** với sáu chu kỳ và toàn bộ các thành phần hiện có: điều hành liên chức năng, đối thủ AI, Lumina, nhật ký SEC, bản đồ thị trường, nhiệm vụ, vật phẩm, bảng xếp hạng và màn hình giảng viên.[2] Ưu tiên ngay trước mắt là hoàn thiện **hướng dẫn giảng viên, phiếu quyết định sáu vòng, rubric, bảng hỏi trước–sau và cấu trúc xuất event log**; đây là năm điều kiện để game vừa tổ chức được trong lớp vừa tạo dữ liệu nghiên cứu có thể kiểm tra và tái lập.
+
+Trích dẫn:
+[1] BizOn — Mô phỏng kinh doanh học thuật | Je m'appelle Hương https://thuyhuongctu.github.io/BizOn/
+[2] BizOn Bật Nghiệp 2026 – Business Simulation https://thuyhuongctu.github.io/BizOn/game.html
+[3] Debriefing's Influence on Learning in Business Game - RePEc https://ideas.repec.org/a/bbz/fcpbbr/v15y2018i2p192-208.html
+[4] Experiences of using a business strategy simulation: Lessons for ... https://researchportal.plymouth.ac.uk/en/publications/experiences-of-using-a-business-strategy-simulation-lessons-for-p/
+[5] Serious Game Analytics by Design: Feature Generation ... https://learning-analytics.info/index.php/JLA/article/view/7681
+[6] Learning analytics for enhancing the usability of serious ... https://pmc.ncbi.nlm.nih.gov/articles/PMC9061227/
+[7] Learning Analytics to Guide Serious Game Development https://www.e-ucm.es/portfolio-item/learning-analytics-guide-serious-game-development-a-case-study-using-articoding/
+[8] Virtual Simulation Games in Entrepreneurship Education https://www.utupub.fi/bitstreams/1bef991e-6891-4cc6-8a68-d7b5afe231d2/download
+[9] Entrepreneurship and Game-Based Learning in Higher ... https://papers.academic-conferences.org/index.php/ecgbl/article/download/1785/1626/6489
+[10] A Systematic Literature Review with a Textometric Analysis https://journals.sagepub.com/doi/abs/10.1177/15554120241273392
+[11] What Business Simulations Teach: The Effect of Debriefing https://link.springer.com/chapter/10.1007/978-981-13-8039-6_49?error=cookies_not_supported&code=8876cc67-5577-4d23-8de5-446479ca2385
+[12] Simulations in Entrepreneurship Education: Serious ... https://www.academia.edu/87742236/Simulations_in_Entrepreneurship_Education_Serious_Games_and_Learning_Through_Play
+[13] Learning Analytics for Serious Games | Springer Nature Link https://link.springer.com/rwe/10.1007/978-3-319-17461-7_21
+[14] Enhancing Experiential Learning via Phased Simulation Debriefing http://compete.hawaii.edu/aspy/INNOVATE/ABSEL%202019%20Enhancing%20Experiential%20Learning%20Manuscript.pdf
+[15] Serious Games in Entrepreneurship Classroom https://ieeexplore.ieee.org/iel8/6287639/10820123/11088099.pdf
+[16] Planning and Facilitating Debriefs of Experiential Learning ... https://files.eric.ed.gov/fulltext/EJ1163872.pdf
+[17] Learning Analytics and Serious Games https://dl.acm.org/doi/10.1145/2656719.2656729

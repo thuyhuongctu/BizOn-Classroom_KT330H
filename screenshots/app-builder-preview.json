@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "BizOn Classroom — KT330H",
+      "hasCanvas": false,
+      "bodyTextLen": 6085,
+      "bodyTextHash": "9c1fb5325c1cb863bae1fc8a948b3d40f8f20dbd54cef39620c0a31c8b560fc2",
+      "bodyTextPrefix": "KT330H · HK1 2026–2027 BizOn Classroom Kế hoạch triển khai · HK1",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "BizOn Classroom — KT330H",
+      "hasCanvas": false,
+      "bodyTextLen": 5292,
+      "bodyTextHash": "ef06c4aa6cf45087de1533133ce0277cb26be807ea3ca8f1714cbd048b47b872",
+      "bodyTextPrefix": "KT330H BizOn Classroom GHI CHÚ GIẢNG DẠY · KHOA KINH TẾ · ĐH CẦN",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

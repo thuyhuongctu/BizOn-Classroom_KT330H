@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #f3efe6;
+  --color-foreground: #1c1914;
+  --color-card: #fbf8f1;
+  --color-card-foreground: #1c1914;
+  --color-popover: #fbf8f1;
+  --color-popover-foreground: #1c1914;
+  --color-primary: #165a4c;
+  --color-primary-foreground: #f4f1ea;
+  --color-secondary: #e7e0d2;
+  --color-secondary-foreground: #1c1914;
+  --color-muted: #eae4d6;
+  --color-muted-foreground: #6d675c;
+  --color-accent: #dce8e3;
+  --color-accent-foreground: #0f241f;
+  --color-destructive: #8f2d2d;
+  --color-destructive-foreground: #fbf8f1;
+  --color-border: #ddd6c8;
+  --color-input: #ddd6c8;
+  --color-ring: #165a4c;
+  --color-ink: #0f241f;
+  --color-paper: #f3efe6;
+  --color-terracotta: #8a4b28;
+  --color-ok: #1d6b4f;
+  --color-warn: #8a4b28;
+  --color-faint: #9a9386;
+  --color-sunken: #e4ddd0;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius: 10px;
+
+  --shadow-soft: 0 1px 0 rgba(28, 25, 20, 0.04), 0 8px 24px rgba(28, 25, 20, 0.06);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+
+  input[type="range"] {
+    accent-color: var(--color-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  nav,
+  aside,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  main {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}

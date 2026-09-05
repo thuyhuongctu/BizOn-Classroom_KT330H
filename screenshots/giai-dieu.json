@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/giai-dieu",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "BizOn Classroom — KT330H",
+      "hasCanvas": false,
+      "bodyTextLen": 1758,
+      "bodyTextHash": "83c3e2efeb90b01cf65230841a054372ec2e70c74905e4c5544aab1674c0f575",
+      "bodyTextPrefix": "KT330H · HK1 2026–2027 BizOn Classroom Kế hoạch triển khai · HK1",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/giai-dieu.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "BizOn Classroom — KT330H",
+      "hasCanvas": false,
+      "bodyTextLen": 1526,
+      "bodyTextHash": "1e6e6d85d7791cf16a268f571a71e049a0cab869ee359ae790b11d3fe7636537",
+      "bodyTextPrefix": "KT330H BizOn Classroom TẠO HÌNH LUMINA · KHO ÂM NHẠC BIZON Bài m",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/giai-dieu-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/giai-dieu.json"
+}
