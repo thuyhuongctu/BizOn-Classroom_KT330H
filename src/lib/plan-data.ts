@@ -1545,3 +1545,72 @@ export const PEER_ITEMS = [
 		label: "Không độc chiếm máy hoặc commit hộ",
 	},
 ];
+
+/** Biểu mẫu sinh viên A — Team Charter. Từ bộ hồ sơ triển khai BizOn Bật Nghiệp 2026. */
+export const TEAM_CHARTER_FIELDS = [
+	"Thành viên và vai trò",
+	"Lịch luân chuyển vai trò",
+	"Mục tiêu học tập của đội",
+	"Quy trình họp và biểu quyết",
+	"Trường hợp CEO được quyền quyết định cuối",
+	"Cách ghi nhận ý kiến bất đồng",
+	"Quy trình xử lý vắng mặt / xung đột",
+	"Nguyên tắc dùng Lumina và AI ngoài hệ thống",
+	"Cam kết lưu bằng chứng",
+];
+
+/** Biểu mẫu sinh viên C — Reflection cá nhân. Hoàn thành sau chu kỳ 2, 4 và 6; 150–250 từ. */
+export const REFLECTION_PROMPTS = [
+	"Quyết định nào bản thân ảnh hưởng nhiều nhất?",
+	"Bằng chứng nào được dùng hoặc bị bỏ qua?",
+	"Điều gì khác kỳ vọng và vì sao?",
+	"Quan điểm nào đã thay đổi?",
+	"Nếu giữ vai trò khác, quyết định có thay đổi không?",
+	"Khuyến nghị AI nào hữu ích / không hữu ích?",
+	"Bài học nào có thể chuyển sang doanh nghiệp thực?",
+];
+
+/** Biểu mẫu sinh viên E — Pitch cuối kỳ. Dùng chung cho phần "dự án khởi nghiệp" 20% tuần 11. */
+export const PITCH_GUIDE = {
+	format: "7 phút trình bày, 5 phút phản biện.",
+	points: [
+		"Chiến lược ban đầu.",
+		"Ba bước ngoặt của sáu vòng.",
+		"Một quyết định thành công và một sai lầm.",
+		"Dữ liệu thị phần, lợi nhuận, tiền mặt, thương hiệu.",
+		"Vai trò phối hợp liên chức năng.",
+		"Cách dùng / bác bỏ Lumina.",
+		"Chiến lược nếu có thêm hai chu kỳ.",
+	],
+};
+
+/** Biểu mẫu sinh viên D — Peer assessment. Điểm cuối do GV tổng hợp qua trang Đánh giá (PEER_ITEMS). */
+export const PEER_ASSESSMENT_NOTE =
+	"Mỗi thành viên phân bổ tổng cộng 100 điểm cho các thành viên còn lại theo: chuẩn bị, đóng góp chuyên môn, hợp tác, độ tin cậy và phản tư. Kèm 1 bằng chứng cho mức điểm cao nhất và 1 đề xuất cải thiện. GV đối chiếu với 5 tiêu chí quan sát ở mục \"Phiếu đồng đẳng\" trên trang Đánh giá.";
+
+/** Phiếu thông tin & đồng thuận nghiên cứu — mẫu tham khảo, cần đơn vị đạo đức nghiên cứu rà soát
+ * trước khi dùng thật. Chỉ áp dụng nếu lớp có thu thập dữ liệu nghiên cứu (không bắt buộc để chơi game). */
+export const CONSENT_FORM = {
+	title: "Đánh giá quá trình học tập và ra quyết định trong mô phỏng kinh doanh BizOn Bật Nghiệp 2026",
+	purpose:
+		"Tìm hiểu trải nghiệm học tập, quá trình ra quyết định, hợp tác đội, sử dụng phản hồi game và AI, cùng sự thay đổi về kiến thức/năng lực liên quan.",
+	dataCollected: [
+		"Thông tin nền cần thiết cho câu hỏi nghiên cứu.",
+		"Câu trả lời khảo sát T0–T3.",
+		"Dấu vết thao tác, quyết định và kết quả trong game.",
+		"Nhật ký, reflection, peer assessment và pitch.",
+		"Ghi âm / phỏng vấn chỉ khi có mục đồng ý riêng.",
+	],
+	voluntary:
+		"Tham gia nghiên cứu là tự nguyện. Từ chối hoặc rút lui không ảnh hưởng điểm, quyền học tập hoặc quan hệ với cơ sở đào tạo — game vẫn chơi bình thường, chỉ dữ liệu không đưa vào nghiên cứu.",
+	confidentiality:
+		"Dữ liệu phân tích dùng mã ẩn danh. Tệp nối mã với danh tính lưu riêng, phân quyền và bảo vệ. Báo cáo chỉ trình bày dữ liệu tổng hợp hoặc trích dẫn đã khử nhận diện.",
+	consentItems: [
+		"Đồng ý sử dụng khảo sát.",
+		"Đồng ý sử dụng log game.",
+		"Đồng ý sử dụng sản phẩm học tập đã khử nhận diện.",
+		"Đồng ý tham gia phỏng vấn.",
+		"Đồng ý ghi âm phỏng vấn.",
+		"Đồng ý được liên hệ cho T3.",
+	],
+};

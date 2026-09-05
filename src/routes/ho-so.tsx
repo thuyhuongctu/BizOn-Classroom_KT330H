@@ -3,7 +3,17 @@ import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { CLASSES, CYCLES, DEBRIEF4, TICKET_FIELDS } from "@/lib/plan-data";
+import {
+  CLASSES,
+  CONSENT_FORM,
+  CYCLES,
+  DEBRIEF4,
+  PEER_ASSESSMENT_NOTE,
+  PITCH_GUIDE,
+  REFLECTION_PROMPTS,
+  TEAM_CHARTER_FIELDS,
+  TICKET_FIELDS,
+} from "@/lib/plan-data";
 import { getTicket, usePlanStore, type Ticket } from "@/lib/store";
 
 export const Route = createFileRoute("/ho-so")({ component: HoSoPage });
@@ -153,6 +163,86 @@ function HoSoPage() {
           Sau mỗi hai chu kỳ (tuần 4 và tuần 6), kéo debrief lên 20 phút và bắt buộc một khái niệm
           textbook — simulation không tự tạo phản tư nếu thiếu can thiệp sư phạm.
         </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Team Charter — lập ngay tuần 1</h2>
+        <p className="max-w-2xl text-sm text-muted-foreground">
+          Đội thống nhất và ký trước khi vào vòng 1. In hoặc chép ra giấy — mỗi thành viên giữ 1 bản.
+        </p>
+        <ul className="grid gap-2 rounded-xl border border-border bg-card p-5 sm:grid-cols-2">
+          {TEAM_CHARTER_FIELDS.map((f) => (
+            <li key={f} className="text-sm leading-relaxed">
+              <span className="text-muted-foreground">▢</span> {f}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Reflection cá nhân — sau chu kỳ 2, 4, 6</h2>
+        <p className="max-w-2xl text-sm text-muted-foreground">150–250 từ mỗi lần, nộp riêng từng SV.</p>
+        <ol className="list-decimal space-y-2 rounded-xl border border-border bg-card p-5 pl-9 text-sm leading-relaxed">
+          {REFLECTION_PROMPTS.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-2">
+        <article className="rounded-xl border border-border bg-card p-5">
+          <h2 className="font-medium text-ink">Peer assessment</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{PEER_ASSESSMENT_NOTE}</p>
+        </article>
+        <article className="rounded-xl border border-border bg-card p-5">
+          <h2 className="font-medium text-ink">Pitch cuối kỳ — tuần 11</h2>
+          <p className="mt-1 text-sm font-medium text-ink">{PITCH_GUIDE.format}</p>
+          <ul className="mt-2 space-y-1 text-sm leading-relaxed text-muted-foreground">
+            {PITCH_GUIDE.points.map((p) => (
+              <li key={p}>· {p}</li>
+            ))}
+          </ul>
+        </article>
+      </section>
+
+      <section className="space-y-3 rounded-xl border border-border bg-card p-5">
+        <div>
+          <h2 className="font-medium text-ink">Phiếu thông tin & đồng thuận nghiên cứu — mẫu tham khảo</h2>
+          <p className="mt-1 text-xs italic text-muted-foreground">
+            Chỉ áp dụng nếu lớp có thu thập dữ liệu nghiên cứu — không bắt buộc để chơi game. Mẫu cần
+            được đơn vị đạo đức nghiên cứu của cơ sở rà soát trước khi dùng thật.
+          </p>
+        </div>
+        <p className="text-sm font-medium text-ink">{CONSENT_FORM.title}</p>
+        <p className="text-sm leading-relaxed text-muted-foreground">{CONSENT_FORM.purpose}</p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Dữ liệu thu thập</p>
+            <ul className="mt-1 space-y-1 text-sm leading-relaxed">
+              {CONSENT_FORM.dataCollected.map((d) => (
+                <li key={d}>· {d}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-3">
+            <div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Tự nguyện</p>
+              <p className="mt-1 text-sm leading-relaxed">{CONSENT_FORM.voluntary}</p>
+            </div>
+            <div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Bảo mật</p>
+              <p className="mt-1 text-sm leading-relaxed">{CONSENT_FORM.confidentiality}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Xác nhận đồng ý</p>
+          <ul className="mt-1 grid gap-1 text-sm sm:grid-cols-2">
+            {CONSENT_FORM.consentItems.map((c) => (
+              <li key={c}>☐ {c}</li>
+            ))}
+          </ul>
+        </div>
       </section>
     </div>
   );
