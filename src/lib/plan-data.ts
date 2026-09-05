@@ -762,14 +762,14 @@ export const RUBRIC_PROCESS = [
 	{
 		group: "game" as const,
 		name: "Phiếu quyết định & lập luận",
-		pct: 8,
+		pct: 6,
 		of: 20,
 		detail: "Giả định, dự báo, bất đồng, lý do commit — trước khi biết kết quả.",
 	},
 	{
 		group: "game" as const,
 		name: "Nhật ký SEC & phản tư",
-		pct: 8,
+		pct: 6,
 		of: 20,
 		detail: "Sai lệch dự báo–thực tế, nguyên nhân, bài học, đánh giá Lumina.",
 	},

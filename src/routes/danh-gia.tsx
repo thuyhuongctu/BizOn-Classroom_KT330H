@@ -45,7 +45,7 @@ function GradePage() {
           {
             key: "game" as const,
             title: "Chi tiết 20% điểm game",
-            note: "Thầy Phan Anh Tú chốt trực tiếp: điểm trên App (100%) quy đổi thành 20% điểm cuối kỳ. Trọng số nội bộ dưới đây là bản nháp cũ (tổng 24, chưa khớp 20) — Hương chốt lại tỷ trọng cuối trước khi công bố.",
+            note: "Thầy Phan Anh Tú chốt trực tiếp: điểm trên App (100%) quy đổi thành 20% điểm cuối kỳ. Chia theo 3 nội dung chính khi chơi 6 vòng: chơi tốt (hiệu quả), quyết định tốt (lập luận), phản tư tốt (nhật ký) — đã chốt, khớp đủ 20%.",
           },
           {
             key: "project" as const,
@@ -56,6 +56,7 @@ function GradePage() {
       ).map((g) => {
         const items = RUBRIC_PROCESS.filter((r) => r.group === g.key);
         const sum = items.reduce((n, r) => n + r.pct, 0);
+        const done = sum === 20;
         return (
           <section key={g.key} className="space-y-3">
             <h2 className="text-xl font-semibold text-ink">{g.title}</h2>
@@ -65,7 +66,7 @@ function GradePage() {
                 <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
                   <tr>
                     <th className="px-4 py-3 font-medium">Thành phần</th>
-                    <th className="px-4 py-3 font-medium">% nháp</th>
+                    <th className="px-4 py-3 font-medium">{done ? "%" : "% nháp"}</th>
                     <th className="hidden px-4 py-3 font-medium md:table-cell">Nội dung</th>
                   </tr>
                 </thead>
@@ -78,7 +79,9 @@ function GradePage() {
                     </tr>
                   ))}
                   <tr className="border-t border-border bg-muted/40">
-                    <td className="px-4 py-3 font-medium">Tổng nháp (mục tiêu {g.key === "game" ? 20 : 20}%)</td>
+                    <td className="px-4 py-3 font-medium">
+                      {done ? "Tổng — đã chốt" : `Tổng nháp (mục tiêu 20%)`}
+                    </td>
                     <td className="px-4 py-3 tabular-nums font-medium">{sum}</td>
                     <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">
                       Discussion 10% và {g.key === "game" ? "dự án khởi nghiệp 20%" : "game 20%"} nằm ngoài bảng này.
