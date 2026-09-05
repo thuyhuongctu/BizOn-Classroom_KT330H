@@ -33,12 +33,9 @@ export const Route = createRootRoute({
       },
     ],
   }),
-  component: () => (
-    <html lang="vi" className="antialiased" suppressHydrationWarning>
-      <head>
-        <HeadContent />
-      </head>
-      <body>
+  component: () => {
+    const body = (
+      <>
         <PreviewHostBridge />
         <AuthProvider>
           <AppShell>
@@ -47,7 +44,21 @@ export const Route = createRootRoute({
           <Toaster position="bottom-right" duration={2500} closeButton />
         </AuthProvider>
         <Scripts />
-      </body>
-    </html>
-  ),
+      </>
+    );
+
+    // Static-SPA export (see src/entry-static.tsx): index.html already
+    // supplies <html>/<head>/<body>, so mount straight into #root instead of
+    // re-emitting a nested document shell.
+    if (import.meta.env.VITE_STATIC_SPA === "true") return body;
+
+    return (
+      <html lang="vi" className="antialiased" suppressHydrationWarning>
+        <head>
+          <HeadContent />
+        </head>
+        <body>{body}</body>
+      </html>
+    );
+  },
 });

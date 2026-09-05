@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, Pause, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { assetUrl } from "@/lib/asset-url";
 import { CHORUS, FEATURED_ID, TRACKS, getTrack } from "@/lib/music";
 import { useMusicStore } from "@/lib/music-store";
 import { LINKS } from "@/lib/plan-data";
@@ -37,10 +38,10 @@ function GiaiDieu() {
               className="aspect-video w-full object-cover object-[50%_28%]"
               controls
               playsInline
-              poster="/characters/lumina-workshop.jpg"
+              poster={assetUrl("/characters/lumina-workshop.jpg")}
               aria-label="MV Lumina chào lớp với anthem Bật Nghiệp"
             >
-              <source src="/video/lumina-bat-nghiep.mp4" type="video/mp4" />
+              <source src={assetUrl("/video/lumina-bat-nghiep.mp4")} type="video/mp4" />
             </video>
           </div>
           <div className="flex flex-col justify-between gap-5 p-5 sm:p-6">
@@ -98,7 +99,7 @@ function GiaiDieu() {
                   )}
                 >
                   <img
-                    src={t.art}
+                    src={assetUrl(t.art)}
                     alt=""
                     className="size-16 shrink-0 rounded-lg object-contain object-bottom outline outline-1 -outline-offset-1 outline-black/10 sm:size-20"
                   />
@@ -124,7 +125,7 @@ function GiaiDieu() {
       <section className="grid gap-3 sm:grid-cols-2">
         <figure className="overflow-hidden rounded-xl border border-border bg-card shadow-soft">
           <img
-            src="/characters/lumina-mekong.jpg"
+            src={assetUrl("/characters/lumina-mekong.jpg")}
             alt="Lumina vẫy chào trên bến sông đất sét"
             className="aspect-video w-full object-cover outline outline-1 -outline-offset-1 outline-black/10"
           />
@@ -134,7 +135,7 @@ function GiaiDieu() {
         </figure>
         <figure className="overflow-hidden rounded-xl border border-border bg-card shadow-soft">
           <img
-            src="/characters/giai-dieu-bizon.webp"
+            src={assetUrl("/characters/giai-dieu-bizon.webp")}
             alt="Bìa tuyển tập Giai điệu BizOn"
             className="aspect-video w-full object-cover object-top outline outline-1 -outline-offset-1 outline-black/10"
           />

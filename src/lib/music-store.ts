@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { assetUrl } from "./asset-url";
 import { FEATURED_ID, TRACKS, getTrack } from "./music";
 
 type MusicState = {
@@ -50,8 +51,9 @@ function start(id: string, volume: number, set: (p: Partial<MusicState>) => void
   const el = audioEl();
   set({ trackId: track.id, playing: true, currentTime: 0 });
   if (!el) return;
-  const abs = new URL(track.src, window.location.origin).href;
-  if (el.src !== abs) el.src = track.src;
+  const resolvedSrc = assetUrl(track.src);
+  const abs = new URL(resolvedSrc, window.location.origin).href;
+  if (el.src !== abs) el.src = resolvedSrc;
   el.volume = volume;
   void el.play().catch(() => set({ playing: false }));
 }

@@ -1,6 +1,7 @@
 import { Play } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { assetUrl } from "@/lib/asset-url";
 import { FEATURED_ID, getTrack } from "@/lib/music";
 import { useMusicStore } from "@/lib/music-store";
 
@@ -12,7 +13,7 @@ export function LuminaStage() {
     <section className="overflow-hidden rounded-xl border border-border bg-card shadow-soft">
       <div className="relative aspect-[16/10] bg-sunken sm:aspect-[16/8]">
         <img
-          src="/characters/lumina-workshop.jpg"
+          src={assetUrl("/characters/lumina-workshop.jpg")}
           alt="Lumina, cố vấn AI đất sét 3D của BizOn Bật Nghiệp, trong xưởng bên sông"
           className="absolute inset-0 h-full w-full object-cover object-[50%_22%] outline outline-1 -outline-offset-1 outline-black/10"
         />
@@ -22,10 +23,10 @@ export function LuminaStage() {
           muted
           loop
           playsInline
-          poster="/characters/lumina-workshop.jpg"
+          poster={assetUrl("/characters/lumina-workshop.jpg")}
           aria-hidden
         >
-          <source src="/video/lumina-loop.mp4" type="video/mp4" />
+          <source src={assetUrl("/video/lumina-loop.mp4")} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
         <p className="absolute bottom-3 left-4 right-4 text-xs text-primary-foreground">

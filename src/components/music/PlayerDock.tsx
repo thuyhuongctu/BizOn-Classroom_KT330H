@@ -1,4 +1,5 @@
 import { Pause, Play, SkipBack, SkipForward, Volume2 } from "lucide-react";
+import { assetUrl } from "@/lib/asset-url";
 import { getTrack } from "@/lib/music";
 import { useMusicStore } from "@/lib/music-store";
 import { formatClock } from "@/lib/utils";
@@ -22,7 +23,7 @@ export function PlayerDock() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 backdrop-blur md:left-[16.5rem]">
       <div className="mx-auto flex max-w-5xl items-center gap-3 px-3 py-2.5 sm:px-5">
         <img
-          src={track.art}
+          src={assetUrl(track.art)}
           alt=""
           className="size-11 shrink-0 rounded-lg object-contain object-bottom outline outline-1 -outline-offset-1 outline-black/10 sm:size-12"
         />

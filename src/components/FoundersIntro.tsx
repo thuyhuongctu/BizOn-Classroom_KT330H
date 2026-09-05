@@ -1,3 +1,5 @@
+import { assetUrl } from "@/lib/asset-url";
+
 const FOUNDERS = [
   {
     name: "Lumina",
@@ -28,7 +30,11 @@ export function FoundersIntro() {
         {FOUNDERS.map((p) => (
           <article key={p.name} className="overflow-hidden rounded-xl border border-border bg-card shadow-soft">
             <div className="flex h-64 items-end justify-center bg-sunken px-4 pt-6 sm:h-72">
-              <img src={p.art} alt={p.alt} className="h-full w-auto max-w-[11rem] object-contain object-bottom" />
+              <img
+                src={assetUrl(p.art)}
+                alt={p.alt}
+                className="h-full w-auto max-w-[11rem] object-contain object-bottom"
+              />
             </div>
             <div className="space-y-1.5 p-5">
               <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-terracotta">{p.role}</p>
