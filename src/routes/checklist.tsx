@@ -52,7 +52,8 @@ function CheckPage() {
         <h1 className="text-3xl font-semibold text-ink">Checklist triển khai</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           {done}/{total} mục. Ưu tiên cuối tuần này: chạy thử 6 vòng, Class ID, vốn, rubric, máy từng đội,
-          xác nhận phòng F1 Thứ Ba (chiều tiết 6–8, 104/KT). Nghiên cứu chỉ bật khi lớp chạy ổn.
+          xác nhận phòng F1 Thứ Ba (chiều tiết 6–8, 104/KT + phòng máy tiết 8). Nghiên cứu chỉ bật khi lớp
+          chạy ổn.
         </p>
         <div className="h-1.5 overflow-hidden rounded-full bg-muted">
           <div

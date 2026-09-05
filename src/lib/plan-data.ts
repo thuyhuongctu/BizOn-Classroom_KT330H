@@ -48,8 +48,8 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 				day: "Thứ Ba",
 				periods: "6–8",
 				time: "13:30–16:20",
-				room: "104/KT",
-				note: "Chiều liền 3 tiết, không cắt nghỉ trưa — thầy Phan Anh Tú xác nhận theo TKB cán bộ 08/09.",
+				room: "104/KT (tiết 6–7) + phòng máy (tiết 8)",
+				note: "Chiều liền 3 tiết, không cắt nghỉ trưa. Tiết 6–7 lý thuyết ở 104/KT; tiết 8 cả lớp chuyển sang phòng máy chơi game — thầy Phan Anh Tú tự đăng ký phòng, chưa có số phòng chính thức.",
 			},
 			second: {
 				day: "Thứ Năm",
@@ -73,8 +73,8 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 				day: "Thứ Tư",
 				periods: "1–3",
 				time: "07:00–09:50",
-				room: "105/KT",
-				note: "Sáng liền 3 tiết. Buổi lý thuyết mặc định.",
+				room: "105/KT (tiết 1–2) + phòng máy (tiết 3)",
+				note: "Sáng liền 3 tiết. Buổi lý thuyết mặc định — tiết 1–2 lý thuyết ở 105/KT; tiết 3 cả lớp chuyển sang phòng máy chơi game — thầy Phan Anh Tú tự đăng ký phòng, chưa có số phòng chính thức.",
 			},
 			second: {
 				day: "Thứ Sáu",
@@ -782,7 +782,7 @@ export const OPTIONS = [
 		title: "Mô hình đề xuất — 11 tuần",
 		badge: "Nên dùng",
 		points: [
-			"Buổi 1 mỗi tuần: lý thuyết Mariotti. F1: Thứ Ba tiết 6–8 chiều liền, 104/KT.",
+			"Buổi 1 mỗi tuần: lý thuyết Mariotti. F1: Thứ Ba tiết 6–8 chiều liền, 104/KT (tiết 6–7) + phòng máy (tiết 8).",
 			"Buổi 2: thực hành. Tuần 3–8 = đúng 6 chu kỳ, mỗi chu kỳ 150 phút có debrief.",
 			"Tuần 9–10 thu hoạch thành plan (Ch.10+Ch.11 gộp tuần 10). Tuần 11 pitch.",
 			"66 tiết trên lớp (2×3 tiết × 11 tuần) — đúng quy định 11 tuần dạy. 60 giờ TH đề cương gồm đồ án ngoài lớp.",
@@ -870,7 +870,11 @@ export const CHECKS = [
 			},
 			{
 				id: "rooms",
-				label: "Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT. F1 Thứ Ba học chiều liền tiết 6–8 (104/KT).",
+				label: "Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT.",
+			},
+			{
+				id: "computer-lab",
+				label: "Xác nhận số phòng máy cho tiết cuối buổi lý thuyết (F1 tiết 8 Thứ Ba, F2 tiết 3 Thứ Tư) — thầy Phan Anh Tú đang tự đăng ký.",
 			},
 			{
 				id: "capital",
@@ -1241,6 +1245,11 @@ export const DIFFS = [
 		from: "F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (đọc TKB lần đầu bị lệch)",
 		to: "F1 Thứ Ba tiết 6–8 chiều liền, không cắt trưa (104/KT)",
 		why: "Thầy Phan Anh Tú xác nhận trực tiếp theo TKB cán bộ 2026–2027 HK1: buổi chiều là tiết 6, 7, 8 liền — không có tiết 5 buổi sáng trong buổi này.",
+	},
+	{
+		from: "Cả buổi lý thuyết ở phòng học (104/KT hoặc 105/KT)",
+		to: "Tiết cuối buổi lý thuyết chuyển sang phòng máy chơi game (F1 tiết 8 Thứ Ba, F2 tiết 3 Thứ Tư)",
+		why: "Thầy Phan Anh Tú: mỗi buổi lý thuyết chỉ 2 tiết lý thuyết + 1 tiết thực hành chơi game, tiết cuối cả lớp qua phòng máy — thầy đang tự đăng ký phòng, chưa có số phòng chính thức.",
 	},
 	{
 		from: "Rubric game 20/20/15/15/15/10/5",
