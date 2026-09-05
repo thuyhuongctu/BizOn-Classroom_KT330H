@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { LuminaStage } from "@/components/music/LuminaStage";
 import { FoundersIntro } from "@/components/FoundersIntro";
+import { useT } from "@/lib/i18n";
 import { nextSession, teachingWeekOf, WEEK_CALENDAR } from "@/lib/calendar";
 import { CLASSES, CYCLES, DIFFS, LINKS, OPTIONS, OUTLINE_NOTE } from "@/lib/plan-data";
 import { usePlanStore } from "@/lib/store";
@@ -17,32 +18,38 @@ function Home() {
   const weekNow = teachingWeekOf();
   const next = nextSession(classKey);
   const cal = WEEK_CALENDAR.find((w) => w.week === (weekNow === 0 ? 1 : Math.min(weekNow, 12)));
+  const t = useT();
 
   return (
     <div className="space-y-12">
       <header className="space-y-5">
         <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          Ghi chú giảng dạy · Khoa Kinh tế · ĐH Cần Thơ
+          {t("Ghi chú giảng dạy · Khoa Kinh tế · ĐH Cần Thơ", "Teaching notes · Faculty of Economics · Can Tho University")}
         </p>
         <h1 className="max-w-3xl font-display text-[2.15rem] font-semibold leading-[1.15] text-ink sm:text-5xl">
-          Triển khai BizOn Bật Nghiệp đúng vào KT330H, không phải một game khởi nghiệp chung.
+          {t(
+            "Triển khai BizOn Bật Nghiệp đúng vào KT330H, không phải một game khởi nghiệp chung.",
+            "Rolling out BizOn Bật Nghiệp inside KT330H itself — not a generic entrepreneurship game.",
+          )}
         </h1>
         <p className="max-w-2xl text-base text-muted-foreground">
-          Học phần Khởi sự doanh nghiệp, NH 2026–2027 HK1 (07/9–20/12). Sáu chu kỳ, năm vai trò, ba đối
-          thủ AI, nhật ký SEC — thầy Phan Anh Tú dẫn học thuật, Lumina đồng hành trên từng vòng.
+          {t(
+            "Học phần Khởi sự doanh nghiệp, NH 2026–2027 HK1 (07/9–20/12). Sáu chu kỳ, năm vai trò, ba đối thủ AI, nhật ký SEC — thầy Phan Anh Tú dẫn học thuật, Lumina đồng hành trên từng vòng.",
+            "Entrepreneurship course, AY 2026–2027 Term 1 (Sep 7 – Dec 20). Six cycles, five roles, three AI rivals, an SEC decision log — Prof. Phan Anh Tú leads the academics, Lumina rides along every round.",
+          )}
         </p>
         <div className="flex flex-wrap gap-2">
           <Button asChild>
             <Link to="/lich">
-              Xem lịch 12 tuần <ArrowRight />
+              {t("Xem lịch 12 tuần", "View the 12-week calendar")} <ArrowRight />
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link to="/checklist">Checklist trước thứ Hai</Link>
+            <Link to="/checklist">{t("Checklist trước thứ Hai", "Monday prep checklist")}</Link>
           </Button>
           <Button asChild variant="ghost">
             <a href={LINKS.game} target="_blank" rel="noreferrer">
-              Mở game <ExternalLink />
+              {t("Mở game", "Open the game")} <ExternalLink />
             </a>
           </Button>
         </div>
@@ -57,31 +64,37 @@ function Home() {
           <div>
             <p className="text-[11px] uppercase tracking-wider text-terracotta">
               {weekNow === 0
-                ? "Học kỳ bắt đầu thứ Hai 07/9"
+                ? t("Học kỳ bắt đầu thứ Hai 07/9", "Term starts Monday, Sep 7")
                 : weekNow > 12
-                  ? "Hết 12 tuần giảng dạy"
-                  : `Tuần giảng dạy ${weekNow} / 12`}
+                  ? t("Hết 12 tuần giảng dạy", "12 teaching weeks complete")
+                  : t(`Tuần giảng dạy ${weekNow} / 12`, `Teaching week ${weekNow} / 12`)}
             </p>
             <h2 className="mt-1 text-xl font-semibold text-ink">
               {weekNow === 0
-                ? "Còn weekend để chạy thử 6 vòng"
+                ? t("Còn weekend để chạy thử 6 vòng", "Weekend left to test-run all 6 cycles")
                 : next
-                  ? `Buổi tới · ${next.date.label}`
-                  : "Hết buổi trên TKB"}
+                  ? t(`Buổi tới · ${next.date.label}`, `Next session · ${next.date.label}`)
+                  : t("Hết buổi trên TKB", "No sessions left on the timetable")}
             </h2>
             {next ? (
               <p className="mt-1 text-sm text-muted-foreground">
-                {klass.code} · tiết {next.meeting.periods} · {next.meeting.time} · {next.meeting.room}
+                {klass.code} · {t("tiết", "periods")} {next.meeting.periods} · {next.meeting.time} ·{" "}
+                {next.meeting.room}
                 {next.week === 1 && next.slot === "first"
-                  ? " — luật, CLO, chia đội. Chưa commit vòng tính điểm."
+                  ? t(
+                      " — luật, CLO, chia đội. Chưa commit vòng tính điểm.",
+                      " — rules, CLOs, team assignment. No scored round committed yet.",
+                    )
                   : next.week === 1
-                    ? " — demo 1 vòng, kết quả không tính."
+                    ? t(" — demo 1 vòng, kết quả không tính.", " — one demo round, result not counted.")
                     : ""}
               </p>
             ) : null}
           </div>
           <Badge variant={weekNow === 0 ? "warn" : "soft"}>
-            {weekNow === 0 ? "Tuần 0 · chuẩn bị" : `Tuần ${Math.min(weekNow, 12)}`}
+            {weekNow === 0
+              ? t("Tuần 0 · chuẩn bị", "Week 0 · prep")
+              : t(`Tuần ${Math.min(weekNow, 12)}`, `Week ${Math.min(weekNow, 12)}`)}
           </Badge>
         </div>
         {cal ? (
@@ -101,17 +114,28 @@ function Home() {
           </div>
         ) : null}
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-          F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (10:40–11:30 rồi 13:30–15:20, 104/KT) — không chạy một chu kỳ
-          150 phút. Game mặc định: F1 Thứ Năm 103/KT, F2 Thứ Sáu 202/KT.
+          {t(
+            "F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (10:40–11:30 rồi 13:30–15:20, 104/KT) — không chạy một chu kỳ 150 phút. Game mặc định: F1 Thứ Năm 103/KT, F2 Thứ Sáu 202/KT.",
+            "F1's Tuesday periods 5–7 are split by lunch (10:40–11:30, then 13:30–15:20, room 104/KT) — a 150-minute cycle can't run there. Default game slot: F1 Thursday 103/KT, F2 Friday 202/KT.",
+          )}
         </p>
       </section>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
-          { k: "2 lớp CLC", v: `${CLASSES.F1.code} · ${CLASSES.F2.code}` },
-          { k: "Sĩ số", v: `${CLASSES.F1.students + CLASSES.F2.students} sinh viên` },
-          { k: "Đội", v: `${CLASSES.F1.teams + CLASSES.F2.teams} đội · 5 vai` },
-          { k: "Lịch", v: "12 tuần · 6 chu kỳ" },
+          { k: t("2 lớp CLC", "2 honors classes"), v: `${CLASSES.F1.code} · ${CLASSES.F2.code}` },
+          {
+            k: t("Sĩ số", "Enrollment"),
+            v: t(
+              `${CLASSES.F1.students + CLASSES.F2.students} sinh viên`,
+              `${CLASSES.F1.students + CLASSES.F2.students} students`,
+            ),
+          },
+          {
+            k: t("Đội", "Teams"),
+            v: t(`${CLASSES.F1.teams + CLASSES.F2.teams} đội · 5 vai`, `${CLASSES.F1.teams + CLASSES.F2.teams} teams · 5 roles`),
+          },
+          { k: t("Lịch", "Calendar"), v: t("12 tuần · 6 chu kỳ", "12 weeks · 6 cycles") },
         ].map((s) => (
           <div key={s.k} className="rounded-xl border border-border bg-card p-4 shadow-soft">
             <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{s.k}</p>
@@ -121,15 +145,17 @@ function Home() {
       </section>
 
       <section className="rounded-xl border border-border bg-card p-5 shadow-soft sm:p-6">
-        <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Lớp đang chọn</p>
+        <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+          {t("Lớp đang chọn", "Selected class")}
+        </p>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="text-xl font-semibold text-ink">
-              {klass.code} · nhóm {klass.nhom}
+              {klass.code} · {t("nhóm", "group")} {klass.nhom}
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              {klass.students} SV · {klass.teams} đội · Class ID{" "}
-              <span className="font-medium text-foreground">{klass.classId}</span>
+              {t(`${klass.students} SV · ${klass.teams} đội`, `${klass.students} students · ${klass.teams} teams`)} ·
+              Class ID <span className="font-medium text-foreground">{klass.classId}</span>
             </p>
           </div>
           <Badge variant="soft">
@@ -137,29 +163,42 @@ function Home() {
           </Badge>
         </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          <MeetingCard title="Buổi 1 trong tuần" m={klass.meetings.first} tag="Lý thuyết (mặc định)" />
-          <MeetingCard title="Buổi 2 trong tuần" m={klass.meetings.second} tag="Game / thực hành (mặc định)" />
+          <MeetingCard
+            title={t("Buổi 1 trong tuần", "Weekly session 1")}
+            m={klass.meetings.first}
+            tag={t("Lý thuyết (mặc định)", "Theory (default)")}
+          />
+          <MeetingCard
+            title={t("Buổi 2 trong tuần", "Weekly session 2")}
+            m={klass.meetings.second}
+            tag={t("Game / thực hành (mặc định)", "Game / practice (default)")}
+          />
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
-          Đổi thứ tự buổi game ở trang Lớp & đội. Khuyến nghị: lý thuyết trước, game sau — cùng tuần với
-          chương Mariotti.
+          {t(
+            "Đổi thứ tự buổi game ở trang Lớp & đội. Khuyến nghị: lý thuyết trước, game sau — cùng tuần với chương Mariotti.",
+            "Change the game-session order on the Class & Teams page. Recommended: theory first, game second — same week as the Mariotti chapter.",
+          )}
         </p>
       </section>
 
       <section className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold text-ink">Lịch 12 tuần — ngày thật</h2>
+          <h2 className="text-xl font-semibold text-ink">{t("Lịch 12 tuần — ngày thật", "12-week calendar — real dates")}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Tuần 1 = 07/9–13/9. Tuần 12 kết thúc 29/11. Thi trong khung đến 20/12.
+            {t(
+              "Tuần 1 = 07/9–13/9. Tuần 12 kết thúc 29/11. Thi trong khung đến 20/12.",
+              "Week 1 = Sep 7–13. Week 12 ends Nov 29. Exams run through Dec 20.",
+            )}
           </p>
         </div>
         <div className="overflow-x-auto rounded-xl border border-border bg-card">
           <table className="w-full min-w-[640px] text-left text-sm">
             <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
               <tr>
-                <th className="px-3 py-2 font-medium">Tuần</th>
-                <th className="px-3 py-2 font-medium">Khung</th>
-                <th className="px-3 py-2 font-medium">Chu kỳ</th>
+                <th className="px-3 py-2 font-medium">{t("Tuần", "Week")}</th>
+                <th className="px-3 py-2 font-medium">{t("Khung", "Dates")}</th>
+                <th className="px-3 py-2 font-medium">{t("Chu kỳ", "Cycle")}</th>
                 <th className="px-3 py-2 font-medium">{klass.code}</th>
               </tr>
             </thead>
@@ -176,7 +215,13 @@ function Home() {
                     <td className="px-3 py-2 font-medium tabular-nums">{w.week}</td>
                     <td className="px-3 py-2 text-muted-foreground">{w.range}</td>
                     <td className="px-3 py-2">
-                      {cycle ? `C${cycle.n} ${cycle.city}` : w.week <= 2 ? "Chuẩn bị" : w.week === 12 ? "Pitch" : "Thu hoạch"}
+                      {cycle
+                        ? `C${cycle.n} ${cycle.city}`
+                        : w.week <= 2
+                          ? t("Chuẩn bị", "Prep")
+                          : w.week === 12
+                            ? "Pitch"
+                            : t("Thu hoạch", "Wrap-up")}
                     </td>
                     <td className="px-3 py-2 text-muted-foreground">
                       {dates.first.short} · {dates.second.short}
@@ -191,10 +236,14 @@ function Home() {
 
       <section className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold text-ink">Sáu vòng game · Cần Thơ đến Hà Nội</h2>
+          <h2 className="text-xl font-semibold text-ink">
+            {t("Sáu vòng game · Cần Thơ đến Hà Nội", "Six game rounds · Cần Thơ to Hà Nội")}
+          </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Đúng bản đồ chinh phục và biến cố trong engine. Mariotti là lớp mở rộng sau khi chơi — không
-            thay tên tỉnh hay sự kiện.
+            {t(
+              "Đúng bản đồ chinh phục và biến cố trong engine. Mariotti là lớp mở rộng sau khi chơi — không thay tên tỉnh hay sự kiện.",
+              "Matches the exact conquest map and events in the engine. Mariotti is an added teaching layer after play — province names and events are never renamed.",
+            )}
           </p>
           <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
             {CYCLES.map((c, i) => (
@@ -213,13 +262,13 @@ function Home() {
                 className="block h-full rounded-xl border border-border bg-card p-4 shadow-soft transition-colors hover:bg-accent/50"
               >
                 <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                  Vòng {c.n} · tuần {c.week} · {c.tag}
+                  {t("Vòng", "Round")} {c.n} · {t("tuần", "week")} {c.week} · {c.tag}
                 </p>
                 <p className="mt-1 font-medium text-ink">{c.city}</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">{c.event}</p>
                 <p className="mt-2 text-xs tabular-nums text-terracotta">{c.engine}</p>
                 <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                  <span className="font-medium text-foreground">Mở rộng. </span>
+                  <span className="font-medium text-foreground">{t("Mở rộng. ", "Extension. ")}</span>
                   {c.expand}
                 </p>
               </Link>
@@ -230,10 +279,14 @@ function Home() {
 
       <section className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold text-ink">Ba cách triển khai — chỉ một cái khớp TKB</h2>
+          <h2 className="text-xl font-semibold text-ink">
+            {t("Ba cách triển khai — chỉ một cái khớp TKB", "Three rollout options — only one fits the timetable")}
+          </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Kế hoạch nghiên cứu 4 buổi vẫn hữu ích như phương án dự phòng. Với 2 buổi × 3 tiết mỗi tuần,
-            mô hình đúng là một chu kỳ / tuần có debrief.
+            {t(
+              "Kế hoạch nghiên cứu 4 buổi vẫn hữu ích như phương án dự phòng. Với 2 buổi × 3 tiết mỗi tuần, mô hình đúng là một chu kỳ / tuần có debrief.",
+              "The 4-session research plan still works as a fallback. With 2 sessions × 3 periods a week, the right model is one cycle per week with a debrief.",
+            )}
           </p>
         </div>
         <div className="grid gap-3 md:grid-cols-3">
@@ -261,14 +314,14 @@ function Home() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-xl font-semibold text-ink">Đã chỉnh so với kế hoạch trước</h2>
+        <h2 className="text-xl font-semibold text-ink">{t("Đã chỉnh so với kế hoạch trước", "Changes from the earlier plan")}</h2>
         <div className="overflow-hidden rounded-xl border border-border bg-card">
           <table className="w-full text-left text-sm">
             <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
               <tr>
-                <th className="px-4 py-3 font-medium">Kế hoạch cũ</th>
-                <th className="px-4 py-3 font-medium">Kế hoạch này</th>
-                <th className="hidden px-4 py-3 font-medium md:table-cell">Lý do</th>
+                <th className="px-4 py-3 font-medium">{t("Kế hoạch cũ", "Earlier plan")}</th>
+                <th className="px-4 py-3 font-medium">{t("Kế hoạch này", "This plan")}</th>
+                <th className="hidden px-4 py-3 font-medium md:table-cell">{t("Lý do", "Why")}</th>
               </tr>
             </thead>
             <tbody>
@@ -287,23 +340,32 @@ function Home() {
 
       <section className="grid gap-3 sm:grid-cols-3">
         <Note
-          title="Không kéo thanh để thắng"
-          body="Chu trình học: dữ liệu → giả định → quyết định → kết quả → giải thích → điều chỉnh. Nếu chỉ tối ưu dự báo tức thời, SV thắng game nhưng không chứng minh được CLO."
+          title={t("Không kéo thanh để thắng", "Don't just slide to win")}
+          body={t(
+            "Chu trình học: dữ liệu → giả định → quyết định → kết quả → giải thích → điều chỉnh. Nếu chỉ tối ưu dự báo tức thời, SV thắng game nhưng không chứng minh được CLO.",
+            "Learning loop: data → assumption → decision → outcome → explanation → adjustment. Optimizing only for the instant forecast lets a team win the game without demonstrating the CLOs.",
+          )}
         />
         <Note
-          title="AI không chấm điểm"
-          body="Lumina giải thích, chất vấn, phản tư. Engine thị phần và P&L là xác định, tái lập được. Tối đa 3 câu / vòng; phải ghi dùng / bác bỏ."
+          title={t("AI không chấm điểm", "AI doesn't grade")}
+          body={t(
+            "Lumina giải thích, chất vấn, phản tư. Engine thị phần và P&L là xác định, tái lập được. Tối đa 3 câu / vòng; phải ghi dùng / bác bỏ.",
+            "Lumina explains, questions, and reflects. The market-share and P&L engine is deterministic and reproducible. Max 3 questions per round; every use or rejection must be logged.",
+          )}
         />
         <Note
-          title="Nghiên cứu đi sau vận hành"
-          body="Pilot đầu chỉ hỏi: game chạy ổn? hiểu luật? đúng giờ? log đủ? Chưa kết luận năng lực hay ý định khởi nghiệp."
+          title={t("Nghiên cứu đi sau vận hành", "Research follows operations")}
+          body={t(
+            "Pilot đầu chỉ hỏi: game chạy ổn? hiểu luật? đúng giờ? log đủ? Chưa kết luận năng lực hay ý định khởi nghiệp.",
+            "The first pilot only asks: does the game run smoothly? are the rules clear? on schedule? is logging complete? It draws no conclusions yet about entrepreneurial competence or intent.",
+          )}
         />
       </section>
 
       <p className="text-xs text-muted-foreground">
-        Nguồn game:{" "}
+        {t("Nguồn game:", "Game source:")}{" "}
         <a className="underline" href={LINKS.hub} target="_blank" rel="noreferrer">
-          cổng BizOn
+          {t("cổng BizOn", "BizOn hub")}
         </a>
         {" · "}
         <a className="underline" href={LINKS.game} target="_blank" rel="noreferrer">
@@ -311,17 +373,20 @@ function Home() {
         </a>
         {" · "}
         <a className="underline" href={LINKS.guide} target="_blank" rel="noreferrer">
-          hướng dẫn giảng viên
+          {t("hướng dẫn giảng viên", "instructor guide")}
         </a>
         {" · "}
         <a className="underline" href={LINKS.music} target="_blank" rel="noreferrer">
-          kho nhạc
+          {t("kho nhạc", "soundtrack")}
         </a>
         {" · "}
         <a className="underline" href={LINKS.team} target="_blank" rel="noreferrer">
-          đội ngũ
+          {t("đội ngũ", "team")}
         </a>
-        . Đề cương KT330H (Mariotti 2016, 3 TC). TKB cán bộ NH 2026–2027 HK1.
+        {t(
+          ". Đề cương KT330H (Mariotti 2016, 3 TC). TKB cán bộ NH 2026–2027 HK1.",
+          ". KT330H syllabus (Mariotti 2016, 3 credits). Staff timetable, AY 2026–2027 Term 1.",
+        )}
       </p>
     </div>
   );
@@ -336,11 +401,12 @@ function MeetingCard({
   tag: string;
   m: { day: string; periods: string; time: string; room: string; note: string };
 }) {
+  const t = useT();
   return (
     <div className="rounded-lg bg-muted/60 p-4">
       <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{title}</p>
       <p className="mt-1 font-medium">
-        {m.day} · tiết {m.periods}
+        {m.day} · {t("tiết", "periods")} {m.periods}
       </p>
       <p className="text-sm text-muted-foreground">
         {m.time} · {m.room}
