@@ -115,8 +115,8 @@ function Home() {
         ) : null}
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           {t(
-            "F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (10:40–11:30 rồi 13:30–15:20, 104/KT) — không chạy một chu kỳ 150 phút. Game mặc định: F1 Thứ Năm 103/KT, F2 Thứ Sáu 202/KT.",
-            "F1's Tuesday periods 5–7 are split by lunch (10:40–11:30, then 13:30–15:20, room 104/KT) — a 150-minute cycle can't run there. Default game slot: F1 Thursday 103/KT, F2 Friday 202/KT.",
+            "F1 Thứ Ba tiết 6–8 chiều liền (13:30–16:20, 104/KT), không cắt nghỉ trưa. Game mặc định: F1 Thứ Năm 103/KT, F2 Thứ Sáu 202/KT.",
+            "F1's Tuesday session runs periods 6–8, back-to-back in the afternoon (13:30–16:20, room 104/KT) — no lunch split. Default game slot: F1 Thursday 103/KT, F2 Friday 202/KT.",
           )}
         </p>
       </section>

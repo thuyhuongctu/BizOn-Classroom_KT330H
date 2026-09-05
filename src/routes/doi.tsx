@@ -92,7 +92,7 @@ function DoiPage() {
             ))}
           </div>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-            Mặc định buổi 2. F1 nên giữ Thứ Năm — Thứ Ba cắt trưa không đủ 150 phút liền.
+            Mặc định buổi 2. F1 giữ Thứ Năm 103/KT (sáng liền 3 tiết) làm buổi game; Thứ Ba 104/KT là lý thuyết.
           </p>
         </div>
         <div className="rounded-xl border border-border bg-card p-4">

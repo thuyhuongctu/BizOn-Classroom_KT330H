@@ -6,6 +6,7 @@ import {
   PILOT_THRESHOLDS,
   RUBRIC_COURSE,
   RUBRIC_PROCESS,
+  RUBRIC_TEAM,
   SURVEYS,
   WEEKS,
 } from "@/lib/plan-data";
@@ -81,6 +82,44 @@ function GradePage() {
           nhiệm vụ / không phá sản 10%. Sổ tay GitHub (40/30/15/15) thiên về thắng cuộc; học phần này
           nâng nhật ký và lập luận lên, hạ xếp hạng xuống.
         </p>
+      </section>
+
+      <section className="space-y-3">
+        <div>
+          <h2 className="text-xl font-semibold text-ink">Rubric đội &amp; cá nhân — 4 mức</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 10/40/50 của học phần). Từ
+            bộ hồ sơ triển khai BizOn Bật Nghiệp 2026.
+          </p>
+        </div>
+        <div className="overflow-x-auto rounded-xl border border-border bg-card">
+          <table className="w-full min-w-[880px] text-left text-sm">
+            <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
+              <tr>
+                <th className="px-3 py-2 font-medium">Tiêu chí</th>
+                <th className="px-3 py-2 font-medium">Trọng số</th>
+                <th className="px-3 py-2 font-medium">4 · Xuất sắc</th>
+                <th className="px-3 py-2 font-medium">3 · Tốt</th>
+                <th className="px-3 py-2 font-medium">2 · Đạt</th>
+                <th className="px-3 py-2 font-medium">1 · Chưa đạt</th>
+                <th className="px-3 py-2 font-medium">Minh chứng</th>
+              </tr>
+            </thead>
+            <tbody>
+              {RUBRIC_TEAM.map((r) => (
+                <tr key={r.criterion} className="border-t border-border align-top">
+                  <td className="px-3 py-2 font-medium">{r.criterion}</td>
+                  <td className="px-3 py-2 tabular-nums">{r.weight}%</td>
+                  <td className="px-3 py-2 text-muted-foreground">{r.l4}</td>
+                  <td className="px-3 py-2 text-muted-foreground">{r.l3}</td>
+                  <td className="px-3 py-2 text-muted-foreground">{r.l2}</td>
+                  <td className="px-3 py-2 text-muted-foreground">{r.l1}</td>
+                  <td className="px-3 py-2 text-xs text-faint">{r.evidence}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section className="space-y-3">

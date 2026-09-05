@@ -46,10 +46,10 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 		meetings: {
 			first: {
 				day: "Thứ Ba",
-				periods: "5–7",
-				time: "10:40–11:30 · 13:30–15:20",
+				periods: "6–8",
+				time: "13:30–16:20",
 				room: "104/KT",
-				note: "Cắt nghỉ trưa — tiết 5 sáng, tiết 6–7 chiều. Không chạy một chu kỳ game liền 150 phút.",
+				note: "Chiều liền 3 tiết, không cắt nghỉ trưa — thầy Phan Anh Tú xác nhận theo TKB cán bộ 08/09.",
 			},
 			second: {
 				day: "Thứ Năm",
@@ -322,7 +322,7 @@ export const WEEKS: WeekPlan[] = [
 		week: 1,
 		chapter: "Giới thiệu học phần + luật BizOn",
 		theory: "Mục tiêu học phần, CLO, rubric 10/40/50, cấu trúc 6 chu kỳ, 5 vai trò, tiêu chí thắng.",
-		practice: "Buổi liền 3 tiết: chia đội, chọn vai, Class ID, chơi thử 1 vòng (không tính). F1 Thứ Ba cắt trưa chỉ luật — demo dời Thứ Năm.",
+		practice: "Buổi liền 3 tiết: chia đội, chọn vai, Class ID, chơi thử 1 vòng (không tính). F1 Thứ Ba 08/9 chỉ luật — demo dời Thứ Năm.",
 		cycle: "Demo",
 		cycleKind: "prep",
 		hours: "3 LT · 0/nhẹ TH",
@@ -334,7 +334,7 @@ export const WEEKS: WeekPlan[] = [
 		gv: [
 			"Công bố kế hoạch 12 tuần (TKB 07/9–29/11) và rubric 10/40/50 trước khi chơi.",
 			"Cấp Class ID, tạo 7–8 đội, phát vốn khởi điểm giống nhau (game mở với tiền mặt 0₫).",
-			"F1: Thứ Ba 08/9 tiết 5–7 cắt trưa — chỉ luật + demo ngắn; game thử để Thứ Năm 10/9.",
+			"F1: Thứ Ba 08/9 tiết 6–8 (chiều liền) — chỉ luật + demo ngắn; game thử để Thứ Năm 10/9.",
 			"F2: Thứ Tư 09/9 luật + chia đội; Thứ Sáu 11/9 demo 1 vòng (kết quả không tính).",
 			"Thu khảo sát đầu kỳ (T0) nếu làm nghiên cứu — tách khỏi điểm.",
 		],
@@ -800,7 +800,7 @@ export const OPTIONS = [
 		title: "Mô hình đề xuất — 12 tuần",
 		badge: "Nên dùng",
 		points: [
-			"Buổi 1 mỗi tuần: lý thuyết Mariotti. F1: Thứ Ba tiết 5–7 cắt trưa — không nhét 1 chu kỳ game.",
+			"Buổi 1 mỗi tuần: lý thuyết Mariotti. F1: Thứ Ba tiết 6–8 chiều liền, 104/KT.",
 			"Buổi 2: thực hành. Tuần 3–8 = đúng 6 chu kỳ, mỗi chu kỳ 150 phút có debrief.",
 			"Tuần 9–11 thu hoạch thành plan. Tuần 12 pitch.",
 			"72 tiết trên lớp (2×3 tiết × 12 tuần). 60 giờ TH đề cương gồm đồ án ngoài lớp.",
@@ -888,7 +888,7 @@ export const CHECKS = [
 			},
 			{
 				id: "rooms",
-				label: "Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT. F1 Thứ Ba cắt trưa — báo SV ở lại sau tiết 5.",
+				label: "Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT. F1 Thứ Ba học chiều liền tiết 6–8 (104/KT).",
 			},
 			{
 				id: "capital",
@@ -963,6 +963,52 @@ export const CHECKS = [
 			{
 				id: "grade",
 				label: "Ghép điểm cá nhân: discussion riêng, game nhóm ± peer.",
+			},
+		],
+	},
+	{
+		group: "Nghiên cứu — trước khi bật (nếu thu dữ liệu nghiên cứu)",
+		items: [
+			{
+				id: "res-protocol",
+				label: "Đề cương và câu hỏi nghiên cứu đã phê duyệt.",
+			},
+			{
+				id: "res-ethics",
+				label: "Có phê duyệt đạo đức / đơn vị có thẩm quyền.",
+			},
+			{
+				id: "res-consent-split",
+				label: "Consent tách khỏi chấm điểm — từ chối không ảnh hưởng điểm.",
+			},
+			{
+				id: "res-code",
+				label: "Mã nghiên cứu (class_id/team_id/student_hash) dùng xuyên T0–T3 và event log.",
+			},
+			{
+				id: "res-dictionary",
+				label: "Có data dictionary và event schema cho các biến sẽ phân tích.",
+			},
+			{
+				id: "res-missing-plan",
+				label: "Có kế hoạch xử lý missing data, loại mẫu và phân tích trước khi thu.",
+			},
+			{
+				id: "res-file-split",
+				label: "Tệp danh tính, điểm học phần và dữ liệu nghiên cứu được tách riêng.",
+			},
+		],
+	},
+	{
+		group: "Sau pilot — nghiệm thu",
+		items: [
+			{
+				id: "post-interview",
+				label: "Đã phỏng vấn mẫu: đội kết quả cao, trung bình, thấp.",
+			},
+			{
+				id: "post-changelog",
+				label: "Có danh sách thay đổi rút ra trước khi chạy nghiên cứu chính (nếu mở rộng pilot).",
 			},
 		],
 	},
@@ -1127,6 +1173,72 @@ export const PILOT_THRESHOLDS = [
 		threshold: "100% buổi",
 	},
 ];
+/** Rubric đội/cá nhân 4 mức — từ bộ hồ sơ triển khai BizOn Bật Nghiệp 2026 (bizon-kit/05-rubric.csv). */
+export const RUBRIC_TEAM = [
+	{
+		criterion: "Kết quả game",
+		weight: 20,
+		l4: "Cân bằng thị phần, lợi nhuận, tiền mặt, thương hiệu; cải thiện có giải thích",
+		l3: "Kết quả tốt ở đa số chỉ số",
+		l2: "Có kết quả dương nhưng thiếu cân bằng",
+		l1: "Chỉ tối ưu một chỉ số hoặc mất khả năng vận hành",
+		evidence: "results; dashboard",
+	},
+	{
+		criterion: "Lập luận quyết định",
+		weight: 20,
+		l4: "Dữ liệu rõ; giả định kiểm tra được; so sánh phương án",
+		l3: "Có dữ liệu và giả định hợp lý",
+		l2: "Có lý do nhưng bằng chứng hạn chế",
+		l1: "Cảm tính; không có giả định",
+		evidence: "decision sheets; SEC notes",
+	},
+	{
+		criterion: "Tài chính–vận hành",
+		weight: 15,
+		l4: "Nhất quán cầu, công suất, chi phí, tiền mặt",
+		l3: "Phân tích đúng phần lớn quan hệ",
+		l2: "Có một số mâu thuẫn",
+		l1: "Thiếu hoặc sai logic cơ bản",
+		evidence: "forecast; results; report",
+	},
+	{
+		criterion: "Thích nghi",
+		weight: 15,
+		l4: "Điều chỉnh đúng mức theo tín hiệu và giải thích được",
+		l3: "Có điều chỉnh hợp lý",
+		l2: "Điều chỉnh nhưng lý do yếu",
+		l1: "Ngẫu nhiên hoặc không học từ kết quả",
+		evidence: "round-to-round decisions",
+	},
+	{
+		criterion: "Nhật ký–phản tư",
+		weight: 15,
+		l4: "Chỉ rõ quyết định–hệ quả–bài học–chuyển giao",
+		l3: "Phân tích khá sâu",
+		l2: "Chủ yếu mô tả",
+		l1: "Thiếu hoặc kể lại sự kiện",
+		evidence: "SEC notes; reflection",
+	},
+	{
+		criterion: "Hợp tác cá nhân",
+		weight: 10,
+		l4: "Đóng góp ổn định; tranh luận và phối hợp xây dựng",
+		l3: "Hoàn thành tốt vai trò",
+		l2: "Đóng góp không đều",
+		l1: "Free-riding hoặc chi phối tiêu cực",
+		evidence: "peer; role logs; observation",
+	},
+	{
+		criterion: "Pitch",
+		weight: 5,
+		l4: "Cô đọng; dùng dữ liệu; trả lời phản biện tốt",
+		l3: "Đủ logic và minh chứng",
+		l2: "Đủ nội dung nhưng ít phân tích",
+		l1: "Thiếu logic hoặc không dùng dữ liệu",
+		evidence: "pitch; Q&A",
+	},
+];
 export const DIFFS = [
 	{
 		from: "Kế hoạch nghiên cứu 4 buổi",
@@ -1139,9 +1251,9 @@ export const DIFFS = [
 		why: "TKB cán bộ đánh dấu tuần 1–12. 45 tiết LT + thực hành trên lớp = 72 tiết; 60 giờ TH của đề cương gồm đồ án ngoài lớp.",
 	},
 	{
-		from: "F1 Thứ Ba tiết 6–8 chiều liền",
-		to: "F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (104/KT)",
-		why: "Đúng TKB: tiết 5 sáng + 6–7 chiều. Game 150 phút để Thứ Năm tiết 1–3 (103/KT).",
+		from: "F1 Thứ Ba tiết 5–7 cắt nghỉ trưa (đọc TKB lần đầu bị lệch)",
+		to: "F1 Thứ Ba tiết 6–8 chiều liền, không cắt trưa (104/KT)",
+		why: "Thầy Phan Anh Tú xác nhận trực tiếp theo TKB cán bộ 2026–2027 HK1: buổi chiều là tiết 6, 7, 8 liền — không có tiết 5 buổi sáng trong buổi này.",
 	},
 	{
 		from: "Rubric game 20/20/15/15/15/10/5",
