@@ -64,7 +64,7 @@ export function buildCycleReport(opts: {
 
   lines.push(
     "",
-    "Ghi chú: điểm chu kỳ là điểm nhóm /20 (tham chiếu ACT). Discussion là điểm cá nhân, góp vào 10% chuyên cần. GV chốt tay thành 10 / 40 / 50 của đề cương — không cộng máy.",
+    "Ghi chú: điểm chu kỳ là điểm nhóm /20 (tham chiếu ACT). Discussion là điểm cá nhân, góp vào 10% chuyên cần. GV chốt tay thành 10 / 20 / 20 / 50 của đề cương — không cộng máy.",
   );
   return lines.join("\n");
 }
@@ -82,7 +82,7 @@ export function buildFullReport(opts: {
     `${klass.code} · nhóm ${klass.nhom} · Class ID ${klass.classId} · ${klass.students} SV · ${klass.teams} đội`,
     "",
     "Mapping: Excellent = 20.0 · Very good = 19.7 · Good = 19.5 · Quite good = 19.0.",
-    "Process (gợi ý): Discussion (10% học phần, cá nhân) + 40% quá trình (game / phiếu / nhật ký / plan / pitch).",
+    "Process: Discussion 10% (cá nhân) + Game 20% (điểm App quy đổi) + Dự án khởi nghiệp 20% (BMC / pitch).",
     "Dự kiến — chưa gồm điểm thi cuối kỳ 50%.",
     "",
     "Score summary — 6 chu kỳ (mỗi cột /20)",

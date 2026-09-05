@@ -321,7 +321,7 @@ export const WEEKS: WeekPlan[] = [
 	{
 		week: 1,
 		chapter: "Giới thiệu học phần + luật BizOn",
-		theory: "Mục tiêu học phần, CLO, rubric 10/40/50, cấu trúc 6 chu kỳ, 5 vai trò, tiêu chí thắng.",
+		theory: "Mục tiêu học phần, CLO, rubric 10/20/20/50, cấu trúc 6 chu kỳ, 5 vai trò, tiêu chí thắng.",
 		practice: "Buổi liền 3 tiết: chia đội, chọn vai, Class ID, chơi thử 1 vòng (không tính). F1 Thứ Ba 08/9 chỉ luật — demo dời Thứ Năm.",
 		cycle: "Demo",
 		cycleKind: "prep",
@@ -332,7 +332,7 @@ export const WEEKS: WeekPlan[] = [
 			"CO12",
 		],
 		gv: [
-			"Công bố kế hoạch 11 tuần (TKB 07/9–22/11) và rubric 10/40/50 trước khi chơi.",
+			"Công bố kế hoạch 11 tuần (TKB 07/9–22/11) và rubric 10/20/20/50 trước khi chơi.",
 			"Cấp Class ID, tạo 7–8 đội, phát vốn khởi điểm giống nhau (game mở với tiền mặt 0₫).",
 			"F1: Thứ Ba 08/9 tiết 6–8 (chiều liền) — chỉ luật + demo ngắn; game thử để Thứ Năm 10/9.",
 			"F2: Thứ Tư 09/9 luật + chia đội; Thứ Sáu 11/9 demo 1 vòng (kết quả không tính).",
@@ -726,54 +726,66 @@ export const RUBRIC_COURSE = [
 		id: "disc",
 		name: "Thảo luận / chuyên cần",
 		weight: 10,
-		note: "Đúng đề cương. Điểm danh + phát biểu debrief + đóng góp vai trò.",
+		note: "Đúng đề cương. Điểm danh + phát biểu debrief + đóng góp vai trò. Thầy Phan Anh Tú chốt: mỗi lần phát biểu được 1 điểm (~1%).",
 		clos: "CO11, CO12",
 	},
 	{
+		id: "game",
+		name: "Điểm chơi mô phỏng BizOn Bật Nghiệp",
+		weight: 20,
+		note: "Thầy Phan Anh Tú chốt: quy đổi điểm trên App (thang 100%) thành 20% điểm cuối kỳ. Xem \"Chỉ số kết quả game\" bên dưới cho cách tính 100% đó.",
+		clos: "CO1–CO9, CO12",
+	},
+	{
 		id: "proc",
-		name: "Quá trình (đồ án / bài tập nhóm)",
-		weight: 40,
-		note: "Toàn bộ BizOn + business plan + pitch nằm trong 40% này.",
+		name: "Dự án khởi nghiệp (BMC + pitch)",
+		weight: 20,
+		note: "Viết dự án khởi nghiệp theo project-based outcome + báo cáo thuyết trình tại lớp tuần 11 (chung 1 dự án với game). Thầy Phan Anh Tú giao Hương tự quyết chi tiết chấm điểm phần này.",
 		clos: "CO1–CO12",
 	},
 	{
 		id: "exam",
 		name: "Thi cuối kỳ",
 		weight: 50,
-		note: "Giữ nguyên. Game không thay thế thi. Câu thi có thể lấy tình huống từ 6 vòng.",
+		note: "Giữ nguyên theo quy định CTU. Hình thức: trắc nghiệm trên máy, kết hợp câu hỏi mở. Game không thay thế thi — câu thi có thể lấy tình huống từ 6 vòng.",
 		clos: "CO1–CO9, CO11, CO12",
 	},
 ];
 export const RUBRIC_PROCESS = [
 	{
+		group: "game" as const,
 		name: "Hiệu quả 6 chu kỳ",
 		pct: 8,
-		of: 40,
+		of: 20,
 		detail: "Chỉ số tổng hợp công bố trước: lãi lũy kế, tiền mặt dương, thị phần/cờ, thương hiệu, không phá sản. Không chỉ xếp hạng.",
 	},
 	{
+		group: "game" as const,
 		name: "Phiếu quyết định & lập luận",
 		pct: 8,
-		of: 40,
+		of: 20,
 		detail: "Giả định, dự báo, bất đồng, lý do commit — trước khi biết kết quả.",
 	},
 	{
+		group: "game" as const,
 		name: "Nhật ký SEC & phản tư",
 		pct: 8,
-		of: 40,
+		of: 20,
 		detail: "Sai lệch dự báo–thực tế, nguyên nhân, bài học, đánh giá Lumina.",
 	},
 	{
+		group: "project" as const,
 		name: "Business plan / BMC từ dữ liệu game",
 		pct: 10,
-		of: 40,
+		of: 20,
 		detail: "Số liệu phải truy xuất được từ 6 vòng. Tuần 9–10.",
 	},
 	{
+		group: "project" as const,
 		name: "Pitch cuối kỳ + hợp tác",
 		pct: 6,
-		of: 40,
-		detail: "7 phút, đồng đẳng, đóng góp cá nhân. Tuần 11.",
+		of: 20,
+		detail: "7 phút, đồng đẳng, đóng góp cá nhân. Tuần 11 — báo cáo + thuyết trình dự án khởi nghiệp tại lớp.",
 	},
 ];
 export const OPTIONS = [
@@ -879,7 +891,7 @@ export const CHECKS = [
 			},
 			{
 				id: "rubric",
-				label: "In / chiếu rubric 10 / 40 / 50 và cách cộng điểm game trong 40%.",
+				label: "In / chiếu rubric 10 / 20 / 20 / 50 và cách quy đổi điểm App thành 20%.",
 			},
 			{
 				id: "rolesheet",
@@ -1252,6 +1264,11 @@ export const DIFFS = [
 		from: "Rubric game 20/20/15/15/15/10/5",
 		to: "Khớp đề cương 10 / 40 / 50",
 		why: "Không invent thang điểm mới cho học phần. Game nằm trong 40% quá trình; thi 50% giữ nguyên.",
+	},
+	{
+		from: "10 / 40 / 50 (game gộp chung 40% quá trình với business plan/pitch)",
+		to: "10 / 20 / 20 / 50 (game và dự án khởi nghiệp tách riêng, mỗi phần 20%)",
+		why: "Thầy Phan Anh Tú chốt trực tiếp: điểm App (100%) quy đổi thẳng thành 20%; 20% còn lại là dự án khởi nghiệp (BMC + pitch tuần 11), giao Hương tự quyết chi tiết chấm điểm.",
 	},
 	{
 		from: "Pilot 1–2 lớp generic 30–60 SV",

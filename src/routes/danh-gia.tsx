@@ -20,15 +20,16 @@ function GradePage() {
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
           Đề cương §10 · thang 10, một chữ số thập phân
         </p>
-        <h1 className="text-3xl font-semibold text-ink">Đánh giá khớp 10 / 40 / 50</h1>
+        <h1 className="text-3xl font-semibold text-ink">Đánh giá khớp 10 / 20 / 20 / 50</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          Không invent rubric mới cho học phần. Game chiếm một phần của 40% quá trình — cùng chỗ với
-          báo cáo nhóm / đồ án hiện nay. Thi cuối kỳ 50% giữ nguyên; câu thi có thể lấy tình huống từ
-          6 vòng.
+          Thầy Phan Anh Tú chốt trực tiếp (Zalo): 10% thảo luận/chuyên cần, 20% điểm chơi mô phỏng
+          BizOn Bật Nghiệp (quy đổi thẳng từ điểm App), 20% dự án khởi nghiệp (BMC + pitch tuần 11 —
+          Hương tự quyết chi tiết chấm điểm), 50% thi cuối kỳ giữ nguyên theo quy định CTU (trắc
+          nghiệm trên máy + câu hỏi mở).
         </p>
       </header>
 
-      <section className="grid gap-3 md:grid-cols-3">
+      <section className="grid gap-3 md:grid-cols-2">
         {RUBRIC_COURSE.map((r) => (
           <article key={r.id} className="rounded-xl border border-border bg-card p-5 shadow-soft">
             <p className="font-display text-4xl font-semibold tabular-nums text-primary">{r.weight}%</p>
@@ -39,40 +40,56 @@ function GradePage() {
         ))}
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-ink">Phân rã 40% quá trình</h2>
-        <p className="text-sm text-muted-foreground">
-          Gợi ý tương tự cách chấm ACT của học phần định lượng (điểm nhóm + discussion cá nhân). Có thể
-          gom thành 20% game + 20% plan/pitch nếu muốn đơn giản hơn.
-        </p>
-        <div className="overflow-hidden rounded-xl border border-border bg-card">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
-              <tr>
-                <th className="px-4 py-3 font-medium">Thành phần</th>
-                <th className="px-4 py-3 font-medium">% học phần</th>
-                <th className="hidden px-4 py-3 font-medium md:table-cell">Nội dung</th>
-              </tr>
-            </thead>
-            <tbody>
-              {RUBRIC_PROCESS.map((r) => (
-                <tr key={r.name} className="border-t border-border align-top">
-                  <td className="px-4 py-3 font-medium">{r.name}</td>
-                  <td className="px-4 py-3 tabular-nums">{r.pct}</td>
-                  <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{r.detail}</td>
-                </tr>
-              ))}
-              <tr className="border-t border-border bg-muted/40">
-                <td className="px-4 py-3 font-medium">Tổng quá trình</td>
-                <td className="px-4 py-3 tabular-nums font-medium">40</td>
-                <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">
-                  Discussion 10% nằm ngoài bảng này, đúng đề cương.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      {(
+        [
+          {
+            key: "game" as const,
+            title: "Chi tiết 20% điểm game",
+            note: "Thầy Phan Anh Tú chốt trực tiếp: điểm trên App (100%) quy đổi thành 20% điểm cuối kỳ. Trọng số nội bộ dưới đây là bản nháp cũ (tổng 24, chưa khớp 20) — Hương chốt lại tỷ trọng cuối trước khi công bố.",
+          },
+          {
+            key: "project" as const,
+            title: "Chi tiết 20% dự án khởi nghiệp",
+            note: "Thầy Phan Anh Tú giao Hương tự quyết chi tiết chấm điểm phần này (BMC + pitch tuần 11, project-based outcome). Trọng số nội bộ dưới đây là bản nháp cũ (tổng 16, chưa khớp 20) — chờ Hương chốt.",
+          },
+        ] as const
+      ).map((g) => {
+        const items = RUBRIC_PROCESS.filter((r) => r.group === g.key);
+        const sum = items.reduce((n, r) => n + r.pct, 0);
+        return (
+          <section key={g.key} className="space-y-3">
+            <h2 className="text-xl font-semibold text-ink">{g.title}</h2>
+            <p className="text-sm text-muted-foreground">{g.note}</p>
+            <div className="overflow-hidden rounded-xl border border-border bg-card">
+              <table className="w-full text-left text-sm">
+                <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <tr>
+                    <th className="px-4 py-3 font-medium">Thành phần</th>
+                    <th className="px-4 py-3 font-medium">% nháp</th>
+                    <th className="hidden px-4 py-3 font-medium md:table-cell">Nội dung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((r) => (
+                    <tr key={r.name} className="border-t border-border align-top">
+                      <td className="px-4 py-3 font-medium">{r.name}</td>
+                      <td className="px-4 py-3 tabular-nums">{r.pct}</td>
+                      <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{r.detail}</td>
+                    </tr>
+                  ))}
+                  <tr className="border-t border-border bg-muted/40">
+                    <td className="px-4 py-3 font-medium">Tổng nháp (mục tiêu {g.key === "game" ? 20 : 20}%)</td>
+                    <td className="px-4 py-3 tabular-nums font-medium">{sum}</td>
+                    <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">
+                      Discussion 10% và {g.key === "game" ? "dự án khởi nghiệp 20%" : "game 20%"} nằm ngoài bảng này.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        );
+      })}
 
       <section className="rounded-xl border border-border bg-card p-5">
         <h2 className="font-medium text-ink">Chỉ số kết quả game — công bố trước tuần 3</h2>
@@ -88,7 +105,7 @@ function GradePage() {
         <div>
           <h2 className="text-xl font-semibold text-ink">Rubric đội &amp; cá nhân — 4 mức</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 10/40/50 của học phần). Từ
+            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 10/20/20/50 của học phần). Từ
             bộ hồ sơ triển khai BizOn Bật Nghiệp 2026.
           </p>
         </div>

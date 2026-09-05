@@ -50,7 +50,7 @@ function PhanHoiPage() {
         <h1 className="text-3xl font-semibold text-ink">Phản hồi nhóm theo chu kỳ</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Cùng khung Điểm mạnh / Cần cải / Khái niệm / Kết luận. Điểm nhóm /20; discussion cộng dồn
-          theo thành viên. GV chốt tay thành 10 / 40 / 50 — không cộng máy.
+          theo thành viên. GV chốt tay thành 10 / 20 / 20 / 50 — không cộng máy.
         </p>
       </header>
 
