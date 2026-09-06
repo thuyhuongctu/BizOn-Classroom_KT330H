@@ -52,8 +52,8 @@ function CheckPage() {
         <h1 className="text-3xl font-semibold text-ink">Checklist triển khai</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           {done}/{total} mục. Ưu tiên cuối tuần này: chạy thử 6 vòng, Class ID, vốn, rubric, máy từng đội,
-          xác nhận phòng F1 Thứ Ba (chiều tiết 6–8, 104/KT + phòng máy tính Trường Kinh tế tiết 8). Nghiên
-          cứu chỉ bật khi lớp chạy ổn.
+          xác nhận TKB chính thức v3 (F1 Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL tiết 8; F2 phòng máy
+          tính 1 cả 2 buổi). Nghiên cứu chỉ bật khi lớp chạy ổn.
         </p>
         <div className="h-1.5 overflow-hidden rounded-full bg-muted">
           <div
@@ -106,7 +106,7 @@ function CheckPage() {
       <section className="rounded-xl border border-border bg-card p-5">
         <h2 className="font-medium text-ink">Nghiên cứu — làm sau khi lớp chạy</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          T0 trước tuần 1 và T2 sau tuần 11 dùng cùng mã ẩn danh. T1 (sau vòng 3) tối đa 5 phút. Tách ba
+          T0 trước tuần 1 và T2 sau pitch (tuần 9–10) dùng cùng mã ẩn danh. T1 (sau vòng 3) tối đa 5 phút. Tách ba
           tệp: danh tính, master nghiên cứu, điểm. Từ chối nghiên cứu không ảnh hưởng điểm. Event log
           (đổi thanh, Nếu–Thì, Lumina, commit) là dữ liệu hành vi — không công bố log thô.
         </p>

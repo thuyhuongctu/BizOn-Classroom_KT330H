@@ -6,7 +6,7 @@ import { LuminaStage } from "@/components/music/LuminaStage";
 import { FoundersIntro } from "@/components/FoundersIntro";
 import { useT } from "@/lib/i18n";
 import { nextSession, teachingWeekOf, WEEK_CALENDAR } from "@/lib/calendar";
-import { CLASSES, CYCLES, DIFFS, LINKS, OPTIONS, OUTLINE_NOTE } from "@/lib/plan-data";
+import { CLASSES, CYCLES, DIFFS, EXAM_INFO, LINKS, OPTIONS, OUTLINE_NOTE } from "@/lib/plan-data";
 import { usePlanStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
@@ -115,10 +115,49 @@ function Home() {
         ) : null}
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           {t(
-            "F1 Thứ Ba tiết 6–8 chiều liền (13:30–16:20), không cắt nghỉ trưa: tiết 6–7 lý thuyết ở 104/KT, tiết 8 cả lớp qua phòng máy tính Trường Kinh tế chơi game. F2 Thứ Tư tương tự: tiết 1–2 lý thuyết ở 105/KT, tiết 3 phòng máy tính Trường Kinh tế. Buổi thực hành riêng vẫn giữ: F1 Thứ Năm 103/KT, F2 Thứ Sáu 202/KT.",
-            "F1's Tuesday session runs periods 6–8, back-to-back in the afternoon (13:30–16:20) — no lunch split: periods 6–7 are theory in 104/KT, period 8 the whole class moves to the School of Economics computer lab to play. F2's Wednesday works the same way: periods 1–2 theory in 105/KT, period 3 in the School of Economics computer lab. The separate dedicated practice session stays: F1 Thursday 103/KT, F2 Friday 202/KT.",
+            "TKB chính thức bản v3 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Pitching dự án khởi nghiệp dồn về tuần 9–10 (không dùng phòng máy).",
+            "Official schedule v3 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one). F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). Startup-project pitching is now concentrated in weeks 9–10 (no computer lab those weeks).",
           )}
         </p>
+      </section>
+
+      <section className="rounded-xl border border-amber-300/60 bg-amber-50 p-5 dark:bg-amber-950/20">
+        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-amber-700">
+          {t("Tuần 12 · dự trữ + thi cuối kỳ", "Week 12 · buffer + final exam")}
+        </p>
+        <div className="mt-3 grid gap-4 sm:grid-cols-2">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {CLASSES.F1.code}
+            </p>
+            <p className="mt-1 text-sm">
+              <span className="font-medium">{t("Dự trữ: ", "Buffer: ")}</span>
+              {EXAM_INFO.F1.buffer}
+            </p>
+            <p className="mt-1 text-sm">
+              <span className="font-medium">{t("Thi: ", "Exam: ")}</span>
+              {EXAM_INFO.F1.exam}
+            </p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              {CLASSES.F2.code}
+            </p>
+            <p className="mt-1 text-sm">
+              <span className="font-medium">{t("Dự trữ: ", "Buffer: ")}</span>
+              {EXAM_INFO.F2.buffer}
+            </p>
+            <p className="mt-1 text-sm">
+              <span className="font-medium">{t("Thi: ", "Exam: ")}</span>
+              {EXAM_INFO.F2.exam}
+            </p>
+            {EXAM_INFO.F2.examWarning ? (
+              <p className="mt-2 rounded-lg bg-amber-100 p-2 text-xs font-semibold text-amber-800 dark:bg-amber-900/40 dark:text-amber-200">
+                ⚠️ {t(EXAM_INFO.F2.examWarning, EXAM_INFO.F2.examWarningEn ?? EXAM_INFO.F2.examWarning)}
+              </p>
+            ) : null}
+          </div>
+        </div>
       </section>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -219,7 +258,7 @@ function Home() {
                         ? `C${cycle.n} ${cycle.city}`
                         : w.week <= 2
                           ? t("Chuẩn bị", "Prep")
-                          : w.week === 11
+                          : w.week === 9 || w.week === 10
                             ? "Pitch"
                             : t("Thu hoạch", "Wrap-up")}
                     </td>

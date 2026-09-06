@@ -23,7 +23,7 @@ function GradePage() {
         <h1 className="text-3xl font-semibold text-ink">Đánh giá khớp 10 / 20 / 20 / 50</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Thầy Phan Anh Tú chốt trực tiếp (Zalo): 10% thảo luận/chuyên cần, 20% điểm chơi mô phỏng
-          BizOn Bật Nghiệp (quy đổi thẳng từ điểm App), 20% dự án khởi nghiệp (BMC + pitch tuần 11 —
+          BizOn Bật Nghiệp (quy đổi thẳng từ điểm App), 20% dự án khởi nghiệp (BMC + pitch tuần 9–10 —
           Hương tự quyết chi tiết chấm điểm), 50% thi cuối kỳ giữ nguyên theo quy định CTU (trắc
           nghiệm trên máy + câu hỏi mở).
         </p>
@@ -50,7 +50,7 @@ function GradePage() {
           {
             key: "project" as const,
             title: "Chi tiết 20% dự án khởi nghiệp",
-            note: "Thầy Phan Anh Tú giao Hương tự quyết chi tiết chấm điểm phần này (BMC + pitch tuần 11, project-based outcome). Trọng số nội bộ dưới đây là bản nháp cũ (tổng 16, chưa khớp 20) — chờ Hương chốt.",
+            note: "Thầy Phan Anh Tú giao Hương tự quyết chi tiết chấm điểm phần này (BMC + pitch tuần 9–10, project-based outcome). Trọng số nội bộ dưới đây là bản nháp cũ (tổng 16, chưa khớp 20) — chờ Hương chốt.",
           },
         ] as const
       ).map((g) => {
@@ -237,7 +237,7 @@ function GradePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-ink">Phiếu đồng đẳng — tuần 11</h2>
+        <h2 className="text-xl font-semibold text-ink">Phiếu đồng đẳng — tuần 9–10</h2>
         <p className="text-sm text-muted-foreground">
           Mỗi thành viên chấm 4 người còn lại, thang 1–5. Không chấm mình. GV đối chiếu với discussion
           đã ghi suốt 6 vòng.

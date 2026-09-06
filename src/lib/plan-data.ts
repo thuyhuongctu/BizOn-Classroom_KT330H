@@ -47,16 +47,16 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 			first: {
 				day: "Thứ Ba",
 				periods: "6–8",
-				time: "13:30–16:20",
-				room: "104/KT (tiết 6–7) + phòng máy tính Trường Kinh tế (tiết 8)",
-				note: "Chiều liền 3 tiết, không cắt nghỉ trưa. Tiết 6–7 lý thuyết ở 104/KT; tiết 8 cả lớp chuyển sang phòng máy tính Trường Kinh tế chơi game.",
+				time: "13:30–16:10",
+				room: "104/KT (tiết 6–7) + Phòng máy 3.20 – Nhà học ATL (tiết 8)",
+				note: "TKB chính thức bản v3 (06/9/2026). Tiết 6–7 lý thuyết ở 104/KT (13:30–15:10); tiết 8 (15:20–16:10) cả lớp chơi game ở Phòng máy 3.20 — Nhà học ATL, khác cơ sở với phòng lý thuyết. Giải lao chuyển tiết chỉ 10 phút, kết thúc tiết 7 là di chuyển ngay.",
 			},
 			second: {
 				day: "Thứ Năm",
 				periods: "1–3",
-				time: "07:00–09:50",
-				room: "103/KT",
-				note: "Sáng liền 3 tiết. Buổi game mặc định.",
+				time: "07:00–09:40",
+				room: "103/KT (tiết 1–2) + Phòng máy tính 2 – Trường Kinh tế (tiết 3)",
+				note: "TKB chính thức bản v3 (06/9/2026). Tiết 1–2 lý thuyết ở 103/KT (07:00–08:40); tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 2 – Trường Kinh tế, cùng cơ sở.",
 			},
 		},
 	},
@@ -72,20 +72,40 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 			first: {
 				day: "Thứ Tư",
 				periods: "1–3",
-				time: "07:00–09:50",
-				room: "105/KT (tiết 1–2) + phòng máy tính Trường Kinh tế (tiết 3)",
-				note: "Sáng liền 3 tiết. Buổi lý thuyết mặc định — tiết 1–2 lý thuyết ở 105/KT; tiết 3 cả lớp chuyển sang phòng máy tính Trường Kinh tế chơi game.",
+				time: "07:00–09:40",
+				room: "105/KT (tiết 1–2) + Phòng máy tính 1 – Trường Kinh tế (tiết 3)",
+				note: "TKB chính thức bản v3 (06/9/2026). Tiết 1–2 lý thuyết ở 105/KT; tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 1 – Trường Kinh tế.",
 			},
 			second: {
 				day: "Thứ Sáu",
 				periods: "1–3",
-				time: "07:00–09:50",
-				room: "202/KT",
-				note: "Sáng liền 3 tiết. Buổi game mặc định.",
+				time: "07:00–09:40",
+				room: "202/KT (tiết 1–2) + Phòng máy tính 1 – Trường Kinh tế (tiết 3)",
+				note: "TKB chính thức bản v3 (06/9/2026). Tiết 1–2 lý thuyết ở 202/KT; tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 1 – Trường Kinh tế. Lưu ý: 41 SV nhưng phòng máy chỉ có 40 máy — lớp trưởng gửi danh sách SV có laptop cá nhân cho GV trước 09/9/2026.",
 			},
 		},
 	},
 };
+
+/** Tuần 12 (24–27/11) — buổi dự trữ + thi cuối kỳ. Theo TKB chính thức bản v3 (06/9/2026). */
+export const EXAM_INFO: Record<
+	"F1" | "F2",
+	{ buffer: string; exam: string; examWarning?: string; examWarningEn?: string }
+> = {
+	F1: {
+		buffer: "Thứ Ba 24/11/2026 · tiết 6–8 (13:30–16:10) · 104/KT — chỉ tổ chức nếu cần bù bài, GV sẽ báo trước.",
+		exam: "Thứ Năm 26/11/2026 · tiết 1–3 (07:00–09:40) · Phòng máy tính 2 – Trường Kinh tế — đúng phòng và khung giờ học Thứ Năm thường lệ. Thi trên máy, có mặt trước ít nhất 10 phút, mang thẻ sinh viên.",
+	},
+	F2: {
+		buffer: "Thứ Tư 25/11/2026 · tiết 1–3 (07:00–09:40) · 105/KT — chỉ tổ chức nếu cần bù bài, GV sẽ báo trước.",
+		exam: "Thứ Sáu 27/11/2026 · tiết 6–8 (13:30–16:10) · Phòng máy 3.20 – Nhà học ATL.",
+		examWarning:
+			"ĐỔI GIỜ VÀ ĐỊA ĐIỂM THI: thi vào buổi CHIỀU (không phải sáng như lịch học thường lệ) và tại Nhà học ATL (không phải Trường Kinh tế). Sáng Thứ Sáu 27/11 KHÔNG có buổi học.",
+		examWarningEn:
+			"EXAM TIME & LOCATION CHANGE: the exam is in the AFTERNOON (not morning like the usual schedule) and at the ATL building (not the School of Economics). There is NO class on Friday morning 27/11.",
+	},
+};
+
 export const ROLES5 = [
 	"CEO",
 	"CMO",
@@ -510,7 +530,7 @@ export const WEEKS: WeekPlan[] = [
 		gv: [
 			"Không spoil công thức trên lớp — để đội giải thích tại sao thua/thắng.",
 			"Sao lưu xếp hạng, số cờ, P&L ngay khi khóa.",
-			"Giao đề pitch tuần 11.",
+			"Giao đề pitch tuần 9 — TKB chính thức xếp pitching ở tuần 9–10, sớm hơn 2 tuần so với bản kế hoạch trước.",
 		],
 		sv: [
 			"Phân tích tỷ số từ 6 vòng; xuất CSV nhật ký; dàn ý báo cáo cuối.",
@@ -520,71 +540,76 @@ export const WEEKS: WeekPlan[] = [
 	},
 	{
 		week: 9,
-		chapter: "Ch. 9 Dòng tiền",
-		theory: "Cash ≠ profit, ngân sách tiền, vốn lưu động, thuế.",
-		practice: "Thu hoạch: mỗi đội vẽ dòng tiền 6 vòng, chỉ ra 1 vòng suýt chết thanh khoản và cách đã xử lý.",
-		cycle: "Thu hoạch",
-		cycleKind: "harvest",
-		hours: "3 LT · 5 TH",
-		clos: [
-			"CO9",
-			"CO11",
-		],
-		gv: [
-			"Chấm nhật ký SEC + phiếu 6 vòng. Phản hồi theo mẫu: điểm mạnh / cần cải / khái niệm.",
-		],
-		sv: [
-			"Báo cáo dòng tiền 6 vòng; working capital; bài học CFO.",
-		],
-		debrief: "Nếu không được vay, đội đã chết ở vòng nào? Đó có phải tín hiệu mô hình yếu không?",
-		textbook: "Mariotti Ch.9 §9.1–9.6",
-	},
-	{
-		week: 10,
-		chapter: "Ch. 10 Chiến lược tài trợ & Ch. 11 Vận hành, pháp lý",
-		theory: "Nợ vs vốn chủ, nguồn vốn, cổ phiếu/trái phiếu như lựa chọn đầu tư. Loại hình DN, hợp đồng, IP, rủi ro, disaster recovery.",
-		practice: "Viết chương tài chính của business plan từ dữ liệu game (không bịa số). COO + SEC: từ biến cố 6 vòng, viết 1 trang quản trị rủi ro và lựa chọn loại hình DN.",
-		cycle: "Thu hoạch",
-		cycleKind: "harvest",
-		hours: "6 LT · 5 TH",
+		chapter: "Ch. 12 Lãnh đạo & Pitch dự án khởi nghiệp — đợt 1",
+		theory: "Không có tiết lý thuyết riêng tuần này — TKB chính thức dành trọn 3 tiết/buổi cho pitching, không dùng phòng máy.",
+		practice: "Pitch 7 phút/đội + 5 phút phản biện: hành trình 6 vòng, 1 sai lầm đắt, 1 quyết định đúng, kế hoạch tiếp. Nửa lớp trình bày đợt này (GV chia lịch cụ thể).",
+		cycle: "Pitch 1",
+		cycleKind: "close",
+		hours: "0 LT · 6 TH (pitch)",
 		clos: [
 			"CO4",
-			"CO9",
-			"CO10",
+			"CO11",
 			"CO12",
 		],
 		gv: [
+			"Rubric pitch công khai trước. Đồng đẳng 1 phiếu/đội. Không chỉ đọc bảng xếp hạng.",
+			"2 buổi = 2 phòng lý thuyết quen thuộc (không phòng máy) — theo đúng TKB v3.",
+		],
+		sv: [
+			"Slide 6 trang; nộp CSV + nhật ký; phiếu đồng đẳng.",
+		],
+		debrief: "What / Why / So what / Now what cho hành trình 6 vòng — không chỉ cho vòng cuối.",
+		textbook: "Mariotti Ch.12 §12.1–12.7",
+	},
+	{
+		week: 10,
+		chapter: "Pitch dự án khởi nghiệp — đợt 2",
+		theory: "Không có tiết lý thuyết riêng tuần này — TKB chính thức dành trọn 3 tiết/buổi cho pitching, không dùng phòng máy.",
+		practice: "Nửa lớp còn lại trình bày pitch 7 phút + 5 phút phản biện. Khảo sát T2 sau buổi pitch cuối.",
+		cycle: "Pitch 2",
+		cycleKind: "close",
+		hours: "0 LT · 6 TH (pitch)",
+		clos: [
+			"CO4",
+			"CO11",
+			"CO12",
+		],
+		gv: [
+			"Hoàn tất chấm pitch + đồng đẳng cho cả lớp. Tổng hợp điểm dự án khởi nghiệp (20%).",
+		],
+		sv: [
+			"Hoàn tất slide, nộp CSV + nhật ký, phiếu đồng đẳng, khảo sát T2.",
+		],
+		debrief: "So sánh 2 đợt pitch: đội nào rút ra bài học từ đội trình bày trước?",
+		textbook: "Mariotti Ch.12 §12.1–12.7",
+	},
+	{
+		week: 11,
+		chapter: "Ch. 9 Dòng tiền + Ch. 10–11 Tài trợ, vận hành & pháp lý",
+		theory: "Cash ≠ profit, ngân sách tiền, vốn lưu động, thuế. Nợ vs vốn chủ, nguồn vốn. Loại hình DN, hợp đồng, IP, rủi ro, disaster recovery.",
+		practice: "Buổi thực hành cuối: xuất dữ liệu 6 vòng, hoàn tất phiếu/nhật ký còn thiếu — không mở vòng mới (game đã đóng ở vòng 6, tuần 8; business plan đã nộp/pitch xong ở tuần 9–10). Soi lại chương tài chính + rủi ro/pháp lý của báo cáo bằng góc nhìn Ch.9–11, bổ sung nếu cần từ phản hồi sau pitch.",
+		cycle: "Thu hoạch",
+		cycleKind: "harvest",
+		hours: "4 LT · 2 TH",
+		clos: [
+			"CO4",
+			"CO11",
+			"CO10",
+			"CO11",
+			"CO12",
+		],
+		gv: [
+			"Chấm nhật ký SEC + phiếu 6 vòng. Phản hồi theo mẫu: điểm mạnh / cần cải / khái niệm.",
 			"Cấm số liệu không truy xuất từ 6 vòng. Đội phải chú thích nguồn (vòng nào, biến nào).",
 			"Nối biến cố game với pháp lý thật (hợp đồng, IP, tài sản hữu hình).",
 		],
 		sv: [
+			"Báo cáo dòng tiền 6 vòng; working capital; bài học CFO.",
 			"Nợ/vốn chủ đã dùng; phương án tài trợ nếu scale ra Hà Nội.",
 			"Loại hình DN; 3 rủi ro lớn nhất đã gặp; kế hoạch phục hồi.",
 		],
-		debrief: "Vay 8,5%/vòng đắt hay rẻ so với cơ hội mất thị phần? SEC chỉ ghi chép hay đã làm cổng tuân thủ?",
-		textbook: "Mariotti Ch.10–11 §10.1–10.5, §11.1–11.6",
-	},
-	{
-		week: 11,
-		chapter: "Ch. 12 Lãnh đạo & pitch",
-		theory: "Vận hành, chuỗi, tồn kho, địa điểm, chất lượng, công nghệ — tóm tắt + lãnh đạo.",
-		practice: "Pitch 7 phút / đội: hành trình 6 vòng, 1 sai lầm đắt, 1 quyết định đúng, kế hoạch tiếp. Khảo sát T2.",
-		cycle: "Pitch",
-		cycleKind: "close",
-		hours: "3 LT · 5 TH",
-		clos: [
-			"CO4",
-			"CO11",
-			"CO12",
-		],
-		gv: [
-			"Rubric pitch công khai. Đồng đẳng 1 phiếu / đội. Không chỉ đọc bảng xếp hạng.",
-		],
-		sv: [
-			"Slide 6 trang; nộp CSV + nhật ký; phiếu đồng đẳng; khảo sát cuối.",
-		],
-		debrief: "What / Why / So what / Now what cho cả học phần — không chỉ cho vòng cuối.",
-		textbook: "Mariotti Ch.12 §12.1–12.7",
+		debrief: "Nếu không được vay, đội đã chết ở vòng nào? Vay 8,5%/vòng đắt hay rẻ so với cơ hội mất thị phần?",
+		textbook: "Mariotti Ch.9 §9.1–9.6, Ch.10–11 §10.1–10.5, §11.1–11.6",
 	},
 ];
 export const CYCLE_STEPS = [
@@ -740,7 +765,7 @@ export const RUBRIC_COURSE = [
 		id: "proc",
 		name: "Dự án khởi nghiệp (BMC + pitch)",
 		weight: 20,
-		note: "Viết dự án khởi nghiệp theo project-based outcome + báo cáo thuyết trình tại lớp tuần 11 (chung 1 dự án với game). Thầy Phan Anh Tú giao Hương tự quyết chi tiết chấm điểm phần này.",
+		note: "Viết dự án khởi nghiệp theo project-based outcome + báo cáo thuyết trình tại lớp tuần 9–10 (chung 1 dự án với game). Thầy Phan Anh Tú giao Hương tự quyết chi tiết chấm điểm phần này.",
 		clos: "CO1–CO12",
 	},
 	{
@@ -778,7 +803,7 @@ export const RUBRIC_PROCESS = [
 		name: "Business plan / BMC từ dữ liệu game",
 		pct: 10,
 		of: 20,
-		detail: "Số liệu phải truy xuất được từ 6 vòng. Tuần 9–10.",
+		detail: "Số liệu phải truy xuất được từ 6 vòng (xong ở tuần 8). Hoàn thiện trước khi pitch tuần 9 — pitch chính là báo cáo dự án này.",
 	},
 	{
 		group: "project" as const,
@@ -794,10 +819,10 @@ export const OPTIONS = [
 		title: "Mô hình đề xuất — 11 tuần",
 		badge: "Nên dùng",
 		points: [
-			"Buổi 1 mỗi tuần: lý thuyết Mariotti. F1: Thứ Ba tiết 6–8 chiều liền, 104/KT (tiết 6–7) + phòng máy tính Trường Kinh tế (tiết 8).",
-			"Buổi 2: thực hành. Tuần 3–8 = đúng 6 chu kỳ, mỗi chu kỳ 150 phút có debrief.",
-			"Tuần 9–10 thu hoạch thành plan (Ch.10+Ch.11 gộp tuần 10). Tuần 11 pitch.",
-			"66 tiết trên lớp (2×3 tiết × 11 tuần) — đúng quy định 11 tuần dạy. 60 giờ TH đề cương gồm đồ án ngoài lớp.",
+			"Mỗi buổi (2 buổi/tuần) đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL; Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế.",
+			"Tuần 2–8 = đúng 6 chu kỳ (tuần 3–8) + 1 tuần chuẩn bị (tuần 2), mỗi buổi 1 tiết chơi game.",
+			"Tuần 9–10 pitch dự án khởi nghiệp (4 buổi, trọn 3 tiết, không phòng máy). Tuần 11 thu hoạch Ch.9–11.",
+			"66 tiết trên lớp (2×3 tiết × 11 tuần) — đúng quy định 11 tuần dạy. Tuần 12: dự trữ + thi cuối kỳ. 60 giờ TH đề cương gồm đồ án ngoài lớp.",
 		],
 	},
 	{
@@ -883,7 +908,11 @@ export const CHECKS = [
 			{
 				id: "rooms",
 				label:
-					"Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT, phòng máy tính Trường Kinh tế (tiết cuối buổi lý thuyết: F1 tiết 8 Thứ Ba, F2 tiết 3 Thứ Tư).",
+					"Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT, Phòng máy 3.20 – Nhà học ATL (F1 Thứ Ba), Phòng máy tính 2 (F1 Thứ Năm), Phòng máy tính 1 (F2 cả 2 buổi) — theo TKB chính thức bản v3.",
+			},
+			{
+				id: "laptop-list",
+				label: "F2: gửi danh sách SV có laptop cá nhân cho GV trước 09/9/2026 (41 SV, phòng máy chỉ 40 máy).",
 			},
 			{
 				id: "capital",
@@ -941,7 +970,7 @@ export const CHECKS = [
 		],
 	},
 	{
-		group: "Sau tuần 8 và tuần 11",
+		group: "Sau tuần 8 và pitch (tuần 9–10)",
 		items: [
 			{
 				id: "csv",
@@ -953,7 +982,7 @@ export const CHECKS = [
 			},
 			{
 				id: "pitch",
-				label: "Pitch tuần 11 + đồng đẳng + khảo sát T2.",
+				label: "Pitch tuần 9–10 + đồng đẳng + khảo sát T2.",
 			},
 			{
 				id: "grade",
@@ -1268,7 +1297,7 @@ export const DIFFS = [
 	{
 		from: "10 / 40 / 50 (game gộp chung 40% quá trình với business plan/pitch)",
 		to: "10 / 20 / 20 / 50 (game và dự án khởi nghiệp tách riêng, mỗi phần 20%)",
-		why: "Thầy Phan Anh Tú chốt trực tiếp: điểm App (100%) quy đổi thẳng thành 20%; 20% còn lại là dự án khởi nghiệp (BMC + pitch tuần 11), giao Hương tự quyết chi tiết chấm điểm.",
+		why: "Thầy Phan Anh Tú chốt trực tiếp: điểm App (100%) quy đổi thẳng thành 20%; 20% còn lại là dự án khởi nghiệp (BMC + pitch tuần 9–10), giao Hương tự quyết chi tiết chấm điểm.",
 	},
 	{
 		from: "Pilot 1–2 lớp generic 30–60 SV",
@@ -1284,6 +1313,11 @@ export const DIFFS = [
 		from: "Tên đội theo quận Cần Thơ (Ninh Kiều, Thốt Nốt…)",
 		to: "Đội 1–n; sáu vòng = bản đồ chinh phục + biến cố engine",
 		why: "Quận không có trong game. Vòng chơi phải áp sát Cần Thơ → Hà Nội và MARKET_EVENTS; Mariotti / thanh khoản là lớp mở rộng.",
+	},
+	{
+		from: "Ước tính phòng máy chung chung, pitch tuần 11, buổi 2 là buổi game trọn 3 tiết riêng",
+		to: "TKB chính thức bản v3 (06/9/2026): F1 Phòng máy 3.20 – Nhà học ATL (Thứ Ba) / Phòng máy tính 2 (Thứ Năm); F2 Phòng máy tính 1 (cả 2 buổi). Cả 2 buổi/tuần đều 2 tiết lý thuyết + 1 tiết phòng máy — không còn buổi thực hành riêng. Pitch dồn về tuần 9–10 (4 buổi, không phòng máy); tuần 11 thu hoạch Ch.9–11.",
+		why: "Nhận trực tiếp file lịch học chính thức do thầy Phan Anh Tú lập (PDF, HK1 2026–2027, riêng cho từng lớp M01/M02) — thay mọi ước tính/giả định trước đó. Cũng ghi nhận: F2 thi cuối kỳ đổi giờ + địa điểm (chiều Thứ Sáu 27/11, Nhà học ATL, khác lịch học thường lệ); 41 SV F2 nhưng phòng máy chỉ 40 máy.",
 	},
 ];
 export const LINKS = {
@@ -1338,24 +1372,24 @@ export const BACKUP_CASES = [
 	},
 	{
 		week: 9,
-		unit: "Unit 9",
-		cases: "Holterholm Farms · Cash CakeLove",
-		clos: "CO9",
-	},
-	{
-		week: 10,
-		unit: "Unit 10–11",
-		cases: "Chilly Dilly's · Lee's Ice Cream + The Bun Company · Airbnb",
-		clos: "CO9, CO10, CO12",
-	},
-	{
-		week: 11,
 		unit: "Unit 12",
 		cases: "ONLC · AYZH · Agritechno Hybrid",
 		clos: "CO11, CO12",
 	},
+	{
+		week: 10,
+		unit: "Unit 12",
+		cases: "ONLC · AYZH · Agritechno Hybrid",
+		clos: "CO11, CO12",
+	},
+	{
+		week: 11,
+		unit: "Unit 9–11",
+		cases: "Holterholm Farms · Cash CakeLove + Chilly Dilly's · Lee's Ice Cream + The Bun Company · Airbnb",
+		clos: "CO9, CO10, CO12",
+	},
 ];
-export const OUTLINE_NOTE = "Đề cương 2019 có 13 tuần (45 LT + 60 TH). TKB HK1 2026–2027 đánh 11 tuần (theo quy định — thầy Phan Anh Tú xác nhận), 2 buổi × 3 tiết = 66 tiết trên lớp. Ch.6+Ch.7 gộp tuần 7; Ch.10+Ch.11 gộp tuần 10. 60 giờ TH gồm đồ án ngoài lớp (BMC, plan, pitch).";
+export const OUTLINE_NOTE = "Đề cương 2019 có 13 tuần (45 LT + 60 TH). TKB chính thức bản v3 (06/9/2026, thầy Phan Anh Tú lập) đánh 11 tuần dạy + 1 tuần thi (tuần 12), 2 buổi × 3 tiết = 66 tiết trên lớp. Pitching dự án khởi nghiệp xếp tuần 9–10 (4 buổi, không dùng phòng máy) — sớm hơn 2 tuần so với bản kế hoạch trước; Ch.9 (dòng tiền) + Ch.10–11 (tài trợ, vận hành, pháp lý) dồn về tuần 11 sau pitch. Ch.6+Ch.7 vẫn gộp tuần 7. 60 giờ TH gồm đồ án ngoài lớp (BMC, plan, pitch).";
 /** Sáu vòng = CONQUEST_STOPS (js/app.js) × MARKET_EVENTS (js/engine.js). `expand` = Mariotti / sư phạm — không đổi tên biến cố trong engine. */
 export const CYCLES = [
 	{
@@ -1455,7 +1489,7 @@ export const CYCLES = [
 		subtitle: "Việt Nam Hóa Rồng",
 		flag: "Cờ 6",
 		engine: "Cầu ×1,25 · thương hiệu ×1,5 · lương ×1,1 · co giãn ×0,85 · marketing ×1,2",
-		goal: "Vòng quyết định. Xuất CSV. Không spoil công thức. Giao đề pitch tuần 11.",
+		goal: "Vòng quyết định. Xuất CSV. Không spoil công thức. Giao đề pitch tuần 9.",
 		trap: "Đội tối ưu xếp hạng thay vì giải thích được vì sao thắng/thua.",
 		evidence: "Tỷ số 6 vòng, CSV nhật ký, dàn ý báo cáo, cờ Hà Nội.",
 		expand: "P&L và tỷ số (Mariotti Ch.8) từ đúng 6 vòng game.",
@@ -1511,7 +1545,7 @@ export const SURVEYS = [
 	},
 	{
 		id: "T2",
-		when: "Sau pitch tuần 11",
+		when: "Sau pitch tuần 9–10",
 		minutes: 8,
 		items: [
 			"Tôi mô tả được các bước tạo một doanh nghiệp nhỏ.",
@@ -1570,7 +1604,7 @@ export const REFLECTION_PROMPTS = [
 	"Bài học nào có thể chuyển sang doanh nghiệp thực?",
 ];
 
-/** Biểu mẫu sinh viên E — Pitch cuối kỳ. Dùng chung cho phần "dự án khởi nghiệp" 20% tuần 11. */
+/** Biểu mẫu sinh viên E — Pitch cuối kỳ. Dùng chung cho phần "dự án khởi nghiệp" 20% tuần 9–10. */
 export const PITCH_GUIDE = {
 	format: "7 phút trình bày, 5 phút phản biện.",
 	points: [

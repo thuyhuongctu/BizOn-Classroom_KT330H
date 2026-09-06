@@ -21,18 +21,12 @@ const KIND: Record<WeekPlan["cycleKind"], "outline" | "default" | "soft" | "warn
 
 function LichPage() {
   const classKey = usePlanStore((s) => s.classKey);
-  const gameSlot = usePlanStore((s) => s.gameSlot);
-  const setGameSlot = usePlanStore((s) => s.setGameSlot);
   const klass = CLASSES[classKey];
   const now = teachingWeekOf();
   const [open, setOpen] = useState(now === 0 ? 1 : Math.min(Math.max(now, 1), 11));
   const week = WEEKS.find((w) => w.week === open) ?? WEEKS[0]!;
-  const theory = gameSlot === "second" ? klass.meetings.first : klass.meetings.second;
-  const practice = gameSlot === "second" ? klass.meetings.second : klass.meetings.first;
   const cycle = CYCLES.find((c) => c.week === week.week);
   const dates = sessionDates(week.week, klass);
-  const theoryDate = gameSlot === "second" ? dates.first : dates.second;
-  const practiceDate = gameSlot === "second" ? dates.second : dates.first;
   const backup = BACKUP_CASES.find((b) => b.week === week.week);
 
   return (
@@ -49,39 +43,26 @@ function LichPage() {
         <p className="max-w-2xl text-xs leading-relaxed text-muted-foreground">{OUTLINE_NOTE}</p>
       </header>
 
-      <div className="flex flex-wrap items-center gap-2">
-        <span className="text-xs text-muted-foreground">Buổi game trong tuần</span>
-        {(["second", "first"] as const).map((s) => (
-          <button
-            key={s}
-            type="button"
-            onClick={() => setGameSlot(s)}
-            className={cn(
-              "rounded-full border px-3 py-1 text-xs font-medium",
-              gameSlot === s ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card",
-            )}
-          >
-            {s === "second" ? `Buổi 2 · ${klass.meetings.second.day}` : `Buổi 1 · ${klass.meetings.first.day}`}
-          </button>
-        ))}
-      </div>
-
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-xl border border-border bg-card p-4">
-          <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Lý thuyết</p>
-          <p className="mt-1 font-medium">
-            {theoryDate.label} · tiết {theory.periods} · {theory.room}
+          <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+            Buổi 1 · {klass.meetings.first.day}
           </p>
-          <p className="text-sm text-muted-foreground">{theory.time}</p>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{theory.note}</p>
+          <p className="mt-1 font-medium">
+            {dates.first.label} · tiết {klass.meetings.first.periods} · {klass.meetings.first.room}
+          </p>
+          <p className="text-sm text-muted-foreground">{klass.meetings.first.time}</p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{klass.meetings.first.note}</p>
         </div>
         <div className="rounded-xl border border-border bg-card p-4">
-          <p className="text-[11px] uppercase tracking-wider text-muted-foreground">Thực hành / BizOn</p>
-          <p className="mt-1 font-medium">
-            {practiceDate.label} · tiết {practice.periods} · {practice.room}
+          <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
+            Buổi 2 · {klass.meetings.second.day}
           </p>
-          <p className="text-sm text-muted-foreground">{practice.time} · 150 phút khi liền 3 tiết</p>
-          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{practice.note}</p>
+          <p className="mt-1 font-medium">
+            {dates.second.label} · tiết {klass.meetings.second.periods} · {klass.meetings.second.room}
+          </p>
+          <p className="text-sm text-muted-foreground">{klass.meetings.second.time}</p>
+          <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{klass.meetings.second.note}</p>
         </div>
       </div>
 

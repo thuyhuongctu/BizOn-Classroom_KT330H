@@ -195,7 +195,7 @@ function HoSoPage() {
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{PEER_ASSESSMENT_NOTE}</p>
         </article>
         <article className="rounded-xl border border-border bg-card p-5">
-          <h2 className="font-medium text-ink">Pitch cuối kỳ — tuần 11</h2>
+          <h2 className="font-medium text-ink">Pitch cuối kỳ — tuần 9–10</h2>
           <p className="mt-1 text-sm font-medium text-ink">{PITCH_GUIDE.format}</p>
           <ul className="mt-2 space-y-1 text-sm leading-relaxed text-muted-foreground">
             {PITCH_GUIDE.points.map((p) => (

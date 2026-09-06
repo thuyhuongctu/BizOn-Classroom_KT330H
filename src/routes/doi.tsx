@@ -92,7 +92,7 @@ function DoiPage() {
             ))}
           </div>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-            Mặc định buổi 2. F1 giữ Thứ Năm 103/KT (sáng liền 3 tiết) làm buổi game; Thứ Ba 104/KT là lý thuyết.
+            Mặc định buổi 2. TKB chính thức: cả 2 buổi/tuần đều có 1 tiết chơi game (tiết cuối, ở phòng máy) — không còn buổi lý thuyết/thực hành riêng biệt.
           </p>
         </div>
         <div className="rounded-xl border border-border bg-card p-4">
