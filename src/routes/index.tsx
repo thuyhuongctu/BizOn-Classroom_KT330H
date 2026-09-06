@@ -6,7 +6,7 @@ import { LuminaStage } from "@/components/music/LuminaStage";
 import { FoundersIntro } from "@/components/FoundersIntro";
 import { useT } from "@/lib/i18n";
 import { nextSession, teachingWeekOf, WEEK_CALENDAR } from "@/lib/calendar";
-import { CLASSES, CYCLES, DIFFS, EXAM_INFO, LINKS, OPTIONS, OUTLINE_NOTE } from "@/lib/plan-data";
+import { CLASSES, CYCLES, DIFFS, EXAM_INFO, LINKS, OPTIONS, OUTLINE_NOTE, TA_INFO } from "@/lib/plan-data";
 import { usePlanStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
@@ -115,8 +115,8 @@ function Home() {
         ) : null}
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           {t(
-            "TKB chính thức bản v3 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Pitching dự án khởi nghiệp dồn về tuần 9–10 (không dùng phòng máy).",
-            "Official schedule v3 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one). F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). Startup-project pitching is now concentrated in weeks 9–10 (no computer lab those weeks).",
+            "TKB chính thức bản v4 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Pitching dự án khởi nghiệp dồn về tuần 9–10 (không dùng phòng máy).",
+            "Official schedule v4 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one). F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). Startup-project pitching is now concentrated in weeks 9–10 (no computer lab those weeks).",
           )}
         </p>
       </section>
@@ -158,6 +158,13 @@ function Home() {
             ) : null}
           </div>
         </div>
+      </section>
+
+      <section className="rounded-xl border border-border bg-card p-5">
+        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+          {t("Trợ giảng cấu phần thực hành", "Teaching assistant — practical component")}
+        </p>
+        <p className="mt-2 text-sm leading-relaxed">{t(TA_INFO.vi, TA_INFO.en)}</p>
       </section>
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">

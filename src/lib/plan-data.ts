@@ -49,14 +49,14 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 				periods: "6–8",
 				time: "13:30–16:10",
 				room: "104/KT (tiết 6–7) + Phòng máy 3.20 – Nhà học ATL (tiết 8)",
-				note: "TKB chính thức bản v3 (06/9/2026). Tiết 6–7 lý thuyết ở 104/KT (13:30–15:10); tiết 8 (15:20–16:10) cả lớp chơi game ở Phòng máy 3.20 — Nhà học ATL, khác cơ sở với phòng lý thuyết. Giải lao chuyển tiết chỉ 10 phút, kết thúc tiết 7 là di chuyển ngay.",
+				note: "TKB chính thức bản v4 (06/9/2026). Tiết 6–7 lý thuyết ở 104/KT (13:30–15:10); tiết 8 (15:20–16:10) cả lớp chơi game ở Phòng máy 3.20 — Nhà học ATL, khác cơ sở với phòng lý thuyết. Giải lao chuyển tiết chỉ 10 phút, kết thúc tiết 7 là di chuyển ngay.",
 			},
 			second: {
 				day: "Thứ Năm",
 				periods: "1–3",
 				time: "07:00–09:40",
 				room: "103/KT (tiết 1–2) + Phòng máy tính 2 – Trường Kinh tế (tiết 3)",
-				note: "TKB chính thức bản v3 (06/9/2026). Tiết 1–2 lý thuyết ở 103/KT (07:00–08:40); tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 2 – Trường Kinh tế, cùng cơ sở.",
+				note: "TKB chính thức bản v4 (06/9/2026). Tiết 1–2 lý thuyết ở 103/KT (07:00–08:40); tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 2 – Trường Kinh tế, cùng cơ sở.",
 			},
 		},
 	},
@@ -74,20 +74,20 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 				periods: "1–3",
 				time: "07:00–09:40",
 				room: "105/KT (tiết 1–2) + Phòng máy tính 1 – Trường Kinh tế (tiết 3)",
-				note: "TKB chính thức bản v3 (06/9/2026). Tiết 1–2 lý thuyết ở 105/KT; tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 1 – Trường Kinh tế.",
+				note: "TKB chính thức bản v4 (06/9/2026). Tiết 1–2 lý thuyết ở 105/KT; tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 1 – Trường Kinh tế.",
 			},
 			second: {
 				day: "Thứ Sáu",
 				periods: "1–3",
 				time: "07:00–09:40",
 				room: "202/KT (tiết 1–2) + Phòng máy tính 1 – Trường Kinh tế (tiết 3)",
-				note: "TKB chính thức bản v3 (06/9/2026). Tiết 1–2 lý thuyết ở 202/KT; tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 1 – Trường Kinh tế. Lưu ý: 41 SV nhưng phòng máy chỉ có 40 máy — lớp trưởng gửi danh sách SV có laptop cá nhân cho GV trước 09/9/2026.",
+				note: "TKB chính thức bản v4 (06/9/2026). Tiết 1–2 lý thuyết ở 202/KT; tiết 3 (08:50–09:40) cả lớp chơi game ở Phòng máy tính 1 – Trường Kinh tế. Lưu ý: 41 SV nhưng phòng máy chỉ có 40 máy — lớp trưởng gửi danh sách SV có laptop cá nhân cho GV trước 09/9/2026.",
 			},
 		},
 	},
 };
 
-/** Tuần 12 (24–27/11) — buổi dự trữ + thi cuối kỳ. Theo TKB chính thức bản v3 (06/9/2026). */
+/** Tuần 12 (24–27/11) — buổi dự trữ + thi cuối kỳ. Theo TKB chính thức bản v4 (06/9/2026). */
 export const EXAM_INFO: Record<
 	"F1" | "F2",
 	{ buffer: string; exam: string; examWarning?: string; examWarningEn?: string }
@@ -104,6 +104,12 @@ export const EXAM_INFO: Record<
 		examWarningEn:
 			"EXAM TIME & LOCATION CHANGE: the exam is in the AFTERNOON (not morning like the usual schedule) and at the ATL building (not the School of Economics). There is NO class on Friday morning 27/11.",
 	},
+};
+
+/** Trợ giảng cấu phần thực hành — chính thức hoá từ TKB bản v4 (06/9/2026), không đổi lịch/phòng so với v3. */
+export const TA_INFO = {
+	vi: "Trợ giảng cấu phần thực hành: NCS Đỗ Thuỳ Hương. Có mặt tại tất cả các buổi diễn ra ở phòng máy tính — buổi chuẩn bị kỹ thuật tuần 1, thực hành tuần 2–8 và tuần 11, buổi thi kết thúc học phần. Sinh viên liên hệ trợ giảng cho các vấn đề về tài khoản, phần mềm và vận hành game mô phỏng.",
+	en: "Teaching assistant for the practical component: NCS Đỗ Thuỳ Hương. Present at every computer-lab session — the week-1 technical setup, hands-on sessions weeks 2–8 and 11, and the final exam. Students should contact the TA for account, software and simulation-game issues.",
 };
 
 export const ROLES5 = [
@@ -553,7 +559,7 @@ export const WEEKS: WeekPlan[] = [
 		],
 		gv: [
 			"Rubric pitch công khai trước. Đồng đẳng 1 phiếu/đội. Không chỉ đọc bảng xếp hạng.",
-			"2 buổi = 2 phòng lý thuyết quen thuộc (không phòng máy) — theo đúng TKB v3.",
+			"2 buổi = 2 phòng lý thuyết quen thuộc (không phòng máy) — theo đúng TKB v4.",
 		],
 		sv: [
 			"Slide 6 trang; nộp CSV + nhật ký; phiếu đồng đẳng.",
@@ -908,7 +914,7 @@ export const CHECKS = [
 			{
 				id: "rooms",
 				label:
-					"Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT, Phòng máy 3.20 – Nhà học ATL (F1 Thứ Ba), Phòng máy tính 2 (F1 Thứ Năm), Phòng máy tính 1 (F2 cả 2 buổi) — theo TKB chính thức bản v3.",
+					"Xác nhận wifi / máy chiếu 104/KT, 103/KT, 105/KT, 202/KT, Phòng máy 3.20 – Nhà học ATL (F1 Thứ Ba), Phòng máy tính 2 (F1 Thứ Năm), Phòng máy tính 1 (F2 cả 2 buổi) — theo TKB chính thức bản v4.",
 			},
 			{
 				id: "laptop-list",
@@ -1319,6 +1325,11 @@ export const DIFFS = [
 		to: "TKB chính thức bản v3 (06/9/2026): F1 Phòng máy 3.20 – Nhà học ATL (Thứ Ba) / Phòng máy tính 2 (Thứ Năm); F2 Phòng máy tính 1 (cả 2 buổi). Cả 2 buổi/tuần đều 2 tiết lý thuyết + 1 tiết phòng máy — không còn buổi thực hành riêng. Pitch dồn về tuần 9–10 (4 buổi, không phòng máy); tuần 11 thu hoạch Ch.9–11.",
 		why: "Nhận trực tiếp file lịch học chính thức do thầy Phan Anh Tú lập (PDF, HK1 2026–2027, riêng cho từng lớp M01/M02) — thay mọi ước tính/giả định trước đó. Cũng ghi nhận: F2 thi cuối kỳ đổi giờ + địa điểm (chiều Thứ Sáu 27/11, Nhà học ATL, khác lịch học thường lệ); 41 SV F2 nhưng phòng máy chỉ 40 máy.",
 	},
+	{
+		from: "TKB bản v3 (06/9/2026) — chưa có thông tin trợ giảng chính thức",
+		to: "TKB bản v4 (06/9/2026): giữ nguyên mọi ngày/giờ/phòng so với v3; bổ sung chính thức vai trò trợ giảng cấu phần thực hành (NCS Đỗ Thuỳ Hương), có mặt các buổi phòng máy tuần 1, 2–8, 11 và buổi thi.",
+		why: "Thầy Phan Anh Tú cập nhật file lịch học F1/F2 lên bản v4 (06/9/2026) — chỉ thêm dòng ghi nhận vai trò trợ giảng, không đổi lịch/phòng đã chốt ở v3.",
+	},
 ];
 export const LINKS = {
 	hub: "https://thuyhuongctu.github.io/BizOn/",
@@ -1389,7 +1400,7 @@ export const BACKUP_CASES = [
 		clos: "CO9, CO10, CO12",
 	},
 ];
-export const OUTLINE_NOTE = "Đề cương 2019 có 13 tuần (45 LT + 60 TH). TKB chính thức bản v3 (06/9/2026, thầy Phan Anh Tú lập) đánh 11 tuần dạy + 1 tuần thi (tuần 12), 2 buổi × 3 tiết = 66 tiết trên lớp. Pitching dự án khởi nghiệp xếp tuần 9–10 (4 buổi, không dùng phòng máy) — sớm hơn 2 tuần so với bản kế hoạch trước; Ch.9 (dòng tiền) + Ch.10–11 (tài trợ, vận hành, pháp lý) dồn về tuần 11 sau pitch. Ch.6+Ch.7 vẫn gộp tuần 7. 60 giờ TH gồm đồ án ngoài lớp (BMC, plan, pitch).";
+export const OUTLINE_NOTE = "Đề cương 2019 có 13 tuần (45 LT + 60 TH). TKB chính thức bản v4 (06/9/2026, thầy Phan Anh Tú lập) đánh 11 tuần dạy + 1 tuần thi (tuần 12), 2 buổi × 3 tiết = 66 tiết trên lớp. Pitching dự án khởi nghiệp xếp tuần 9–10 (4 buổi, không dùng phòng máy) — sớm hơn 2 tuần so với bản kế hoạch trước; Ch.9 (dòng tiền) + Ch.10–11 (tài trợ, vận hành, pháp lý) dồn về tuần 11 sau pitch. Ch.6+Ch.7 vẫn gộp tuần 7. 60 giờ TH gồm đồ án ngoài lớp (BMC, plan, pitch).";
 /** Sáu vòng = CONQUEST_STOPS (js/app.js) × MARKET_EVENTS (js/engine.js). `expand` = Mariotti / sư phạm — không đổi tên biến cố trong engine. */
 export const CYCLES = [
 	{
