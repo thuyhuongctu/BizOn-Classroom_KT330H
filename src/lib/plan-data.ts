@@ -1456,6 +1456,7 @@ export const LINKS = {
 	music: "https://thuyhuongctu.github.io/BizOn/am-nhac.html",
 	team: "https://thuyhuongctu.github.io/BizOn/doi-ngu.html",
 	brandPassport: "https://thuyhuongctu.github.io/BizOn/brand-passport.html",
+	benPhuSa: "https://thuyhuongctu.github.io/BizOn/ben-phu-sa.html",
 };
 /** Plan B nếu game/wifi sập. Tuần 9–11 đã khớp lại theo Chương 9–12 (đề cương chính thức) sau khi
  * bỏ Đại hội Cổ đông — case study Mariotti các tuần khác giữ nguyên từ bản trước, độ khớp chủ đề

@@ -429,6 +429,10 @@ function Home() {
         <a className="underline" href={LINKS.team} target="_blank" rel="noreferrer">
           {t("đội ngũ", "team")}
         </a>
+        {" · "}
+        <a className="underline" href={LINKS.benPhuSa} target="_blank" rel="noreferrer">
+          {t("Bến Phù Sa (khởi nghiệp hàng rong)", "Bến Phù Sa (street-vendor sim)")}
+        </a>
         {t(
           ". Đề cương KT330H (Mariotti 2016, 3 TC). TKB cán bộ NH 2026–2027 HK1.",
           ". KT330H syllabus (Mariotti 2016, 3 credits). Staff timetable, AY 2026–2027 Term 1.",
