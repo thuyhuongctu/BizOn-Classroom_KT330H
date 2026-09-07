@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { FancyItem, FancyTrack } from "@/components/FancyTrack";
 import { CLASSES, ENGINE, ROLES } from "@/lib/plan-data";
 import { LEGACY_DISTRICT_NAME, usePlanStore } from "@/lib/store";
 import { cn, formatVnd } from "@/lib/utils";
@@ -154,17 +155,20 @@ function DoiPage() {
 
       <section className="space-y-3">
         <h2 className="text-xl font-semibold text-ink">Thẻ vai trò — in và phát tuần 1</h2>
-        <div className="grid gap-3 md:grid-cols-2">
+        <p className="text-xs text-muted-foreground">Kéo ngang để xem từng vai — thẻ giữa hiện rõ, hai bên mờ dần.</p>
+        <FancyTrack itemWidthPx={280} className="py-2">
           {ROLES.map((r) => (
-            <article key={r.id} className="rounded-xl border border-border bg-card p-5">
-              <h3 className="font-medium text-ink">{r.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed">{r.job}</p>
-              <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">Minh chứng</p>
-              <p className="mt-1 text-sm text-muted-foreground">{r.evidence}</p>
-              <p className="mt-3 rounded-lg bg-accent/70 p-3 text-sm text-ink">{r.ask}</p>
-            </article>
+            <FancyItem key={r.id} widthPx={280}>
+              <article className="h-full rounded-xl border border-border bg-card p-5">
+                <h3 className="font-medium text-ink">{r.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed">{r.job}</p>
+                <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">Minh chứng</p>
+                <p className="mt-1 text-sm text-muted-foreground">{r.evidence}</p>
+                <p className="mt-3 rounded-lg bg-accent/70 p-3 text-sm text-ink">{r.ask}</p>
+              </article>
+            </FancyItem>
           ))}
-        </div>
+        </FancyTrack>
       </section>
     </div>
   );
