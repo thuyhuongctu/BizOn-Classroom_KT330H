@@ -16,6 +16,7 @@ import { Route as DieuHanhRouteImport } from './routes/dieu-hanh'
 import { Route as DoiRouteImport } from './routes/doi'
 import { Route as GiaiDieuRouteImport } from './routes/giai-dieu'
 import { Route as HoSoRouteImport } from './routes/ho-so'
+import { Route as Kt338RouteImport } from './routes/kt338'
 import { Route as LichRouteImport } from './routes/lich'
 import { Route as PhanHoiRouteImport } from './routes/phan-hoi'
 
@@ -54,6 +55,11 @@ const HoSoRoute = HoSoRouteImport.update({
   path: '/ho-so',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Kt338Route = Kt338RouteImport.update({
+  id: '/kt338',
+  path: '/kt338',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LichRoute = LichRouteImport.update({
   id: '/lich',
   path: '/lich',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/doi': typeof DoiRoute
   '/giai-dieu': typeof GiaiDieuRoute
   '/ho-so': typeof HoSoRoute
+  '/kt338': typeof Kt338Route
   '/lich': typeof LichRoute
   '/phan-hoi': typeof PhanHoiRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/doi': typeof DoiRoute
   '/giai-dieu': typeof GiaiDieuRoute
   '/ho-so': typeof HoSoRoute
+  '/kt338': typeof Kt338Route
   '/lich': typeof LichRoute
   '/phan-hoi': typeof PhanHoiRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/doi': typeof DoiRoute
   '/giai-dieu': typeof GiaiDieuRoute
   '/ho-so': typeof HoSoRoute
+  '/kt338': typeof Kt338Route
   '/lich': typeof LichRoute
   '/phan-hoi': typeof PhanHoiRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/doi'
     | '/giai-dieu'
     | '/ho-so'
+    | '/kt338'
     | '/lich'
     | '/phan-hoi'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/doi'
     | '/giai-dieu'
     | '/ho-so'
+    | '/kt338'
     | '/lich'
     | '/phan-hoi'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/doi'
     | '/giai-dieu'
     | '/ho-so'
+    | '/kt338'
     | '/lich'
     | '/phan-hoi'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   DoiRoute: typeof DoiRoute
   GiaiDieuRoute: typeof GiaiDieuRoute
   HoSoRoute: typeof HoSoRoute
+  Kt338Route: typeof Kt338Route
   LichRoute: typeof LichRoute
   PhanHoiRoute: typeof PhanHoiRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HoSoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kt338': {
+      id: '/kt338'
+      path: '/kt338'
+      fullPath: '/kt338'
+      preLoaderRoute: typeof Kt338RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lich': {
       id: '/lich'
       path: '/lich'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   DoiRoute: DoiRoute,
   GiaiDieuRoute: GiaiDieuRoute,
   HoSoRoute: HoSoRoute,
+  Kt338Route: Kt338Route,
   LichRoute: LichRoute,
   PhanHoiRoute: PhanHoiRoute,
 }

@@ -112,6 +112,48 @@ export const TA_INFO = {
 	en: "Teaching assistant for the practical component: NCS Đỗ Thuỳ Hương. Present at every computer-lab session — the week-1 technical setup, hands-on sessions weeks 2–8 and 11, and the final exam. Students should contact the TA for account, software and simulation-game issues.",
 };
 
+/** KT338 — Đầu tư quốc tế, nhóm 01 (KT33801). Dữ liệu rất sơ bộ, chỉ gồm các mốc đã xác nhận qua
+ * TKB cán bộ chính thức của Thầy Phan Anh Tú (chụp màn hình 07/9/2026) — KHÔNG suy diễn thêm.
+ * Hương sẽ điều chỉnh/bổ sung khi có thêm số tuần cụ thể. */
+export const KT338_INFO = {
+	code: "KT33801",
+	hocPhan: "Đầu tư quốc tế",
+	nhom: "01",
+	students: 26,
+	classId: "KT338-01-2627",
+	gv: "PGS.TS. Phan Anh Tú",
+	ta: "NCS Đỗ Thuỳ Hương",
+	meetings: {
+		first: { day: "Thứ Ba", room: "301/MT" },
+		second: { day: "Thứ Năm", room: "301/MT" },
+	},
+};
+/** Chỉ 2 mốc đã xác nhận trong TKB — các tuần khác CHƯA có thông tin, không tự thêm. Mảng để dễ bổ
+ * sung khi Hương gửi thêm số tuần. */
+export type Kt338Session = {
+	week: number;
+	date: string;
+	room: string;
+	kind: "game" | "exam";
+	content: string;
+};
+export const KT338_WEEKS: Kt338Session[] = [
+	{
+		week: 5,
+		date: "06/10/2026",
+		room: "Phòng máy tính 2",
+		kind: "game",
+		content: "Buổi thực hành duy nhất — chơi game Hộ Chiếu Thương Hiệu (Brand Passport).",
+	},
+	{
+		week: 11,
+		date: "17/11/2026",
+		room: "",
+		kind: "exam",
+		content: "Thi kết thúc học phần, hình thức trên máy.",
+	},
+];
+
 export const ROLES5 = [
 	"CEO",
 	"CMO",
@@ -1413,6 +1455,7 @@ export const LINKS = {
 	guide: "https://github.com/thuyhuongctu/BizOn/blob/main/docs/huong-dan-giang-vien.md",
 	music: "https://thuyhuongctu.github.io/BizOn/am-nhac.html",
 	team: "https://thuyhuongctu.github.io/BizOn/doi-ngu.html",
+	brandPassport: "https://thuyhuongctu.github.io/BizOn/brand-passport.html",
 };
 /** Plan B nếu game/wifi sập. Tuần 9–11 đã khớp lại theo Chương 9–12 (đề cương chính thức) sau khi
  * bỏ Đại hội Cổ đông — case study Mariotti các tuần khác giữ nguyên từ bản trước, độ khớp chủ đề

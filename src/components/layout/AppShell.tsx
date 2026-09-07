@@ -9,6 +9,7 @@ import {
   Menu,
   MessageSquareText,
   Music2,
+  Stamp,
   Timer,
   Users,
   X,
@@ -32,6 +33,7 @@ const NAV = [
   { to: "/phan-hoi", vi: "Phản hồi", en: "Feedback", icon: MessageSquareText },
   { to: "/danh-gia", vi: "Đánh giá", en: "Assessment", icon: Flag },
   { to: "/checklist", vi: "Checklist", en: "Checklist", icon: CheckSquare },
+  { to: "/kt338", vi: "KT338", en: "KT338", icon: Stamp },
 ] as const;
 
 function LangToggle({ className }: { className?: string }) {
