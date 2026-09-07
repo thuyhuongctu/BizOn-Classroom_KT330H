@@ -106,7 +106,7 @@ function CheckPage() {
       <section className="rounded-xl border border-border bg-card p-5">
         <h2 className="font-medium text-ink">Nghiên cứu — làm sau khi lớp chạy</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          T0 trước tuần 1 và T2 sau pitch (tuần 9–10) dùng cùng mã ẩn danh. T1 (sau vòng 3) tối đa 5 phút. Tách ba
+          T0 trước tuần 1 và T2 sau Tổng kết (tuần 11) dùng cùng mã ẩn danh. T1 (sau vòng 3) tối đa 5 phút. Tách ba
           tệp: danh tính, master nghiên cứu, điểm. Từ chối nghiên cứu không ảnh hưởng điểm. Event log
           (đổi thanh, Nếu–Thì, Lumina, commit) là dữ liệu hành vi — không công bố log thô.
         </p>

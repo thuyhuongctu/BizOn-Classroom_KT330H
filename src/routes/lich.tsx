@@ -35,11 +35,11 @@ function LichPage() {
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
           {klass.code} · 11 tuần theo TKB · {fmtRange(week.week)}
         </p>
-        <h1 className="text-3xl font-semibold text-ink">Lịch 11 tuần · 2 Mùa × 6 vòng, Đại hội Cổ đông tuần 9–10</h1>
+        <h1 className="text-3xl font-semibold text-ink">Lịch 11 tuần · 2 Mùa × 6 vòng, thuyết trình Dự án tuần 9</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Tuần 2–4 và 6–8 chạy đúng bản đồ Cần Thơ → Hà Nội và 6 biến cố engine, hai lượt (Mùa 1 rồi Mùa
-          2) với vai trò đổi ở tuần 5. Tuần 9–10 là Đại hội Cổ đông pitch xin vốn; tuần 11 là Vòng Chung
-          kết + Tổng kết.
+          2) với vai trò đổi ở tuần 5. Tuần 9 buổi A là thuyết trình Dự án khởi nghiệp; Tuần 9 buổi B –
+          Tuần 11 buổi A là lý thuyết Chương 9–12; Tuần 11 buổi B là Tổng kết + ôn tập.
         </p>
         <p className="max-w-2xl text-xs leading-relaxed text-muted-foreground">{OUTLINE_NOTE}</p>
       </header>

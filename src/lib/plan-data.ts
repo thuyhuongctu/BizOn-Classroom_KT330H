@@ -338,9 +338,9 @@ export const ROLES = [
 	{
 		id: "CDO",
 		title: "CDO — Trưởng phân tích dữ liệu",
-		job: "Vai bổ sung, chỉ ở đội 6 người: giữ Nhật ký đội, lập báo cáo «Chi phí đối thủ», trình chiếu file Excel hoà vốn và thay số tại chỗ khi CFO pitch trước Hội đồng.",
-		evidence: "Nhật ký đội; báo cáo Chi phí đối thủ (Tuần 5); file Excel hoà vốn dùng khi pitch (Tuần 9–10).",
-		ask: "Đối thủ đang đặt giá/marketing thế nào so với đội mình? Nếu Hội đồng hỏi ngược một con số, CFO có tra được ngay không?",
+		job: "Vai bổ sung, chỉ ở đội 6 người: giữ Nhật ký đội, lập báo cáo «Chi phí đối thủ», trình chiếu file Excel hoà vốn và thay số tại chỗ khi CFO thuyết trình.",
+		evidence: "Nhật ký đội; báo cáo Chi phí đối thủ (Tuần 5); file Excel hoà vốn dùng khi thuyết trình Dự án khởi nghiệp (Tuần 9).",
+		ask: "Đối thủ đang đặt giá/marketing thế nào so với đội mình? Nếu GV/lớp hỏi ngược một con số, CFO có tra được ngay không?",
 	},
 ];
 export const WEEKS: WeekPlan[] = [
@@ -527,83 +527,83 @@ export const WEEKS: WeekPlan[] = [
 		gv: [
 			"Không spoil công thức — để đội tự giải thích vì sao thắng/thua qua 2 mùa.",
 			"Sao lưu xếp hạng, số cờ, P&L của cả 2 mùa ngay khi khoá vòng cuối.",
-			"Nhắc cả lớp chuẩn bị pitch xin vốn tại Đại hội Cổ đông Tuần 9–10 (khung PASTOR, checklist 12 mục).",
+			"Nhắc cả lớp chuẩn bị thuyết trình Dự án khởi nghiệp Tuần 9 buổi A (8 phút/đội).",
 		],
 		sv: [
-			"So sánh cấu trúc vốn và kết quả Mùa 1 với Mùa 2; bắt đầu chuẩn bị nội dung pitch theo khung PASTOR.",
+			"So sánh cấu trúc vốn và kết quả Mùa 1 với Mùa 2; bắt đầu chuẩn bị nội dung thuyết trình Dự án khởi nghiệp theo khung PASTOR.",
 		],
 		debrief: "Mức tiến bộ Mùa 2 so với Mùa 1 đến từ năng lực đội hay từ may rủi thị trường?",
 		textbook: "Cấu trúc vốn · đo lường mức tiến bộ Mùa 1 so với Mùa 2",
 	},
 	{
 		week: 9,
-		chapter: "Đại hội Cổ đông — Phiên A & B",
-		theory: "Buổi A · Phiên A — Khai mạc Đại hội, giới thiệu Hội đồng đầu tư, bốc thăm thứ tự pitch; huấn luyện khung PASTOR và checklist 12 mục; duyệt thử 2 đội với góp ý công khai.",
-		practice: "Buổi B · Phiên B — Sàn đấu vòng 1: 4 đội × (pitch 7 phút + Q&A 8 phút + tự chấm nóng 3 phút); nghỉ chiến thuật 10 phút giữa chừng.",
-		cycle: "Đại hội CĐ 1",
+		chapter: "Thuyết trình Dự án khởi nghiệp + Chương 9",
+		theory: "Buổi A — Thuyết trình Dự án khởi nghiệp (business plan) của từng đội: 7–8 đội × 8 phút/đội, chia theo vai (khung PASTOR, xem PITCH_TIMING); GV chấm 20% pitching ngay tại buổi, sau đó cả lớp đặt câu hỏi.",
+		practice: "Buổi B — Chương 9: Using Financial Statements to Guide a Business (đọc báo cáo tài chính, dòng tiền, ROI).",
+		cycle: "Pitch + Ch.9",
 		cycleKind: "close",
-		hours: "6 tiết Đại hội Cổ đông (phòng lý thuyết, không phòng máy)",
+		hours: "Buổi A: 3 tiết thuyết trình (không phòng máy) · Buổi B: 3 tiết lý thuyết Chương 9",
 		clos: [
 			"CO1",
+			"CO4",
 			"CO11",
 			"CO12",
 		],
 		gv: [
-			"Quá giờ 30 giây trừ ngay 5 điểm — kỷ luật thời gian giữ nguyên từ kịch bản gốc. Dặn SV mặc lịch sự như gặp nhà đầu tư thật.",
-			"Chưa đủ 10/12 mục checklist thì báo CEO đổi nội dung hoặc giảm cam kết trước khi lên sàn đấu.",
+			"Quá giờ 30 giây trừ ngay 5 điểm — kỷ luật thời gian giữ nguyên từ kịch bản gốc.",
+			"Chấm 20% pitching trực tiếp tại buổi theo rubric đã công bố Tuần 1.",
 		],
 		sv: [
-			"Hoàn thiện checklist 12 mục; luyện pitch đúng thời lượng theo vai (CEO 30s hook → CMO 90s thị trường → CFO 90s Excel hoà vốn → COO 60s vận hành → CEO 90s chốt).",
+			"Chuẩn bị Dự án khởi nghiệp (business plan) của đội, thuyết trình 8 phút chia theo vai (CEO mở đầu → CMO/CFO/COO phần chuyên môn → CEO kết luận).",
 		],
-		debrief: "Ba con số mỗi thành viên phải thuộc: VỐN XIN · BEP mỗi tháng · LỢI NHUẬN MỤC TIÊU — đội bạn đã thuộc chưa?",
-		textbook: "Lập kế hoạch kinh doanh · thuyết phục nhà đầu tư · BEP và biên an toàn",
+		debrief: "Dự án của đội bạn giải quyết đúng nỗi đau nào của khách hàng? Bằng chứng nào cho thấy dự án khả thi về tài chính?",
+		textbook: "Lập kế hoạch kinh doanh · trình bày dự án · BEP và biên an toàn",
 	},
 	{
 		week: 10,
-		chapter: "Đại hội Cổ đông — Phiên C & D",
-		theory: "Buổi A · Phiên C — Sàn đấu vòng 2: 3–4 đội còn lại, cùng thể thức; bổ sung phản biện chéo giữa các đội.",
-		practice: "Buổi B · Phiên D — Hội đồng nghị án, công bố mức cấp vốn (50–250 triệu giả định); các đội ký «Sổ Vốn» và lập cam kết SMART 6 tháng; GV nạp vốn vào Chế độ giảng viên làm két sắt cho Vòng Chung kết.",
-		cycle: "Đại hội CĐ 2",
+		chapter: "Chương 10 & 11",
+		theory: "Buổi A — Chương 10: Financing Strategy & Tactics (chiến lược huy động vốn, vốn chủ so với vay, cổ phiếu/trái phiếu).",
+		practice: "Buổi B — Chương 11: Operating for Success (cơ cấu pháp lý, hợp đồng, sở hữu trí tuệ, quản trị rủi ro).",
+		cycle: "Ch.10–11",
 		cycleKind: "close",
-		hours: "6 tiết Đại hội Cổ đông (phòng lý thuyết, không phòng máy)",
+		hours: "Buổi A: 3 tiết lý thuyết Chương 10 · Buổi B: 3 tiết lý thuyết Chương 11",
 		clos: [
-			"CO1",
+			"CO9",
+			"CO10",
 			"CO11",
 			"CO12",
 		],
 		gv: [
-			"Sau Phiên D: nạp đúng số vốn đã công bố cho từng đội vào tab Giảng viên trước Tuần 11 — đây là két sắt khởi điểm Vòng Chung kết.",
-			"Lưu «Sổ Vốn» và cam kết SMART của từng đội để đối chiếu ở Tổng kết Tuần 11.",
+			"Nối ví dụ huy động vốn/vận hành với chính công ty giả lập của SV trong game (Mùa 1–2) khi giảng.",
 		],
 		sv: [
-			"Pitch (nếu chưa đến lượt ở Phiên B); nghe phản biện chéo; ký Sổ Vốn và viết cam kết SMART 6 tháng sau khi biết mức cấp vốn.",
+			"Đọc case tương ứng Chương 10–11; liên hệ với quyết định vay/vốn chủ và vận hành đã đưa ra trong game.",
 		],
-		debrief: "Mức vốn Hội đồng cấp có phản ánh đúng chất lượng dự án không, hay còn yếu tố khác?",
-		textbook: "Thẩm định dự án · phân bổ vốn 4 khoản · cam kết SMART",
+		debrief: "So với công ty giả lập trong game, doanh nghiệp thật sẽ gặp thêm ràng buộc pháp lý/vận hành nào?",
+		textbook: "Chiến lược huy động vốn · vận hành và bảo vệ doanh nghiệp",
 	},
 	{
 		week: 11,
-		chapter: "Vòng Chung kết & Tổng kết giải đấu",
-		theory: "Buổi A — VÒNG CHUNG KẾT: toàn lớp chơi đồng bộ một vòng duy nhất, két sắt khởi điểm bằng đúng số vốn Hội đồng đã cấp ở Phiên D.",
-		practice: "Buổi B — Tổng kết giải đấu: so sánh Mùa 1 với Mùa 2 của chính đội mình, trao huy hiệu, phát phiếu khảo sát sau (T2), hướng dẫn ôn thi.",
-		cycle: "Chung kết",
+		chapter: "Chương 12 & Tổng kết",
+		theory: "Buổi A — Chương 12: Management, Leadership, Ethical Practices (vận hành chuỗi cung ứng, vị trí, chất lượng, đạo đức kinh doanh).",
+		practice: "Buổi B — Tổng kết: so sánh Mùa 1 với Mùa 2 của chính đội mình, trao huy hiệu, phát phiếu khảo sát sau (T2), hướng dẫn ôn thi Tuần 12.",
+		cycle: "Ch.12 + Tổng kết",
 		cycleKind: "close",
-		hours: "2 tiết (Chung kết + Tổng kết)",
+		hours: "Buổi A: 3 tiết lý thuyết Chương 12 · Buổi B: 3 tiết Tổng kết + ôn tập",
 		clos: [
-			"CO1",
 			"CO9",
+			"CO10",
 			"CO11",
 			"CO12",
 		],
 		gv: [
-			"Đội được cấp vốn cao có lợi thế nhưng cũng chịu áp lực kỳ vọng — đúng logic đầu tư thật, đây là lý do pitch Tuần 9–10 vẫn có ý nghĩa dù không mở màn.",
 			"Phát phiếu khảo sát sau (T2); hướng dẫn ôn thi cho Tuần 12.",
 		],
 		sv: [
-			"Chơi Vòng Chung kết với vốn đã được cấp; so sánh tiến bộ Mùa 1 và Mùa 2 của chính đội mình; làm khảo sát T2.",
+			"So sánh tiến bộ Mùa 1 và Mùa 2 của chính đội mình; làm khảo sát T2.",
 		],
 		debrief: "So sánh Mùa 1 và Mùa 2 của chính đội bạn: phần cải thiện đến từ năng lực hay từ may rủi?",
-		textbook: "Tích hợp toàn bộ khái niệm · đánh giá hiệu quả sử dụng vốn",
+		textbook: "Quản lý, lãnh đạo, đạo đức kinh doanh · tích hợp toàn bộ khái niệm",
 	},
 ];
 /** Nhịp 1 vòng = 1 buổi 50 phút (Kịch bản v1, Mục IV) — thay nhịp 150 phút cũ vì mỗi buổi chỉ còn
@@ -723,8 +723,11 @@ export const CLOS = [
 ];
 /** Đã chốt (Hương xác nhận 07/9/2026): giữ đúng cơ cấu 10/20/20/50 Thầy Phan Anh Tú chốt qua Zalo —
  * không dùng bảng 7 phần (15/10/10/25/10/25/5) mà Kịch bản v1 tự đề xuất. "Game" 20% và "Pitching"
- * 20% được ánh xạ lại cho đúng nội dung 2 Mùa × 6 vòng + Đại hội Cổ đông. Xem RUBRIC_GAME_BREAKDOWN
- * cho chi tiết bên trong 20% game. */
+ * 20% được ánh xạ lại cho đúng nội dung 2 Mùa × 6 vòng + thuyết trình Dự án khởi nghiệp. Xem
+ * RUBRIC_GAME_BREAKDOWN cho chi tiết bên trong 20% game.
+ * Cập nhật 07/9/2026: Hương xác nhận "20% pitching" là thuyết trình Dự án khởi nghiệp (business
+ * plan) của đội — bỏ hẳn cơ chế Đại hội Cổ đông/Hội đồng đầu tư cấp vốn mà Kịch bản v1 tự đề xuất
+ * (chỉ là ý tưởng của Hương, chưa xác nhận với Thầy Phan Anh Tú). Xem DIFFS. */
 export const RUBRIC_COURSE = [
 	{
 		id: "disc",
@@ -737,14 +740,14 @@ export const RUBRIC_COURSE = [
 		id: "game",
 		name: "Điểm chơi mô phỏng — 2 Mùa × 6 vòng",
 		weight: 20,
-		note: "Nhật ký quyết định hằng tuần + Sơ kết Mùa 1 + Mức tiến bộ Mùa 2 + Vòng Chung kết (xem RUBRIC_GAME_BREAKDOWN). Thầy Phan Anh Tú chốt: 20% điểm cuối kỳ.",
+		note: "Nhật ký quyết định hằng tuần + Sơ kết Mùa 1 + Mức tiến bộ Mùa 2 (xem RUBRIC_GAME_BREAKDOWN). Thầy Phan Anh Tú chốt: 20% điểm cuối kỳ.",
 		clos: "CO1–CO9, CO12",
 	},
 	{
 		id: "pitch",
-		name: "Pitching — Đại hội Cổ đông",
+		name: "Pitching — Dự án khởi nghiệp",
 		weight: 20,
-		note: "Tuần 9–10, 4 phiên A–D: pitch xin vốn theo khung PASTOR. Chấm của Hội đồng đầu tư + tự chấm nóng 4 tiêu chí (khả thi tài chính · độc đáo · đội ngũ · trình bày). Thay cho pitch dự án khởi nghiệp (BMC) của mô hình cũ, giữ đúng 20% Thầy Phan Anh Tú đã chốt.",
+		note: "Tuần 9, buổi A: thuyết trình Dự án khởi nghiệp (business plan) của đội, 8 phút/đội, chia theo vai (khung PASTOR, xem PITCH_TIMING). GV chấm trực tiếp tại buổi, giữ đúng 20% Thầy Phan Anh Tú đã chốt.",
 		clos: "CO1–CO12",
 	},
 	{
@@ -755,7 +758,9 @@ export const RUBRIC_COURSE = [
 		clos: "CO1–CO9, CO11, CO12",
 	},
 ];
-/** Chi tiết bên trong 20% "game" — 4 mốc của mô hình 2 Mùa × 6 vòng, quy đổi để tổng đúng 20. */
+/** Chi tiết bên trong 20% "game" — 3 mốc của mô hình 2 Mùa × 6 vòng, quy đổi để tổng đúng 20.
+ * Cập nhật 07/9/2026: mốc "Vòng Chung kết" (4%) đã bỏ cùng cơ chế Đại hội Cổ đông — gộp vào mốc
+ * "Mức tiến bộ Mùa 2" (4 → 8). Xem DIFFS. */
 export const RUBRIC_GAME_BREAKDOWN = [
 	{
 		id: "journal",
@@ -774,120 +779,56 @@ export const RUBRIC_GAME_BREAKDOWN = [
 	{
 		id: "progress",
 		name: "Mức tiến bộ Mùa 2 so với Mùa 1",
-		pct: 4,
+		pct: 8,
 		of: 20,
-		note: "Tuần 8. Căn cứ bảng tổng sắp hai mùa — đo tiến bộ, tách may rủi khỏi năng lực.",
-	},
-	{
-		id: "final-round",
-		name: "Vòng Chung kết + xếp hạng giải đấu",
-		pct: 4,
-		of: 20,
-		note: "Tuần 11, buổi A. Két sắt khởi điểm = vốn Hội đồng đã cấp ở Phiên D. Căn cứ kết quả vòng chung kết.",
+		note: "Tuần 8. Căn cứ bảng tổng sắp hai mùa sau Vòng 6 Mùa 2 — đo tiến bộ, tách may rủi khỏi năng lực. (Gồm cả 4% trước đây dành cho Vòng Chung kết, nay đã bỏ.)",
 	},
 ];
-/** Giải phẫu pitch 7 phút theo vai — Đại hội Cổ đông, Tuần 9–10 (Kịch bản v1, Mục V). */
+/** Giải phẫu thuyết trình Dự án khởi nghiệp, 8 phút/đội — Tuần 9 buổi A.
+ * Cập nhật 07/9/2026: Hương xác nhận bỏ cơ chế Đại hội Cổ đông/Hội đồng đầu tư cấp vốn mà Kịch bản
+ * v1 tự đề xuất — "20% pitching" là thuyết trình Dự án khởi nghiệp (business plan) của đội. Khung
+ * PASTOR và cách chia thời lượng theo vai vẫn giữ vì áp dụng được cho một bài thuyết trình dự án
+ * thông thường. Xem DIFFS. */
 export const PITCH_TIMING = [
 	{
-		seconds: 30,
+		seconds: 45,
 		role: "CEO",
 		content: "Hook mở màn và trình bày vấn đề của khách hàng.",
 	},
 	{
-		seconds: 90,
+		seconds: 105,
 		role: "CMO",
 		content: "Kích thước thị trường và chân dung khách hàng.",
 	},
 	{
-		seconds: 90,
+		seconds: 105,
 		role: "CFO",
-		content: "Bức tranh tài chính — chiếu trực tiếp file Excel hoà vốn (BEP, biên an toàn), sẵn sàng thay số tại chỗ khi Hội đồng yêu cầu.",
+		content: "Bức tranh tài chính — chiếu trực tiếp file Excel hoà vốn (BEP, biên an toàn), sẵn sàng thay số tại chỗ khi được hỏi.",
 	},
 	{
-		seconds: 60,
+		seconds: 75,
 		role: "COO",
 		content: "Cỗ máy vận hành và cấu trúc chi phí.",
 	},
 	{
-		seconds: 90,
+		seconds: 150,
 		role: "CEO",
-		content: "Lời chốt, yêu cầu cấp vốn và cam kết SMART.",
+		content: "Kết luận Dự án khởi nghiệp; trả lời câu hỏi của GV và lớp.",
 	},
 ];
-/** Khung nội dung pitch PASTOR (Kịch bản v1, Mục V) — giữ nguyên từ kịch bản gốc. */
+/** Khung nội dung thuyết trình PASTOR — giữ nguyên từ kịch bản gốc, chỉnh Offer/Response cho đúng
+ * bối cảnh thuyết trình dự án (không còn gắn với việc xin vốn Hội đồng đầu tư). */
 export const PASTOR = [
 	{ letter: "P", word: "Problem", vi: "Nỗi đau của khách hàng." },
 	{ letter: "A", word: "Answer", vi: "Giải pháp của đội." },
 	{ letter: "S", word: "Story", vi: "Một câu chuyện thật — đắt hơn mười bảng thống kê." },
 	{ letter: "T", word: "Traction", vi: "BEP, biên an toàn, biên đóng góp." },
-	{ letter: "O", word: "Offer", vi: "Xin chính xác bao nhiêu, tiêu vào ba việc gì." },
-	{ letter: "R", word: "Response", vi: "Đề nghị Hội đồng ký sổ ngay." },
+	{ letter: "O", word: "Offer", vi: "Điểm mạnh nhất và giá trị cốt lõi của dự án." },
+	{ letter: "R", word: "Response", vi: "Mời GV và lớp đặt câu hỏi, phản biện." },
 ];
-/** Checklist trước pitch 12 mục — chưa đủ 10/12 thì báo CEO đổi nội dung hoặc giảm cam kết. */
-export const PITCH_CHECKLIST_12 = [
-	"File Excel hoà vốn mở sẵn, đã kiểm tra chạy được",
-	"USB dự phòng có bản sao slide + Excel",
-	"In 5 bản hồ sơ giấy cho Hội đồng",
-	"Mỗi vai thuộc đúng phần và đúng thời lượng của mình",
-	"CEO thuộc lòng câu hook mở màn",
-	"CMO có số liệu thị trường + chân dung khách hàng cụ thể",
-	"CFO thuộc BEP, biên an toàn, biên đóng góp — trả lời được không cần nhìn giấy",
-	"COO nêu được cấu trúc chi phí chính",
-	"Số tiền xin vốn chính xác + 3 việc sẽ tiêu vào",
-	"Cam kết SMART đã viết sẵn (6 tháng)",
-	"Trang phục lịch sự như gặp nhà đầu tư thật",
-	"Đã canh giờ thử ít nhất 1 lần, không vượt 7 phút",
-];
-/** 4 tiêu chí tự chấm nóng ngay sau mỗi lượt pitch, khi cảm xúc còn tươi — mỗi tiêu chí 2,5 điểm. */
-export const PITCH_SELF_SCORE = [
-	"Khả thi tài chính",
-	"Độc đáo",
-	"Đội ngũ",
-	"Trình bày",
-];
-/** Ba con số mỗi thành viên phải thuộc lòng khi bước vào Đại hội Cổ đông. */
-export const PITCH_KEY_NUMBERS = ["VỐN XIN", "BEP mỗi tháng", "LỢI NHUẬN MỤC TIÊU"];
-/** Bốn phiên Đại hội Cổ đông, Tuần 9–10 (Kịch bản v1, Mục V). buổi: "first" | "second" ứng với
- * klass.meetings.first/second — week 9 hoặc 10 tuỳ phiên. */
-export const DAI_HOI_PHIEN = [
-	{
-		id: "A",
-		week: 9,
-		buoi: "first" as const,
-		title: "Khai mạc & huấn luyện",
-		content: "Khai mạc Đại hội, giới thiệu Hội đồng đầu tư, bốc thăm thứ tự pitch; huấn luyện khung PASTOR và checklist 12 mục; duyệt thử 2 đội với góp ý công khai.",
-	},
-	{
-		id: "B",
-		week: 9,
-		buoi: "second" as const,
-		title: "Sàn đấu vòng 1",
-		content: "4 đội × (pitch 7 phút + Q&A 8 phút + tự chấm nóng 3 phút); nghỉ chiến thuật 10 phút giữa chừng.",
-	},
-	{
-		id: "C",
-		week: 10,
-		buoi: "first" as const,
-		title: "Sàn đấu vòng 2",
-		content: "3–4 đội còn lại, cùng thể thức; bổ sung phản biện chéo giữa các đội.",
-	},
-	{
-		id: "D",
-		week: 10,
-		buoi: "second" as const,
-		title: "Hội đồng nghị án",
-		content: "Công bố mức cấp vốn (50–250 triệu giả định); các đội ký «Sổ Vốn» và lập cam kết SMART 6 tháng; giảng viên nạp vốn vào Chế độ giảng viên làm két sắt cho Vòng Chung kết.",
-	},
-];
-/** Kỷ luật thời gian pitch, giữ nguyên từ kịch bản gốc: quá giờ 30 giây trừ ngay 5 điểm. */
+/** Kỷ luật thời gian thuyết trình, giữ nguyên từ kịch bản gốc: quá giờ 30 giây trừ ngay 5 điểm. */
 export const PITCH_TIME_PENALTY =
-	"Quá giờ 30 giây trừ ngay 5 điểm, đồng hồ reo và phần trình bày bị ngắt. Sinh viên mặc trang phục lịch sự như gặp nhà đầu tư thật.";
-/** Vòng Chung kết (Tuần 11, buổi A) và Tổng kết giải đấu (buổi B) — Kịch bản v1, Mục VI. */
-export const VONG_CHUNG_KET = {
-	final: "Toàn lớp chơi đồng bộ một vòng duy nhất, két sắt khởi điểm bằng chính số vốn Hội đồng đã cấp ở Phiên D. Đội được cấp vốn cao có lợi thế nhưng cũng chịu áp lực kỳ vọng — đúng logic đầu tư thật.",
-	wrap: "So sánh Mùa 1 với Mùa 2 của chính đội mình (thước đo tiến bộ, tách may rủi khỏi năng lực), trao huy hiệu, phát phiếu khảo sát sau, hướng dẫn ôn thi.",
-	exam: "Thi kết thúc học phần (Tuần 12): ván cá nhân 6 vòng nhịp nhanh 7 phút/vòng (42 phút) + bài phân tích viết trên máy 60 phút, yêu cầu giải thích quyết định bằng khái niệm độ co giãn giá, điểm hoà vốn và đòn bẩy tài chính. Đây là buổi duy nhất mỗi SV cần một máy riêng.",
-};
+	"Quá giờ 30 giây trừ ngay 5 điểm, đồng hồ reo và phần trình bày bị ngắt.";
 /** Bốn việc GV cần chuẩn bị trước Tuần 1 (Kịch bản v1, Mục VIII). */
 export const PREP_BEFORE_WEEK1 = [
 	{ item: "Tạo hai Mã lớp riêng", detail: "Một Mã lớp cho F1 và một cho F2, để bảng tổng sắp hai nhóm không lẫn nhau.", deadline: "Trước 07/9/2026" },
@@ -938,9 +879,9 @@ export const OPTIONS = [
 			"Tuần 1: cài đặt + chia đội cố định cả kỳ (buổi A) rồi chơi thử + nhận Mã lớp (buổi B).",
 			"Tuần 2–4: Mùa 1, 6 vòng (2 vòng/tuần, 1 vòng/buổi 50 phút). Tuần 5: sơ kết Mùa 1 + đổi vai + khởi động Mùa 2.",
 			"Tuần 6–8: Mùa 2 lặp lại 6 vòng ở vai mới, chốt bảng tổng sắp 2 mùa cuối tuần 8.",
-			"Tuần 9–10: Đại hội Cổ đông — 4 phiên pitch xin vốn (PASTOR, checklist 12 mục), Hội đồng công bố mức cấp vốn.",
-			"Tuần 11: Vòng Chung kết (két sắt = vốn Hội đồng cấp) + Tổng kết so Mùa 1/Mùa 2. Tuần 12: dự trữ + thi cá nhân trên máy.",
-			"18 tiết phòng máy (2 chuẩn bị + 14 vòng chơi + 2 chung kết) khớp đúng TKB bản v6.",
+			"Tuần 9 buổi A: thuyết trình Dự án khởi nghiệp (8 phút/đội, khung PASTOR). Tuần 9 buổi B – Tuần 11 buổi A: lý thuyết Chương 9–12.",
+			"Tuần 11 buổi B: Tổng kết so Mùa 1/Mùa 2 + ôn tập. Tuần 12: dự trữ + thi cá nhân trên máy.",
+			"16 tiết phòng máy (2 chuẩn bị + 14 vòng chơi) khớp đúng TKB bản v6.",
 		],
 	},
 	{
@@ -1038,7 +979,7 @@ export const CHECKS = [
 			},
 			{
 				id: "rubric",
-				label: "In / chiếu rubric 10 / 20 / 20 / 50 và cách quy đổi điểm game (20%) + pitching Đại hội Cổ đông (20%).",
+				label: "In / chiếu rubric 10 / 20 / 20 / 50 và cách quy đổi điểm game (20%) + pitching Dự án khởi nghiệp (20%).",
 			},
 			{
 				id: "rolesheet",
@@ -1088,7 +1029,7 @@ export const CHECKS = [
 		],
 	},
 	{
-		group: "Sau tuần 8 (chốt 2 mùa) và Đại hội Cổ đông (tuần 9–10)",
+		group: "Sau tuần 8 (chốt 2 mùa) và thuyết trình Dự án khởi nghiệp (tuần 9)",
 		items: [
 			{
 				id: "csv",
@@ -1100,15 +1041,15 @@ export const CHECKS = [
 			},
 			{
 				id: "pitch-training",
-				label: "Đã huấn luyện khung PASTOR + checklist 12 mục trước Phiên B (Tuần 9 buổi B).",
-			},
-			{
-				id: "grant-capital",
-				label: "Sau Phiên D: nạp đúng số vốn Hội đồng đã công bố vào tab Giảng viên cho từng đội — két sắt Vòng Chung kết tuần 11.",
+				label: "Đã nhắc đội chuẩn bị Dự án khởi nghiệp + khung PASTOR trước Tuần 9 buổi A.",
 			},
 			{
 				id: "pitch",
-				label: "Chấm pitch (Hội đồng + tự chấm nóng 4 tiêu chí) + khảo sát T2 sau Tuần 11.",
+				label: "Chấm 20% pitching (Dự án khởi nghiệp) trực tiếp tại buổi Tuần 9.",
+			},
+			{
+				id: "post-survey",
+				label: "Phát khảo sát T2 sau Tuần 11.",
 			},
 			{
 				id: "grade",
@@ -1460,6 +1401,11 @@ export const DIFFS = [
 		to: "10/20/20/50 (đã chốt): thảo luận 10% + game 20% (nhật ký + sơ kết Mùa 1 + tiến bộ Mùa 2 + Vòng Chung kết) + pitching 20% (Đại hội Cổ đông) + thi cuối kỳ 50%",
 		why: "Hương xác nhận lại trực tiếp (07/9/2026): giữ đúng cơ cấu 10/20/20/50 Thầy Phan Anh Tú đã chốt qua Zalo, không dùng bảng 7 phần tự đề xuất của Kịch bản v1. \"Game\" 20% và \"Pitching\" 20% được ánh xạ lại cho đúng nội dung mới (2 Mùa × 6 vòng, Đại hội Cổ đông) thay vì đổi trọng số. Xem RUBRIC_GAME_BREAKDOWN cho cách chia 20% game thành 4 mốc.",
 	},
+	{
+		from: "Pitching 20% = Đại hội Cổ đông: 4 phiên A–D (tuần 9–10), khung PASTOR + checklist 12 mục, Hội đồng đầu tư công bố mức cấp vốn 50–250 triệu, đội ký «Sổ Vốn» + cam kết SMART; Vòng Chung kết (tuần 11 buổi A) dùng vốn Hội đồng cấp làm két sắt khởi điểm",
+		to: "Pitching 20% = thuyết trình Dự án khởi nghiệp (business plan) của đội, 8 phút/đội, gọn trong 1 buổi (Tuần 9 buổi A), vẫn dùng khung PASTOR (Offer/Response đổi nghĩa: không còn xin vốn). Bỏ hẳn cơ chế Hội đồng đầu tư cấp vốn và Vòng Chung kết. 4 buổi trống ra (Tuần 9 buổi B, Tuần 10 cả 2 buổi, Tuần 11 buổi A) chuyển sang dạy trực tiếp Chương 9–12 theo đề cương chính thức (mỗi buổi 1 chương); Tuần 11 buổi B giữ vai trò Tổng kết Mùa 1/Mùa 2 + ôn tập. 4% trong 20% game trước đây dành cho Vòng Chung kết được gộp vào mốc \"Mức tiến bộ Mùa 2\" (4 → 8%).",
+		why: "Hương xác nhận trực tiếp (07/9/2026), sau khi đối chiếu với đề cương chính thức KT330H.pdf (2019, ký Phan Anh Tú) — đề cương này không hề nhắc đến Đại hội Cổ đông/Hội đồng đầu tư, và cơ chế đó là ý tưởng Hương tự đề xuất trong Kịch bản v1, chưa xác nhận với Thầy Phan Anh Tú. \"20% pitching\" trong thực tế là thuyết trình Dự án khởi nghiệp — khớp với mục 4.2/CO4 của đề cương chính thức (viết business plan) và với «kịch bản gốc» (thuyết trình 8 phút/đội).",
+	},
 ];
 export const LINKS = {
 	hub: "https://thuyhuongctu.github.io/BizOn/",
@@ -1468,8 +1414,9 @@ export const LINKS = {
 	music: "https://thuyhuongctu.github.io/BizOn/am-nhac.html",
 	team: "https://thuyhuongctu.github.io/BizOn/doi-ngu.html",
 };
-/** Plan B nếu game/wifi sập. ⚠️ Chưa rà lại theo nội dung tuần mới của Kịch bản v1 (2 Mùa × 6
- * vòng, Đại hội Cổ đông) — case study Mariotti giữ nguyên từ bản trước, độ khớp chủ đề có thể lệch. */
+/** Plan B nếu game/wifi sập. Tuần 9–11 đã khớp lại theo Chương 9–12 (đề cương chính thức) sau khi
+ * bỏ Đại hội Cổ đông — case study Mariotti các tuần khác giữ nguyên từ bản trước, độ khớp chủ đề
+ * có thể lệch. */
 export const BACKUP_CASES = [
 	{
 		week: 2,
@@ -1515,24 +1462,24 @@ export const BACKUP_CASES = [
 	},
 	{
 		week: 9,
-		unit: "Unit 12",
-		cases: "ONLC · AYZH · Agritechno Hybrid",
-		clos: "CO11, CO12",
+		unit: "Unit 9",
+		cases: "Holterholm Farms · Cash CakeLove",
+		clos: "CO9, CO11, CO12",
 	},
 	{
 		week: 10,
-		unit: "Unit 12",
-		cases: "ONLC · AYZH · Agritechno Hybrid",
-		clos: "CO11, CO12",
+		unit: "Unit 10–11",
+		cases: "Chilly Dilly's · Lee's Ice Cream + The Bun Company · Airbnb",
+		clos: "CO9, CO10, CO11, CO12",
 	},
 	{
 		week: 11,
-		unit: "Unit 9–11",
-		cases: "Holterholm Farms · Cash CakeLove + Chilly Dilly's · Lee's Ice Cream + The Bun Company · Airbnb",
-		clos: "CO9, CO10, CO12",
+		unit: "Unit 12",
+		cases: "ONLC · AYZH · Agritechno Hybrid",
+		clos: "CO9, CO10, CO11, CO12",
 	},
 ];
-export const OUTLINE_NOTE = "Kịch bản BizOn hiệu chỉnh bản v1 (06/9/2026, do Hương soạn, khớp TKB chính thức bản v6): 2 Mùa × 6 vòng chơi ở Tuần 2–4 và 6–8 (đổi vai + sơ kết ở Tuần 5), Đại hội Cổ đông pitch xin vốn 4 phiên ở Tuần 9–10, Vòng Chung kết + Tổng kết ở Tuần 11 (két sắt = vốn Hội đồng cấp), dự trữ + thi cá nhân trên máy ở Tuần 12. Thay thế mô hình 1 mùa 6 vòng + pitch dự án khởi nghiệp trước đó — xem DIFFS để biết lý do đổi.";
+export const OUTLINE_NOTE = "Kịch bản BizOn hiệu chỉnh bản v1 (06/9/2026, do Hương soạn, khớp TKB chính thức bản v6), đã hiệu chỉnh lại phần pitching (07/9/2026): 2 Mùa × 6 vòng chơi ở Tuần 2–4 và 6–8 (đổi vai + sơ kết ở Tuần 5), thuyết trình Dự án khởi nghiệp 8 phút/đội ở Tuần 9 buổi A, lý thuyết Chương 9–12 ở Tuần 9 buổi B – Tuần 11 buổi A, Tổng kết + ôn tập ở Tuần 11 buổi B, dự trữ + thi cá nhân trên máy ở Tuần 12. Không còn Đại hội Cổ đông/Hội đồng đầu tư cấp vốn hay Vòng Chung kết — xem DIFFS để biết lý do đổi.";
 /** 2 Mùa × 6 vòng (Kịch bản v1). Mỗi mùa là một lượt chơi lại trọn vẹn CONQUEST_STOPS (js/app.js) ×
  * MARKET_EVENTS (js/engine.js) — engine cố định thứ tự 6 thành phố/biến cố theo round, nên Mùa 2
  * lặp lại đúng chuỗi Cần Thơ → Hà Nội của Mùa 1, chỉ khác vai trò (đã đổi ở Tuần 5) và mức vận
@@ -1817,7 +1764,7 @@ export const SURVEYS = [
 	},
 	{
 		id: "T2",
-		when: "Sau pitch tuần 9–10",
+		when: "Sau Tổng kết tuần 11",
 		minutes: 8,
 		items: [
 			"Tôi mô tả được các bước tạo một doanh nghiệp nhỏ.",
@@ -1876,17 +1823,15 @@ export const REFLECTION_PROMPTS = [
 	"Bài học nào có thể chuyển sang doanh nghiệp thực?",
 ];
 
-/** Biểu mẫu sinh viên E — Pitch xin vốn tại Đại hội Cổ đông (Kịch bản v1, Mục V), tuần 9–10. */
+/** Biểu mẫu sinh viên E — Thuyết trình Dự án khởi nghiệp, Tuần 9 buổi A. */
 export const PITCH_GUIDE = {
-	format: "7 phút pitch (đúng khung PASTOR, chia theo vai — xem PITCH_TIMING) + 8 phút Q&A với Hội đồng + 3 phút tự chấm nóng.",
+	format: "8 phút thuyết trình (khung PASTOR, chia theo vai — xem PITCH_TIMING), sau đó GV và lớp đặt câu hỏi.",
 	points: [
 		"Hành trình 2 Mùa: chiến lược Mùa 1, thay đổi gì ở Mùa 2 sau khi đổi vai.",
 		"Một quyết định thành công và một sai lầm, từ cả 12 vòng.",
 		"Dữ liệu lợi nhuận, uy tín/thương hiệu, tiền mặt, thị phần — so Mùa 1 với Mùa 2.",
 		"BEP, biên an toàn, biên đóng góp — chiếu trực tiếp Excel, CFO sẵn sàng thay số tại chỗ.",
-		"Số tiền xin vốn chính xác + 3 việc sẽ tiêu vào (Vòng Chung kết tuần 11).",
-		"Cam kết SMART 6 tháng nếu được cấp vốn.",
-		"Ba con số thuộc lòng: VỐN XIN · BEP mỗi tháng · LỢI NHUẬN MỤC TIÊU.",
+		"Kết luận: điểm mạnh nhất và hướng phát triển tiếp theo của dự án.",
 	],
 };
 

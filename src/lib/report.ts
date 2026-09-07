@@ -82,7 +82,7 @@ export function buildFullReport(opts: {
     `${klass.code} · nhóm ${klass.nhom} · Class ID ${klass.classId} · ${klass.students} SV · ${klass.teams} đội`,
     "",
     "Mapping: Excellent = 20.0 · Very good = 19.7 · Good = 19.5 · Quite good = 19.0.",
-    "Process: Discussion 10% (cá nhân) + Game 20% (2 Mùa × 6 vòng) + Pitching 20% (Đại hội Cổ đông).",
+    "Process: Discussion 10% (cá nhân) + Game 20% (2 Mùa × 6 vòng) + Pitching 20% (thuyết trình Dự án khởi nghiệp).",
     "Dự kiến — chưa gồm điểm thi cuối kỳ 50%.",
     "",
     "Score summary — 12 vòng, 2 Mùa (mỗi cột /20)",

@@ -26,10 +26,10 @@ function GradePage() {
         </p>
         <h1 className="text-3xl font-semibold text-ink">Đánh giá khớp 10 / 20 / 20 / 50 (tổng {total}%)</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          10% thảo luận/chuyên cần · 20% điểm chơi mô phỏng (2 Mùa × 6 vòng) · 20% pitching tại Đại
-          hội Cổ đông (thay pitch dự án khởi nghiệp cũ) · 50% thi cuối kỳ giữ nguyên quy định CTU.
-          Đây là cơ cấu đã chốt — không dùng bảng 7 phần (15/10/10/25/10/25/5) mà Kịch bản v1 tự đề
-          xuất trước đó.
+          10% thảo luận/chuyên cần · 20% điểm chơi mô phỏng (2 Mùa × 6 vòng) · 20% pitching là
+          thuyết trình Dự án khởi nghiệp (business plan) của đội · 50% thi cuối kỳ giữ nguyên quy
+          định CTU. Đây là cơ cấu đã chốt — không dùng bảng 7 phần (15/10/10/25/10/25/5) mà Kịch
+          bản v1 tự đề xuất trước đó.
         </p>
       </header>
 
@@ -72,7 +72,7 @@ function GradePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-ink">Giải phẫu pitch 7 phút theo vai — Đại hội Cổ đông</h2>
+        <h2 className="text-xl font-semibold text-ink">Giải phẫu thuyết trình 8 phút theo vai — Dự án khởi nghiệp</h2>
         <p className="text-sm text-muted-foreground">
           Kỷ luật thời gian: quá giờ 30 giây trừ ngay 5 điểm, đồng hồ reo và phần trình bày bị ngắt.
         </p>
@@ -259,7 +259,7 @@ function GradePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-ink">Phiếu đồng đẳng — tuần 9–10</h2>
+        <h2 className="text-xl font-semibold text-ink">Phiếu đồng đẳng — tuần 9</h2>
         <p className="text-sm text-muted-foreground">
           Mỗi thành viên chấm những người còn lại trong đội (4 hoặc 5, tuỳ đội có CDO), thang 1–5.
           Không chấm mình. GV đối chiếu với discussion đã ghi suốt 12 vòng, 2 Mùa.
