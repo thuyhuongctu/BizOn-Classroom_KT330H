@@ -50,8 +50,8 @@ function PhanHoiPage() {
         <h1 className="text-3xl font-semibold text-ink">Phản hồi nhóm theo chu kỳ</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Cùng khung Điểm mạnh / Cần cải / Khái niệm / Kết luận, cho cả 12 vòng (Mùa 1 + Mùa 2).
-          Điểm nhóm /20; discussion cộng dồn theo thành viên. GV chốt tay theo rubric 7 phần (trang
-          Đánh giá) — không cộng máy.
+          Điểm nhóm /20; discussion cộng dồn theo thành viên. GV chốt tay thành 10 / 20 / 20 / 50
+          (trang Đánh giá) — không cộng máy.
         </p>
       </header>
 

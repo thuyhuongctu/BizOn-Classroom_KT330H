@@ -358,7 +358,7 @@ export const WEEKS: WeekPlan[] = [
 			"CO12",
 		],
 		gv: [
-			"Công bố kế hoạch 12 tuần, mô hình 2 Mùa × 6 vòng và rubric (xem trang Đánh giá — đang chờ đối chiếu đề cương chính thức).",
+			"Công bố kế hoạch 12 tuần, mô hình 2 Mùa × 6 vòng và rubric 10/20/20/50 đã chốt (xem trang Đánh giá).",
 			"Tạo 2 Mã lớp riêng (KT330H-F1-2627, KT330H-F2-2627); chia đội cố định cả kỳ; đội 6 người có thêm vai CDO.",
 			"Buổi A: chỉ cài đặt + chia đội + khảo sát, chưa phát Mã lớp. Buổi B: phát Mã lớp, cho chơi thử 1 vòng không tính điểm.",
 			"F1 Thứ Ba: biến thể 40 phút do di chuyển 104/KT → Phòng máy 3.20 (ATL) — làm phần chia đội/Class ID trước.",
@@ -721,62 +721,69 @@ export const CLOS = [
 		text: "Thái độ, tự chủ, trách nhiệm, đạo đức, phục vụ cộng đồng.",
 	},
 ];
-/** ⚠️ Đề xuất từ «Kịch bản BizOn hiệu chỉnh bản v1» (06/9/2026, do Hương soạn) — CHƯA đối chiếu
- * với đề cương chi tiết học phần KT330H đã ban hành, và KHÁC với cơ cấu 10/20/20/50 do Thầy Phan
- * Anh Tú chốt trước đó (thảo luận 10% + điểm game 20% + dự án khởi nghiệp 20% + thi 50%). Nếu đề
- * cương đã cố định trọng số thì thiết kế đánh giá này phải điều chỉnh theo, chứ không phải ngược
- * lại — xem DIFFS để biết lý do đổi và mức độ chắc chắn. */
-export const RUBRIC_COURSE_CAVEAT =
-	"Bảng dưới đây là đề xuất từ Kịch bản BizOn hiệu chỉnh bản v1 (06/9/2026) — CHƯA đối chiếu với đề cương chi tiết học phần KT330H đã ban hành, và khác với cơ cấu 10/20/20/50 (thảo luận 10% + game 20% + dự án khởi nghiệp 20% + thi 50%) Thầy Phan Anh Tú đã chốt trước đó qua Zalo. Đặc biệt trọng số thi cuối kỳ ở đây là 25%, không phải 50%. Cần đối chiếu lại với đề cương chính thức trước khi dùng để chấm điểm thật.";
+/** Đã chốt (Hương xác nhận 07/9/2026): giữ đúng cơ cấu 10/20/20/50 Thầy Phan Anh Tú chốt qua Zalo —
+ * không dùng bảng 7 phần (15/10/10/25/10/25/5) mà Kịch bản v1 tự đề xuất. "Game" 20% và "Pitching"
+ * 20% được ánh xạ lại cho đúng nội dung 2 Mùa × 6 vòng + Đại hội Cổ đông. Xem RUBRIC_GAME_BREAKDOWN
+ * cho chi tiết bên trong 20% game. */
 export const RUBRIC_COURSE = [
+	{
+		id: "disc",
+		name: "Thảo luận / chuyên cần",
+		weight: 10,
+		note: "Đúng đề cương. Điểm danh + phát biểu debrief + đóng góp vai trò. Thầy Phan Anh Tú chốt: mỗi lần phát biểu được 1 điểm (~1%).",
+		clos: "CO11, CO12",
+	},
+	{
+		id: "game",
+		name: "Điểm chơi mô phỏng — 2 Mùa × 6 vòng",
+		weight: 20,
+		note: "Nhật ký quyết định hằng tuần + Sơ kết Mùa 1 + Mức tiến bộ Mùa 2 + Vòng Chung kết (xem RUBRIC_GAME_BREAKDOWN). Thầy Phan Anh Tú chốt: 20% điểm cuối kỳ.",
+		clos: "CO1–CO9, CO12",
+	},
+	{
+		id: "pitch",
+		name: "Pitching — Đại hội Cổ đông",
+		weight: 20,
+		note: "Tuần 9–10, 4 phiên A–D: pitch xin vốn theo khung PASTOR. Chấm của Hội đồng đầu tư + tự chấm nóng 4 tiêu chí (khả thi tài chính · độc đáo · đội ngũ · trình bày). Thay cho pitch dự án khởi nghiệp (BMC) của mô hình cũ, giữ đúng 20% Thầy Phan Anh Tú đã chốt.",
+		clos: "CO1–CO12",
+	},
+	{
+		id: "exam",
+		name: "Thi cuối kỳ",
+		weight: 50,
+		note: "Giữ nguyên theo quy định CTU. Hình thức: trắc nghiệm trên máy, kết hợp câu hỏi mở. Game không thay thế thi — câu thi có thể lấy tình huống từ 12 vòng (2 mùa).",
+		clos: "CO1–CO9, CO11, CO12",
+	},
+];
+/** Chi tiết bên trong 20% "game" — 4 mốc của mô hình 2 Mùa × 6 vòng, quy đổi để tổng đúng 20. */
+export const RUBRIC_GAME_BREAKDOWN = [
 	{
 		id: "journal",
 		name: "Nhật ký quyết định hằng tuần",
-		weight: 15,
+		pct: 8,
+		of: 20,
 		note: "Tuần 2–8 (cả Mùa 1 và Mùa 2). Căn cứ: Nhật ký đội trong game — giả định, quyết định, kết quả, sai lệch, bài học.",
-		clos: "CO9, CO11, CO12",
 	},
 	{
 		id: "midterm",
 		name: "Sơ kết Mùa 1 + báo cáo «Chi phí đối thủ»",
-		weight: 10,
+		pct: 4,
+		of: 20,
 		note: "Tuần 5. Báo cáo nộp theo đội, dựa trên tab «Tổng kết» sau 6 vòng Mùa 1.",
-		clos: "CO4, CO9",
 	},
 	{
 		id: "progress",
 		name: "Mức tiến bộ Mùa 2 so với Mùa 1",
-		weight: 10,
+		pct: 4,
+		of: 20,
 		note: "Tuần 8. Căn cứ bảng tổng sắp hai mùa — đo tiến bộ, tách may rủi khỏi năng lực.",
-		clos: "CO9, CO11",
-	},
-	{
-		id: "pitch",
-		name: "Pitch xin vốn tại Đại hội Cổ đông",
-		weight: 25,
-		note: "Tuần 9–10, 4 phiên A–D. Chấm của Hội đồng đầu tư + tự chấm nóng 4 tiêu chí (khả thi tài chính · độc đáo · đội ngũ · trình bày).",
-		clos: "CO1–CO12",
 	},
 	{
 		id: "final-round",
 		name: "Vòng Chung kết + xếp hạng giải đấu",
-		weight: 10,
+		pct: 4,
+		of: 20,
 		note: "Tuần 11, buổi A. Két sắt khởi điểm = vốn Hội đồng đã cấp ở Phiên D. Căn cứ kết quả vòng chung kết.",
-		clos: "CO1–CO9",
-	},
-	{
-		id: "exam",
-		name: "Thi kết thúc học phần trên máy",
-		weight: 25,
-		note: "Tuần 12. Ván cá nhân 6 vòng nhịp nhanh (42 phút) + bài phân tích viết trên máy (60 phút). ⚠️ Khác quy định CTU 50% đã biết trước đó — cần xác nhận lại.",
-		clos: "CO1–CO9, CO11, CO12",
-	},
-	{
-		id: "survey",
-		name: "Khảo sát trước–sau và chuyên cần",
-		weight: 5,
-		note: "Tuần 1 và Tuần 11. Phiếu khảo sát + điểm danh.",
-		clos: "CO12",
 	},
 ];
 /** Giải phẫu pitch 7 phút theo vai — Đại hội Cổ đông, Tuần 9–10 (Kịch bản v1, Mục V). */
@@ -1031,7 +1038,7 @@ export const CHECKS = [
 			},
 			{
 				id: "rubric",
-				label: "In / chiếu rubric 7 phần theo Kịch bản v1 — nhớ đây là đề xuất CHƯA đối chiếu với đề cương chính thức (đặc biệt trọng số thi 25% khác 50% đã biết).",
+				label: "In / chiếu rubric 10 / 20 / 20 / 50 và cách quy đổi điểm game (20%) + pitching Đại hội Cổ đông (20%).",
 			},
 			{
 				id: "rolesheet",
@@ -1105,7 +1112,7 @@ export const CHECKS = [
 			},
 			{
 				id: "grade",
-				label: "Ghép điểm cá nhân: discussion riêng, game nhóm ± peer — theo rubric 7 phần (chờ đối chiếu đề cương).",
+				label: "Ghép điểm cá nhân: discussion riêng, game nhóm ± peer — theo rubric 10 / 20 / 20 / 50.",
 			},
 		],
 	},
@@ -1447,6 +1454,11 @@ export const DIFFS = [
 		from: "1 mùa 6 vòng (tuần 3–8) + pitch dự án khởi nghiệp (BMC, tuần 9–10, chung 1 dự án với game) + thu hoạch Ch.9–11 (tuần 11) + rubric 10/20/20/50",
 		to: "2 Mùa × 6 vòng (Mùa 1 tuần 2–4, sơ kết+đổi vai tuần 5, Mùa 2 tuần 6–8) + Đại hội Cổ đông pitch XIN VỐN 4 phiên (tuần 9–10, khung PASTOR, checklist 12 mục) + Vòng Chung kết dùng vốn Hội đồng cấp + Tổng kết so 2 mùa (tuần 11) + rubric 7 phần mới (15/10/10/25/10/25/5)",
 		why: "Áp dụng «Kịch bản BizOn hiệu chỉnh bản v1» (06/9/2026) do Hương soạn riêng cho app tự quản lý lớp của Thầy Phan Anh Tú, theo yêu cầu thay thế toàn bộ mô hình cũ. ⚠️ Rubric 7 phần trong Kịch bản v1 tự nhận là ĐỀ XUẤT CHƯA đối chiếu với đề cương chi tiết học phần đã ban hành, và khác cơ cấu 10/20/20/50 (đặc biệt thi 25% thay vì 50%) Thầy Phan Anh Tú đã chốt trước đó qua Zalo — cần xác nhận lại trước khi dùng để chấm điểm thật. Vai trò thứ 6 trong đội đổi tên từ «Phân tích» thành «CDO» theo đúng Kịch bản v1.",
+	},
+	{
+		from: "Rubric 7 phần mới (15/10/10/25/10/25/5) đề xuất từ Kịch bản v1 — chưa đối chiếu đề cương",
+		to: "10/20/20/50 (đã chốt): thảo luận 10% + game 20% (nhật ký + sơ kết Mùa 1 + tiến bộ Mùa 2 + Vòng Chung kết) + pitching 20% (Đại hội Cổ đông) + thi cuối kỳ 50%",
+		why: "Hương xác nhận lại trực tiếp (07/9/2026): giữ đúng cơ cấu 10/20/20/50 Thầy Phan Anh Tú đã chốt qua Zalo, không dùng bảng 7 phần tự đề xuất của Kịch bản v1. \"Game\" 20% và \"Pitching\" 20% được ánh xạ lại cho đúng nội dung mới (2 Mùa × 6 vòng, Đại hội Cổ đông) thay vì đổi trọng số. Xem RUBRIC_GAME_BREAKDOWN cho cách chia 20% game thành 4 mốc.",
 	},
 ];
 export const LINKS = {

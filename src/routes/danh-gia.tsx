@@ -6,7 +6,7 @@ import {
   PILOT_THRESHOLDS,
   PITCH_TIMING,
   RUBRIC_COURSE,
-  RUBRIC_COURSE_CAVEAT,
+  RUBRIC_GAME_BREAKDOWN,
   RUBRIC_TEAM,
   SESSION_RUBRIC,
   SURVEYS,
@@ -17,15 +17,19 @@ export const Route = createFileRoute("/danh-gia")({ component: GradePage });
 
 function GradePage() {
   const total = RUBRIC_COURSE.reduce((n, r) => n + r.weight, 0);
+  const gameSum = RUBRIC_GAME_BREAKDOWN.reduce((n, r) => n + r.pct, 0);
   return (
     <div className="space-y-10">
       <header className="space-y-2">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-          Kịch bản BizOn hiệu chỉnh bản v1 · Mục VII
+          Đã chốt · Thầy Phan Anh Tú (Zalo) · Hương xác nhận lại 07/9/2026
         </p>
-        <h1 className="text-3xl font-semibold text-ink">Đánh giá — rubric 7 phần (tổng {total}%)</h1>
-        <p className="max-w-2xl rounded-xl border border-amber-300/60 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900 dark:bg-amber-950/20 dark:text-amber-200">
-          ⚠️ {RUBRIC_COURSE_CAVEAT}
+        <h1 className="text-3xl font-semibold text-ink">Đánh giá khớp 10 / 20 / 20 / 50 (tổng {total}%)</h1>
+        <p className="max-w-2xl text-sm text-muted-foreground">
+          10% thảo luận/chuyên cần · 20% điểm chơi mô phỏng (2 Mùa × 6 vòng) · 20% pitching tại Đại
+          hội Cổ đông (thay pitch dự án khởi nghiệp cũ) · 50% thi cuối kỳ giữ nguyên quy định CTU.
+          Đây là cơ cấu đã chốt — không dùng bảng 7 phần (15/10/10/25/10/25/5) mà Kịch bản v1 tự đề
+          xuất trước đó.
         </p>
       </header>
 
@@ -38,6 +42,33 @@ function GradePage() {
             <p className="mt-3 text-xs text-faint">{r.clos}</p>
           </article>
         ))}
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Chi tiết bên trong 20% điểm game</h2>
+        <p className="text-sm text-muted-foreground">
+          4 mốc của mô hình 2 Mùa × 6 vòng, quy đổi để tổng đúng {gameSum}/20.
+        </p>
+        <div className="overflow-hidden rounded-xl border border-border bg-card">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
+              <tr>
+                <th className="px-4 py-3 font-medium">Thành phần</th>
+                <th className="px-4 py-3 font-medium">%</th>
+                <th className="hidden px-4 py-3 font-medium md:table-cell">Căn cứ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {RUBRIC_GAME_BREAKDOWN.map((r) => (
+                <tr key={r.id} className="border-t border-border align-top">
+                  <td className="px-4 py-3 font-medium">{r.name}</td>
+                  <td className="px-4 py-3 tabular-nums">{r.pct}</td>
+                  <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{r.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section className="space-y-3">
@@ -99,7 +130,7 @@ function GradePage() {
         <div>
           <h2 className="text-xl font-semibold text-ink">Rubric đội &amp; cá nhân — 4 mức</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 7 phần ở trên). Từ bộ
+            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 10/20/20/50 ở trên). Từ bộ
             hồ sơ triển khai BizOn Bật Nghiệp 2026.
           </p>
         </div>
