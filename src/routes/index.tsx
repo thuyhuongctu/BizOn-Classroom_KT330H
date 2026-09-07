@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { DeepMindHero } from "@/components/DeepMindHero";
 import { LuminaStage } from "@/components/music/LuminaStage";
+import { LuminaTour } from "@/components/LuminaTour";
 import { FoundersIntro } from "@/components/FoundersIntro";
 import { useT } from "@/lib/i18n";
 import { nextSession, teachingWeekOf, WEEK_CALENDAR } from "@/lib/calendar";
@@ -22,44 +24,41 @@ function Home() {
 
   return (
     <div className="space-y-12">
-      <header className="space-y-5">
-        <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
-          {t("Ghi chú giảng dạy · Khoa Kinh tế · ĐH Cần Thơ", "Teaching notes · Faculty of Economics · Can Tho University")}
-        </p>
-        <h1 className="max-w-3xl font-display text-[2.15rem] font-semibold leading-[1.15] text-ink sm:text-5xl">
-          {t(
-            "Triển khai BizOn Bật Nghiệp đúng vào KT330H, không phải một game khởi nghiệp chung.",
-            "Rolling out BizOn Bật Nghiệp inside KT330H itself — not a generic entrepreneurship game.",
-          )}
-        </h1>
-        <p className="max-w-2xl text-base text-muted-foreground">
-          {t(
-            "Học phần Khởi sự doanh nghiệp, NH 2026–2027 HK1 (07/9–20/12). Sáu chu kỳ, năm vai trò, ba đối thủ AI, nhật ký SEC — thầy Phan Anh Tú dẫn học thuật, Lumina đồng hành trên từng vòng.",
-            "Entrepreneurship course, AY 2026–2027 Term 1 (Sep 7 – Dec 20). Six cycles, five roles, three AI rivals, an SEC decision log — Prof. Phan Anh Tú leads the academics, Lumina rides along every round.",
-          )}
-        </p>
-        <div className="flex flex-wrap gap-2">
-          <Button asChild>
-            <Link to="/lich">
-              {t("Xem lịch 11 tuần", "View the 11-week calendar")} <ArrowRight />
-            </Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link to="/checklist">{t("Checklist trước thứ Hai", "Monday prep checklist")}</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <a href={LINKS.game} target="_blank" rel="noreferrer">
-              {t("Mở game", "Open the game")} <ExternalLink />
-            </a>
-          </Button>
-        </div>
-      </header>
+      <LuminaTour />
+      <DeepMindHero
+        eyebrow={t("Ghi chú giảng dạy · Khoa Kinh tế · ĐH Cần Thơ", "Teaching notes · Faculty of Economics · Can Tho University")}
+        title={t(
+          "Triển khai BizOn Bật Nghiệp đúng vào KT330H, không phải một game khởi nghiệp chung.",
+          "Rolling out BizOn Bật Nghiệp inside KT330H itself — not a generic entrepreneurship game.",
+        )}
+        lede={t(
+          "Học phần Khởi sự doanh nghiệp, NH 2026–2027 HK1 (07/9–20/12). Sáu chu kỳ, năm vai trò, ba đối thủ AI, nhật ký SEC — thầy Phan Anh Tú dẫn học thuật, Lumina đồng hành trên từng vòng.",
+          "Entrepreneurship course, AY 2026–2027 Term 1 (Sep 7 – Dec 20). Six cycles, five roles, three AI rivals, an SEC decision log — Prof. Phan Anh Tú leads the academics, Lumina rides along every round.",
+        )}
+        actions={
+          <>
+            <Button asChild className="bg-white text-[#07080a] hover:bg-white/90">
+              <Link to="/lich">
+                {t("Xem lịch 11 tuần", "View the 11-week calendar")} <ArrowRight />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="border-white/30 bg-transparent text-white hover:bg-white/10">
+              <Link to="/checklist">{t("Checklist trước thứ Hai", "Monday prep checklist")}</Link>
+            </Button>
+            <Button asChild variant="ghost" className="text-white hover:bg-white/10">
+              <a href={LINKS.game} target="_blank" rel="noreferrer">
+                {t("Mở game", "Open the game")} <ExternalLink />
+              </a>
+            </Button>
+          </>
+        }
+      />
 
       <FoundersIntro />
 
       <LuminaStage />
 
-      <section className="rounded-xl border border-terracotta/30 bg-card p-5 shadow-soft sm:p-6">
+      <section data-tour="next-session" className="rounded-xl border border-terracotta/30 bg-card p-5 shadow-soft sm:p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="text-[11px] uppercase tracking-wider text-terracotta">
@@ -228,7 +227,7 @@ function Home() {
         </p>
       </section>
 
-      <section className="space-y-4">
+      <section data-tour="calendar" className="space-y-4">
         <div>
           <h2 className="text-xl font-semibold text-ink">{t("Lịch 11 tuần — ngày thật", "11-week calendar — real dates")}</h2>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -280,7 +279,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="space-y-4">
+      <section data-tour="cycles" className="space-y-4">
         <div>
           <h2 className="text-xl font-semibold text-ink">
             {t("2 Mùa × 6 vòng · Cần Thơ đến Hà Nội", "2 seasons × 6 rounds · Cần Thơ to Hà Nội")}

@@ -41,6 +41,42 @@
   --shadow-soft: 0 1px 0 rgba(28, 25, 20, 0.04), 0 8px 24px rgba(28, 25, 20, 0.06);
 }
 
+/* Manual light/dark toggle — lib/theme.ts sets data-theme on <html>. Reuse
+   the `dark:` variant against that attribute instead of the OS preference,
+   so a class like `dark:bg-card` still works if ever needed, while most of
+   the app just relies on the --color-* custom properties below flipping. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+html[data-theme="dark"] {
+  --color-background: #12140f;
+  --color-foreground: #ede9db;
+  --color-card: #1b1e17;
+  --color-card-foreground: #ede9db;
+  --color-popover: #1b1e17;
+  --color-popover-foreground: #ede9db;
+  --color-primary: #4fd3ae;
+  --color-primary-foreground: #0b1a15;
+  --color-secondary: #272a1f;
+  --color-secondary-foreground: #ede9db;
+  --color-muted: #23261b;
+  --color-muted-foreground: #a8ae9e;
+  --color-accent: #253a30;
+  --color-accent-foreground: #dce8e3;
+  --color-destructive: #e0898f;
+  --color-destructive-foreground: #2a0d0d;
+  --color-border: #333726;
+  --color-input: #333726;
+  --color-ring: #4fd3ae;
+  --color-ink: #ede9db;
+  --color-paper: #12140f;
+  --color-terracotta: #e0985f;
+  --color-ok: #4fd3ae;
+  --color-warn: #e0985f;
+  --color-faint: #8f9686;
+  --color-sunken: #1f2317;
+  color-scheme: dark;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -86,6 +122,39 @@
 
   input[type="range"] {
     accent-color: var(--color-primary);
+  }
+}
+
+/* DeepMind-style hero band — dark, minimal, a slow CSS-only gradient drift.
+   Always dark regardless of the page's own light/dark toggle, same as the
+   dramatic full-bleed hero on the KT330H & KT338 overview page. */
+.dm-hero {
+  position: relative;
+  overflow: hidden;
+  background: #07080a;
+  color: #fff;
+}
+.dm-hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 60% at 18% 15%, rgba(79, 211, 174, 0.38), transparent 60%),
+    radial-gradient(50% 55% at 82% 25%, rgba(194, 98, 42, 0.3), transparent 60%),
+    radial-gradient(70% 65% at 50% 105%, rgba(138, 111, 209, 0.28), transparent 60%),
+    #07080a;
+  animation: dm-drift 20s ease-in-out infinite alternate;
+}
+@keyframes dm-drift {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.1) translate(-2%, 1%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dm-hero__bg {
+    animation: none;
   }
 }
 

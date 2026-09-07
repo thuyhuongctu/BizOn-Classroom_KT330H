@@ -8,8 +8,10 @@ import {
   LayoutDashboard,
   Menu,
   MessageSquareText,
+  Moon,
   Music2,
   Stamp,
+  Sun,
   Timer,
   Users,
   X,
@@ -18,9 +20,11 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { PlayerDock } from "@/components/music/PlayerDock";
 import { CharacterPair } from "@/components/CharacterPair";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { useLangStore, useT } from "@/lib/i18n";
 import { CLASSES } from "@/lib/plan-data";
 import { usePlanStore } from "@/lib/store";
+import { useThemeStore } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -54,6 +58,28 @@ function LangToggle({ className }: { className?: string }) {
   );
 }
 
+function ThemeToggle({ className }: { className?: string }) {
+  const theme = useThemeStore((s) => s.theme);
+  const toggle = useThemeStore((s) => s.toggle);
+  return (
+    <Button
+      type="button"
+      variant="outline"
+      size="icon"
+      onClick={toggle}
+      aria-label={theme === "dark" ? "Chuyển sang giao diện sáng" : "Chuyển sang giao diện tối"}
+      className={className}
+      title={theme === "dark" ? "Light" : "Dark"}
+    >
+      {theme === "dark" ? (
+        <Sun className="size-4" strokeWidth={1.75} />
+      ) : (
+        <Moon className="size-4" strokeWidth={1.75} />
+      )}
+    </Button>
+  );
+}
+
 export function AppShell({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const classKey = usePlanStore((s) => s.classKey);
@@ -67,6 +93,9 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => {
     void useLangStore.persist.rehydrate();
+  }, []);
+  useEffect(() => {
+    void useThemeStore.persist.rehydrate();
   }, []);
 
   return (
@@ -84,12 +113,15 @@ export function AppShell({ children }: { children: ReactNode }) {
               {t("Kế hoạch triển khai · HK1 07/9–20/12", "Rollout plan · Fall term 07/9–20/12")}
             </p>
           </div>
-          <LangToggle className="shrink-0" />
+          <div className="flex shrink-0 gap-1.5">
+            <ThemeToggle />
+            <LangToggle />
+          </div>
         </div>
         <div className="px-5 pb-3">
           <CharacterPair />
         </div>
-        <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3">
+        <nav data-tour="nav" className="flex flex-1 flex-col gap-0.5 overflow-y-auto px-3">
           {NAV.map((item) => {
             const active = pathname === item.to;
             const Icon = item.icon;
@@ -144,6 +176,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <p className="text-sm font-semibold">BizOn Classroom</p>
         </div>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <LangToggle />
           <Button
             variant="outline"
@@ -214,6 +247,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <div className="md:pl-[16.5rem]">
         <main className="mx-auto w-full max-w-5xl px-4 py-8 pb-32 md:px-8 md:py-10 md:pb-32">
           {children}
+          <SiteFooter />
         </main>
         <PlayerDock />
       </div>

@@ -18,7 +18,8 @@ export const Route = createRootRoute({
         content:
           "Kế hoạch triển khai BizOn Bật Nghiệp 2026 cho học phần KT330H Khởi sự doanh nghiệp, NH 2026–2027 HK1.",
       },
-      { name: "theme-color", content: "#165a4c" },
+      { name: "theme-color", content: "#165a4c", media: "(prefers-color-scheme: light)" },
+      { name: "theme-color", content: "#12140f", media: "(prefers-color-scheme: dark)" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -56,6 +57,13 @@ export const Route = createRootRoute({
       <html lang="vi" className="antialiased" suppressHydrationWarning>
         <head>
           <HeadContent />
+          <script
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html:
+                'try{var __s=JSON.parse(localStorage.getItem("bizon-kt330h-theme")||"null");if(__s&&__s.state&&__s.state.theme==="dark")document.documentElement.dataset.theme="dark";}catch(e){}',
+            }}
+          />
         </head>
         <body>{body}</body>
       </html>

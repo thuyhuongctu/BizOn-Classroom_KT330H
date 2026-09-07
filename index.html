@@ -8,7 +8,14 @@
       name="description"
       content="Kế hoạch triển khai BizOn Bật Nghiệp 2026 cho học phần KT330H Khởi sự doanh nghiệp, NH 2026–2027 HK1."
     />
-    <meta name="theme-color" content="#165a4c" />
+    <meta name="theme-color" content="#165a4c" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#12140f" media="(prefers-color-scheme: dark)" />
+    <script>
+      try {
+        var __s = JSON.parse(localStorage.getItem("bizon-kt330h-theme") || "null");
+        if (__s && __s.state && __s.state.theme === "dark") document.documentElement.dataset.theme = "dark";
+      } catch (e) {}
+    </script>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
