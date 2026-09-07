@@ -157,23 +157,71 @@ html[data-theme="dark"] {
     animation: none;
   }
 }
-.dm-hero__map {
+/* Nền chìm: bản đồ Việt Nam (phỏng theo #vnmark của EnQuiz). EnQuiz đặt
+   position:fixed + z-index âm vì cả trang có nền trong suốt/kính mờ; hero ở
+   đây có nền đen đặc nên đặt nổi bên trong hero (giữa nền và chữ) thay vì
+   fixed toàn trang — cùng vị trí ảnh raster cũ từng chiếm. */
+#vnmark {
   position: absolute;
   top: 50%;
-  right: -4%;
+  right: -2%;
   transform: translateY(-50%);
-  width: 46%;
-  max-width: 480px;
-  opacity: 0.18;
-  filter: grayscale(1) brightness(1.7);
-  mix-blend-mode: screen;
+  width: min(30vw, 380px);
+  color: #fff;
+  opacity: 0.14;
   pointer-events: none;
 }
+#vnmark svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+#vnmark .lh-halo {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #vnmark .lh-light {
+    animation: lhblink 1.8s ease-in-out infinite;
+  }
+  #vnmark .lh-halo {
+    animation: lhhalo 1.8s ease-in-out infinite;
+  }
+  #vnmark .lh:nth-of-type(2) .lh-light,
+  #vnmark .lh:nth-of-type(2) .lh-halo {
+    animation-delay: 0.45s;
+  }
+  #vnmark .lh:nth-of-type(3) .lh-light,
+  #vnmark .lh:nth-of-type(3) .lh-halo {
+    animation-delay: 0.9s;
+  }
+  #vnmark .lh:nth-of-type(4) .lh-light,
+  #vnmark .lh:nth-of-type(4) .lh-halo {
+    animation-delay: 1.35s;
+  }
+}
+@keyframes lhblink {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes lhhalo {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
 @media (max-width: 640px) {
-  .dm-hero__map {
-    width: 78%;
-    right: -22%;
-    opacity: 0.13;
+  #vnmark {
+    width: 70%;
+    right: -18%;
+    opacity: 0.1;
   }
 }
 
