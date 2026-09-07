@@ -71,7 +71,7 @@ function Home() {
             </p>
             <h2 className="mt-1 text-xl font-semibold text-ink">
               {weekNow === 0
-                ? t("Còn weekend để chạy thử 6 vòng", "Weekend left to test-run all 6 cycles")
+                ? t("Còn weekend để chạy thử đủ 12 vòng (2 Mùa)", "Weekend left to test-run all 12 rounds (2 seasons)")
                 : next
                   ? t(`Buổi tới · ${next.date.label}`, `Next session · ${next.date.label}`)
                   : t("Hết buổi trên TKB", "No sessions left on the timetable")}
@@ -115,8 +115,8 @@ function Home() {
         ) : null}
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           {t(
-            "TKB chính thức bản v4 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Pitching dự án khởi nghiệp dồn về tuần 9–10 (không dùng phòng máy).",
-            "Official schedule v4 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one). F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). Startup-project pitching is now concentrated in weeks 9–10 (no computer lab those weeks).",
+            "TKB chính thức bản v4 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Đại hội Cổ đông (pitch xin vốn) dồn về tuần 9–10 (không dùng phòng máy).",
+            "Official schedule v4 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one). F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). The Shareholders' Meeting (fundraising pitch) is now concentrated in weeks 9–10 (no computer lab those weeks).",
           )}
         </p>
       </section>
@@ -179,9 +179,9 @@ function Home() {
           },
           {
             k: t("Đội", "Teams"),
-            v: t(`${CLASSES.F1.teams + CLASSES.F2.teams} đội · 5 vai`, `${CLASSES.F1.teams + CLASSES.F2.teams} teams · 5 roles`),
+            v: t(`${CLASSES.F1.teams + CLASSES.F2.teams} đội · 5–6 vai`, `${CLASSES.F1.teams + CLASSES.F2.teams} teams · 5–6 roles`),
           },
-          { k: t("Lịch", "Calendar"), v: t("11 tuần · 6 chu kỳ", "11 weeks · 6 cycles") },
+          { k: t("Lịch", "Calendar"), v: t("11 tuần · 2 Mùa × 6 vòng", "11 weeks · 2 seasons × 6 rounds") },
         ].map((s) => (
           <div key={s.k} className="rounded-xl border border-border bg-card p-4 shadow-soft">
             <p className="text-[11px] uppercase tracking-wider text-muted-foreground">{s.k}</p>
@@ -210,20 +210,20 @@ function Home() {
         </div>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           <MeetingCard
-            title={t("Buổi 1 trong tuần", "Weekly session 1")}
+            title={t("Buổi A trong tuần", "Weekly session A")}
             m={klass.meetings.first}
-            tag={t("Lý thuyết (mặc định)", "Theory (default)")}
+            tag={t("2 tiết lý thuyết + 1 tiết game", "2 theory periods + 1 game period")}
           />
           <MeetingCard
-            title={t("Buổi 2 trong tuần", "Weekly session 2")}
+            title={t("Buổi B trong tuần", "Weekly session B")}
             m={klass.meetings.second}
-            tag={t("Game / thực hành (mặc định)", "Game / practice (default)")}
+            tag={t("2 tiết lý thuyết + 1 tiết game", "2 theory periods + 1 game period")}
           />
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
           {t(
-            "Đổi thứ tự buổi game ở trang Lớp & đội. Khuyến nghị: lý thuyết trước, game sau — cùng tuần với chương Mariotti.",
-            "Change the game-session order on the Class & Teams page. Recommended: theory first, game second — same week as the Mariotti chapter.",
+            "Cả 2 buổi/tuần đều có cấu trúc như nhau — tiết game cuối mỗi buổi chơi 1 vòng riêng (2 vòng/tuần ở Tuần 2–4 và 6–8).",
+            "Both weekly sessions share the same structure — each session's final game period plays its own round (2 rounds/week in weeks 2–4 and 6–8).",
           )}
         </p>
       </section>
@@ -283,32 +283,33 @@ function Home() {
       <section className="space-y-4">
         <div>
           <h2 className="text-xl font-semibold text-ink">
-            {t("Sáu vòng game · Cần Thơ đến Hà Nội", "Six game rounds · Cần Thơ to Hà Nội")}
+            {t("2 Mùa × 6 vòng · Cần Thơ đến Hà Nội", "2 seasons × 6 rounds · Cần Thơ to Hà Nội")}
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
             {t(
-              "Đúng bản đồ chinh phục và biến cố trong engine. Mariotti là lớp mở rộng sau khi chơi — không thay tên tỉnh hay sự kiện.",
-              "Matches the exact conquest map and events in the engine. Mariotti is an added teaching layer after play — province names and events are never renamed.",
+              "Mùa 2 lặp lại đúng bản đồ chinh phục và biến cố trong engine của Mùa 1 (vai trò đã đổi từ tuần 5) — không thay tên tỉnh hay sự kiện.",
+              "Season 2 replays the exact same conquest map and engine events as Season 1 (roles rotated from week 5) — province names and events are never renamed.",
             )}
           </p>
           <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
             {CYCLES.map((c, i) => (
-              <li key={c.n} className="flex items-center gap-2">
+              <li key={`${c.season}-${c.n}`} className="flex items-center gap-2">
+                {i === 6 ? <span className="mr-1 text-[10px] uppercase text-muted-foreground">{t("Mùa 2:", "S2:")}</span> : null}
                 <span className="font-medium text-ink">{c.city}</span>
-                {i < CYCLES.length - 1 ? <span className="text-muted-foreground">→</span> : null}
+                {i < CYCLES.length - 1 && i !== 5 ? <span className="text-muted-foreground">→</span> : null}
               </li>
             ))}
           </ol>
         </div>
         <ol className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {CYCLES.map((c) => (
-            <li key={c.n}>
+            <li key={`${c.season}-${c.n}`}>
               <Link
                 to="/lich"
                 className="block h-full rounded-xl border border-border bg-card p-4 shadow-soft transition-colors hover:bg-accent/50"
               >
                 <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
-                  {t("Vòng", "Round")} {c.n} · {t("tuần", "week")} {c.week} · {c.tag}
+                  {t("Mùa", "Season")} {c.season} · {t("Vòng", "Round")} {c.n} · {t("tuần", "week")} {c.week} · {c.tag}
                 </p>
                 <p className="mt-1 font-medium text-ink">{c.city}</p>
                 <p className="mt-0.5 text-sm text-muted-foreground">{c.event}</p>

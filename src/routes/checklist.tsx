@@ -20,8 +20,8 @@ function CheckPage() {
     const lines = [
       `# Kế hoạch triển khai BizOn Bật Nghiệp — KT330H`,
       `${klass.code} · ${klass.classId} · ${klass.students} SV · ${klass.teams} đội`,
-      `Lý thuyết: ${klass.meetings.first.day} tiết ${klass.meetings.first.periods} ${klass.meetings.first.room} · ${klass.meetings.first.time}`,
-      `Thực hành: ${klass.meetings.second.day} tiết ${klass.meetings.second.periods} ${klass.meetings.second.room} · ${klass.meetings.second.time}`,
+      `Buổi A: ${klass.meetings.first.day} tiết ${klass.meetings.first.periods} ${klass.meetings.first.room} · ${klass.meetings.first.time}`,
+      `Buổi B: ${klass.meetings.second.day} tiết ${klass.meetings.second.periods} ${klass.meetings.second.room} · ${klass.meetings.second.time}`,
       `Lưu ý F1 Thứ Ba: ${CLASSES.F1.meetings.first.note}`,
       "",
       "## 11 tuần",
@@ -29,8 +29,8 @@ function CheckPage() {
         const d = sessionDates(w.week, klass);
         return [
           `### Tuần ${w.week} · ${fmtRange(w.week)} · ${w.chapter} (${w.cycle})`,
-          `LT: ${d.first.short} ${klass.meetings.first.room} — ${w.theory}`,
-          `TH: ${d.second.short} ${klass.meetings.second.room} — ${w.practice}`,
+          `Buổi A: ${d.first.short} ${klass.meetings.first.room} — ${w.theory}`,
+          `Buổi B: ${d.second.short} ${klass.meetings.second.room} — ${w.practice}`,
           `CLO: ${w.clos.join(", ")}`,
           `Debrief: ${w.debrief}`,
           "",
@@ -51,9 +51,10 @@ function CheckPage() {
         </p>
         <h1 className="text-3xl font-semibold text-ink">Checklist triển khai</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          {done}/{total} mục. Ưu tiên cuối tuần này: chạy thử 6 vòng, Class ID, vốn, rubric, máy từng đội,
-          xác nhận TKB chính thức v4 (F1 Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL tiết 8; F2 phòng máy
-          tính 1 cả 2 buổi). Nghiên cứu chỉ bật khi lớp chạy ổn.
+          {done}/{total} mục. Ưu tiên cuối tuần này: chạy thử đủ 12 vòng (2 Mùa), Class ID, vốn, rubric 7
+          phần (Kịch bản v1, chờ đối chiếu đề cương), máy từng đội, xác nhận TKB chính thức v4 (F1 Thứ Ba
+          104/KT + Phòng máy 3.20 – Nhà học ATL tiết 8; F2 phòng máy tính 1 cả 2 buổi). Nghiên cứu chỉ bật
+          khi lớp chạy ổn.
         </p>
         <div className="h-1.5 overflow-hidden rounded-full bg-muted">
           <div

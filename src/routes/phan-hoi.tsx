@@ -49,25 +49,26 @@ function PhanHoiPage() {
         </p>
         <h1 className="text-3xl font-semibold text-ink">Phản hồi nhóm theo chu kỳ</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          Cùng khung Điểm mạnh / Cần cải / Khái niệm / Kết luận. Điểm nhóm /20; discussion cộng dồn
-          theo thành viên. GV chốt tay thành 10 / 20 / 20 / 50 — không cộng máy.
+          Cùng khung Điểm mạnh / Cần cải / Khái niệm / Kết luận, cho cả 12 vòng (Mùa 1 + Mùa 2).
+          Điểm nhóm /20; discussion cộng dồn theo thành viên. GV chốt tay theo rubric 7 phần (trang
+          Đánh giá) — không cộng máy.
         </p>
       </header>
 
       <div className="flex flex-wrap gap-2">
-        {CYCLES.map((c) => (
+        {CYCLES.map((c, i) => (
           <button
-            key={c.n}
+            key={`${c.season}-${c.n}`}
             type="button"
-            onClick={() => setRound(c.n)}
+            onClick={() => setRound(i + 1)}
             className={cn(
               "rounded-full border px-3 py-1.5 text-xs font-medium",
-              round === c.n
+              round === i + 1
                 ? "border-primary bg-primary text-primary-foreground"
                 : "border-border bg-card",
             )}
           >
-            C{c.n} {c.city}
+            M{c.season}·V{c.n} {c.city}
           </button>
         ))}
       </div>
@@ -81,9 +82,9 @@ function PhanHoiPage() {
           <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
             <tr>
               <th className="px-3 py-2 font-medium">Đội</th>
-              {CYCLES.map((c) => (
-                <th key={c.n} className="px-2 py-2 text-center font-medium">
-                  C{c.n}
+              {CYCLES.map((c, i) => (
+                <th key={`${c.season}-${c.n}`} className="px-2 py-2 text-center font-medium">
+                  M{c.season}V{c.n}
                 </th>
               ))}
               <th className="px-3 py-2 text-right font-medium">TB</th>
@@ -91,7 +92,7 @@ function PhanHoiPage() {
           </thead>
           <tbody>
             {teams.map((t) => {
-              const scores = CYCLES.map((c) => feedbacks[feedbackKey(t.id, c.n)]?.score ?? 0);
+              const scores = CYCLES.map((_c, i) => feedbacks[feedbackKey(t.id, i + 1)]?.score ?? 0);
               const marked = scores.filter((s) => s > 0);
               const avg = marked.length ? marked.reduce((a, b) => a + b, 0) / marked.length : 0;
               return (
@@ -99,7 +100,7 @@ function PhanHoiPage() {
                   <td className="px-3 py-2 font-medium">{t.name}</td>
                   {scores.map((s, i) => (
                     <td
-                      key={CYCLES[i]!.n}
+                      key={`${CYCLES[i]!.season}-${CYCLES[i]!.n}`}
                       className={cn(
                         "px-2 py-2 text-center tabular-nums",
                         i === round - 1 && "bg-accent/50",
@@ -232,7 +233,7 @@ function PhanHoiPage() {
           Sao chép báo cáo chu kỳ {round}
         </Button>
         <Button type="button" variant="outline" onClick={copyFull}>
-          Sao chép cả 6 chu kỳ
+          Sao chép cả 12 vòng
         </Button>
         <Button type="button" variant="ghost" onClick={() => window.print()}>
           In

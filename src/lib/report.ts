@@ -64,7 +64,7 @@ export function buildCycleReport(opts: {
 
   lines.push(
     "",
-    "Ghi chú: điểm chu kỳ là điểm nhóm /20 (tham chiếu ACT). Discussion là điểm cá nhân, góp vào 10% chuyên cần. GV chốt tay thành 10 / 20 / 20 / 50 của đề cương — không cộng máy.",
+    "Ghi chú: điểm chu kỳ là điểm nhóm /20 (tham chiếu ACT). Discussion là điểm cá nhân, góp vào rubric 7 phần (trang Đánh giá) — không cộng máy.",
   );
   return lines.join("\n");
 }
@@ -82,16 +82,15 @@ export function buildFullReport(opts: {
     `${klass.code} · nhóm ${klass.nhom} · Class ID ${klass.classId} · ${klass.students} SV · ${klass.teams} đội`,
     "",
     "Mapping: Excellent = 20.0 · Very good = 19.7 · Good = 19.5 · Quite good = 19.0.",
-    "Process: Discussion 10% (cá nhân) + Game 20% (điểm App quy đổi) + Dự án khởi nghiệp 20% (BMC / pitch).",
-    "Dự kiến — chưa gồm điểm thi cuối kỳ 50%.",
+    "Rubric 7 phần (Kịch bản v1, chờ đối chiếu đề cương chính thức) — xem trang Đánh giá.",
     "",
-    "Score summary — 6 chu kỳ (mỗi cột /20)",
-    ["Đội", "Tên", ...CYCLES.map((c) => `C${c.n}`), "TB"].join("\t"),
+    "Score summary — 12 vòng, 2 Mùa (mỗi cột /20)",
+    ["Đội", "Tên", ...CYCLES.map((c) => `M${c.season}V${c.n}`), "TB"].join("\t"),
   ];
 
   const rows: string[] = [];
   for (const t of opts.teams) {
-    const scores = CYCLES.map((c) => opts.feedbacks[feedbackKey(t.id, c.n)]?.score ?? 0);
+    const scores = CYCLES.map((_c, i) => opts.feedbacks[feedbackKey(t.id, i + 1)]?.score ?? 0);
     const marked = scores.filter((s) => s > 0);
     const avg = marked.length ? marked.reduce((a, b) => a + b, 0) / marked.length : 0;
     rows.push(
@@ -110,7 +109,7 @@ export function buildFullReport(opts: {
     "Đội\tVai\tTên\tDisc\tTB chu kỳ",
   ];
   for (const t of opts.teams) {
-    const scores = CYCLES.map((c) => opts.feedbacks[feedbackKey(t.id, c.n)]?.score ?? 0).filter(
+    const scores = CYCLES.map((_c, i) => opts.feedbacks[feedbackKey(t.id, i + 1)]?.score ?? 0).filter(
       (s) => s > 0,
     );
     const avg = scores.length
@@ -129,11 +128,11 @@ function buildCycleNotes(opts: {
   teams: Team[];
   feedbacks: Record<string, CycleFeedback>;
 }): string {
-  const parts: string[] = ["Chi tiết từng chu kỳ"];
-  for (const c of CYCLES) {
-    parts.push("", `## Chu kỳ ${c.n} · ${c.city} (${c.event})`);
+  const parts: string[] = ["Chi tiết từng vòng"];
+  CYCLES.forEach((c, i) => {
+    parts.push("", `## Mùa ${c.season} · Vòng ${c.n} · ${c.city} (${c.event})`);
     for (const t of opts.teams) {
-      const fb = opts.feedbacks[feedbackKey(t.id, c.n)];
+      const fb = opts.feedbacks[feedbackKey(t.id, i + 1)];
       if (!fb || (!fb.score && !fb.strengths && !fb.improve && !fb.concepts)) continue;
       parts.push(
         `${t.id} ${t.name}: ${fb.score ? `${ratingLabel(fb.score)} ${fb.score.toFixed(1)}` : "—"}`,
@@ -142,33 +141,33 @@ function buildCycleNotes(opts: {
       if (fb.improve) parts.push(`  − ${fb.improve}`);
       if (fb.concepts) parts.push(`  Khái niệm: ${fb.concepts}`);
     }
-  }
+  });
   return parts.join("\n");
 }
 
 export function buildWeekScript(klass: ClassInfo, week: number): string {
   const w = WEEKS.find((x) => x.week === week);
   if (!w) return "";
-  const cycle = CYCLES.find((c) => c.week === week);
+  const cycles = CYCLES.filter((c) => c.week === week);
   const dates = sessionDates(week, klass);
-  const practice = klass.meetings.second;
-  const theory = klass.meetings.first;
+  const buoiB = klass.meetings.second;
+  const buoiA = klass.meetings.first;
   const lines = [
     `KT330H · ${klass.code} · Tuần ${week} · ${fmtRange(week)}`,
     w.chapter,
     `${w.hours} · ${w.textbook}`,
-    `Lý thuyết: ${dates.first.label} tiết ${theory.periods} ${theory.room} · ${theory.time}`,
-    `Thực hành: ${dates.second.label} tiết ${practice.periods} ${practice.room} · ${practice.time}`,
-    theory.note ? `Lưu ý LT: ${theory.note}` : "",
-    practice.note ? `Lưu ý TH: ${practice.note}` : "",
+    `Buổi A: ${dates.first.label} tiết ${buoiA.periods} ${buoiA.room} · ${buoiA.time}`,
+    `Buổi B: ${dates.second.label} tiết ${buoiB.periods} ${buoiB.room} · ${buoiB.time}`,
+    buoiA.note ? `Lưu ý Buổi A: ${buoiA.note}` : "",
+    buoiB.note ? `Lưu ý Buổi B: ${buoiB.note}` : "",
     "",
-    `Chu kỳ: ${w.cycle}${cycle ? ` — ${cycle.city} · ${cycle.event}: ${cycle.goal}` : ""}`,
+    `Chu kỳ: ${w.cycle}`,
     `CLO: ${w.clos.join(", ")}`,
     "",
-    "Buổi lý thuyết",
+    "Buổi A",
     w.theory,
     "",
-    "Buổi thực hành",
+    "Buổi B",
     w.practice,
     "",
     "Giảng viên",
@@ -180,15 +179,16 @@ export function buildWeekScript(klass: ClassInfo, week: number): string {
     `Debrief neo: ${w.debrief}`,
   ];
   if (w.cycleKind === "play") {
-    lines.push("", "Nhịp 150 phút");
+    lines.push("", "Nhịp 50 phút / vòng");
     for (const s of CYCLE_STEPS) {
       lines.push(`${s.minutes}′ ${s.label} — GV: ${s.gv}`);
     }
-    if (cycle) {
+    for (const cycle of cycles) {
       lines.push(
         "",
-        `Biến cố: ${cycle.eventId} · ${cycle.event}`,
-        `Engine: ${cycle.engine}`,
+        `${cycle.buoi === "first" ? "Buổi A" : "Buổi B"} — Mùa ${cycle.season} · Vòng ${cycle.n}: ${cycle.city} · ${cycle.event}`,
+        `Biến cố: ${cycle.eventId} · Engine: ${cycle.engine}`,
+        `Mục tiêu: ${cycle.goal}`,
         `Bẫy vòng này: ${cycle.trap}`,
         `Minh chứng thu: ${cycle.evidence}`,
         `Mở rộng: ${cycle.expand}`,
