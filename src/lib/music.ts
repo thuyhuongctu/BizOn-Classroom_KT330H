@@ -20,9 +20,8 @@ export const TRACKS: Track[] = [
     src: "/audio/bat-nghiep-co-loi.mp3",
     duration: 203,
     durationLabel: "3:23",
-    use: "Mở đầu buổi. Ca khúc chủ đề game, gắn sao trong kho nhạc, nhạc nền chào lớp.",
+    use: "Ca khúc chủ đề game, gắn sao trong kho nhạc, nhạc nền chào lớp.",
     art: "/characters/lumina-ao-dai.webp",
-    featured: true,
     album: "Bật Nghiệp",
   },
   {
@@ -43,8 +42,9 @@ export const TRACKS: Track[] = [
     src: "/audio/huong-on-return.mp3",
     duration: 150,
     durationLabel: "2:30",
-    use: "Nhạc nền khi đội phân tích và chạy Nếu–Thì. Đúng bản game đang phát.",
+    use: "Nhạc chính của app — mở đầu buổi, nền khi đội phân tích và chạy Nếu–Thì.",
     art: "/characters/lumina-nghe-nhac.webp",
+    featured: true,
     album: "Hương on Return",
   },
   {
@@ -71,7 +71,7 @@ export const TRACKS: Track[] = [
   },
 ];
 
-export const FEATURED_ID = "bat-nghiep-co-loi";
+export const FEATURED_ID = "huong-on-return";
 
 export function getTrack(id: string): Track {
   return TRACKS.find((t) => t.id === id) ?? TRACKS[0]!;

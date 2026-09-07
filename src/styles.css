@@ -157,6 +157,25 @@ html[data-theme="dark"] {
     animation: none;
   }
 }
+.dm-hero__map {
+  position: absolute;
+  top: 50%;
+  right: -4%;
+  transform: translateY(-50%);
+  width: 46%;
+  max-width: 480px;
+  opacity: 0.18;
+  filter: grayscale(1) brightness(1.7);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .dm-hero__map {
+    width: 78%;
+    right: -22%;
+    opacity: 0.13;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
