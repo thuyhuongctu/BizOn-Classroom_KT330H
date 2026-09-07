@@ -1,6 +1,7 @@
 {
   "name": "app-builder-workspace",
   "private": true,
+  "homepage": "https://thuyhuongctu.github.io/BizOn-Classroom_KT330H/",
   "sideEffects": false,
   "type": "module",
   "overrides": {
