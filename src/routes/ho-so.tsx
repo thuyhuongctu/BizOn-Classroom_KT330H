@@ -8,6 +8,7 @@ import {
   CONSENT_FORM,
   CYCLES,
   DEBRIEF4,
+  LINKS,
   PEER_ASSESSMENT_NOTE,
   PITCH_GUIDE,
   REFLECTION_PROMPTS,
@@ -202,6 +203,37 @@ function HoSoPage() {
               <li key={p}>· {p}</li>
             ))}
           </ul>
+        </article>
+      </section>
+
+      <section className="grid gap-4 md:grid-cols-2">
+        <article className="rounded-xl border border-border bg-card p-5">
+          <h2 className="font-medium text-ink">Khảo sát đầu khóa</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Làm trước tuần 1 — kiến thức kinh doanh và mức độ tự tin ban đầu. 5–10 phút.
+          </p>
+          <a
+            className="mt-3 inline-block text-sm underline"
+            href={LINKS.entrySurvey}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Làm khảo sát đầu khóa
+          </a>
+        </article>
+        <article className="rounded-xl border border-border bg-card p-5">
+          <h2 className="font-medium text-ink">Khảo sát PEC — tố chất doanh nhân</h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            55 câu tự đánh giá 10 tố chất doanh nhân (PEC/CEFE). Làm đầu và cuối học phần để so sánh.
+          </p>
+          <a
+            className="mt-3 inline-block text-sm underline"
+            href={LINKS.pecSurvey}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Làm khảo sát PEC
+          </a>
         </article>
       </section>
 

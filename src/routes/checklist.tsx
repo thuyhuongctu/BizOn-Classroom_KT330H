@@ -123,6 +123,18 @@ function CheckPage() {
             huong-dan-giang-vien.md
           </a>
         </p>
+        <p className="mt-3 text-sm">
+          Khảo sát đầu khóa (T0 — phát trước tuần 1):{" "}
+          <a className="underline" href={LINKS.entrySurvey} target="_blank" rel="noreferrer">
+            {LINKS.entrySurvey}
+          </a>
+        </p>
+        <p className="text-sm">
+          Khảo sát PEC — tố chất doanh nhân (T0/T2 — đầu và cuối học phần):{" "}
+          <a className="underline" href={LINKS.pecSurvey} target="_blank" rel="noreferrer">
+            {LINKS.pecSurvey}
+          </a>
+        </p>
       </section>
     </div>
   );
