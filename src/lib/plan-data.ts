@@ -1527,7 +1527,7 @@ export const LINKS = {
 	brandPassport: "https://thuyhuongctu.github.io/BizOn/brand-passport.html",
 	benPhuSa: "https://thuyhuongctu.github.io/BizOn/ben-phu-sa.html",
 	enquiz: "https://thuyhuongctu.github.io/EnQuiz/",
-	entrySurvey: "https://kdpjlbqvdlntsfhrmchm.supabase.co/functions/v1/khaosat",
+	entrySurvey: "https://thuyhuongctu.github.io/EnQuiz/khaosat/",
 	pecSurvey: "https://thuyhuongctu.github.io/EnQuiz/khaosat/pec/",
 	resourceDrive: "https://drive.google.com/drive/folders/14occOGp5FsRT2q0xN5lX-ywaFzEx2Yv_?usp=sharing",
 };
@@ -1560,7 +1560,7 @@ export const COMPULSORY_TASKS = [
 	{
 		id: "survey",
 		task: "Hoàn thành khảo sát đầu khóa",
-		instructions: "Mở kdpjlbqvdlntsfhrmchm.supabase.co/functions/v1/khaosat và chọn đúng lớp của mình. Khảo sát ẩn danh, mất khoảng 1 phút, không ảnh hưởng điểm số.",
+		instructions: "Mở thuyhuongctu.github.io/EnQuiz/khaosat/ và chọn đúng lớp của mình. Khảo sát ẩn danh, mất khoảng 1 phút, không ảnh hưởng điểm số.",
 	},
 ];
 
