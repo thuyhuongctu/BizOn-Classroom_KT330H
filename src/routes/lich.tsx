@@ -35,11 +35,12 @@ function LichPage() {
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
           {klass.code} · 11 tuần theo TKB · {fmtRange(week.week)}
         </p>
-        <h1 className="text-3xl font-semibold text-ink">Lịch 11 tuần · 2 Mùa × 6 vòng, thuyết trình Dự án tuần 9</h1>
+        <h1 className="text-3xl font-semibold text-ink">Lịch 11 tuần · 2 Mùa × 6 vòng, Đại hội Cổ đông tuần 9–10</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
           Tuần 2–4 và 6–8 chạy đúng bản đồ Cần Thơ → Hà Nội và 6 biến cố engine, hai lượt (Mùa 1 rồi Mùa
-          2) với vai trò đổi ở tuần 5. Tuần 9 buổi A là thuyết trình Dự án khởi nghiệp; Tuần 9 buổi B –
-          Tuần 11 buổi A là lý thuyết Chương 9–12; Tuần 11 buổi B là Tổng kết + ôn tập.
+          2) với vai trò đổi ở tuần 5. Tuần 9–10 là Đại hội Cổ đông gọi vốn (khung PASTOR, không phòng
+          máy); Tuần 11 buổi A là BizOn Grand Final, buổi B là Tổng kết + họp phổ biến kỳ thi. Song song
+          suốt 12 tuần còn có nhánh Dự án khởi nghiệp riêng — mỗi tuần một sản phẩm bàn giao.
         </p>
         <p className="max-w-2xl text-xs leading-relaxed text-muted-foreground">{OUTLINE_NOTE}</p>
       </header>
@@ -95,9 +96,21 @@ function LichPage() {
             </p>
             <h2 className="mt-1 text-xl font-semibold text-ink">{week.chapter}</h2>
             <p className="mt-1 text-sm text-muted-foreground">{week.textbook}</p>
+            {week.caseStudy ? (
+              <p className="mt-1 text-xs font-medium text-primary">{week.caseStudy}</p>
+            ) : null}
           </div>
           <Badge variant={KIND[week.cycleKind]}>{week.cycle}</Badge>
         </div>
+
+        {week.deliverable ? (
+          <div className="mt-4 rounded-lg border border-primary/30 bg-primary/5 p-4">
+            <p className="text-[11px] uppercase tracking-wider text-primary">
+              Sản phẩm bàn giao · Dự án khởi nghiệp
+            </p>
+            <p className="mt-1 text-sm font-medium text-ink">{week.deliverable}</p>
+          </div>
+        ) : null}
 
         {cycles.length ? (
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -151,7 +164,7 @@ function LichPage() {
 
         {backup ? (
           <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
-            Plan B nếu game/wifi sập: {backup.unit} — {backup.cases} (CLO {backup.clos}).
+            Plan B nếu game/wifi sập: {backup.unit} — {backup.cases} ({backup.clos}).
           </p>
         ) : null}
 

@@ -2,14 +2,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Badge } from "@/components/ui/badge";
 import {
   CLOS,
+  MVP_REQUIREMENTS,
+  PASTOR,
   PEER_ITEMS,
   PILOT_THRESHOLDS,
+  PITCH_MUST_KNOW_FIGURES,
+  PITCH_QA_MINUTES,
+  PITCH_SELF_ASSESS_MINUTES,
   PITCH_TIMING,
+  PRE_PITCH_CHECKLIST,
+  PRESENTATION_GUIDELINES,
+  RECOMMENDED_RESOURCES,
   RUBRIC_COURSE,
   RUBRIC_GAME_BREAKDOWN,
   RUBRIC_TEAM,
   SESSION_RUBRIC,
   SURVEYS,
+  USER_TESTING_GUIDE,
+  USER_TESTING_REPORT_STRUCTURE,
   WEEKS,
 } from "@/lib/plan-data";
 
@@ -22,14 +32,13 @@ function GradePage() {
     <div className="space-y-10">
       <header className="space-y-2">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-          Đã chốt · Thầy Phan Anh Tú (Zalo) · Hương xác nhận lại 07/9/2026
+          Đề cương chính thức · PGS.TS. Phan Anh Tú · ban hành 14/9/2026
         </p>
-        <h1 className="text-3xl font-semibold text-ink">Đánh giá khớp 10 / 20 / 20 / 50 (tổng {total}%)</h1>
+        <h1 className="text-3xl font-semibold text-ink">Đánh giá 8 cấu phần (tổng {total}%)</h1>
         <p className="max-w-2xl text-sm text-muted-foreground">
-          10% thảo luận/chuyên cần · 20% điểm chơi mô phỏng (2 Mùa × 6 vòng) · 20% pitching là
-          thuyết trình Dự án khởi nghiệp (business plan) của đội · 50% thi cuối kỳ giữ nguyên quy
-          định CTU. Đây là cơ cấu đã chốt — không dùng bảng 7 phần (15/10/10/25/10/25/5) mà Kịch
-          bản v1 tự đề xuất trước đó.
+          10% thảo luận/chuyên cần · 15% giải đấu BizOn + 5% ôn tập EnQuiz · 20% Dự án khởi nghiệp
+          (Lean Canvas 5% + MVP 5% + Pitch deck &amp; Demo Day 7% + Portfolio 3%) · 50% thi cuối kỳ.
+          Đây là cơ cấu chính thức mục 6 đề cương — thay thế cơ cấu 10/20/20/50 trước đó.
         </p>
       </header>
 
@@ -45,9 +54,9 @@ function GradePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-ink">Chi tiết bên trong 20% điểm game</h2>
+        <h2 className="text-xl font-semibold text-ink">Chi tiết bên trong 15% điểm BizOn</h2>
         <p className="text-sm text-muted-foreground">
-          4 mốc của mô hình 2 Mùa × 6 vòng, quy đổi để tổng đúng {gameSum}/20.
+          3 mốc của mô hình 2 Mùa × 6 vòng + BizOn Grand Final, quy đổi để tổng đúng {gameSum}/15.
         </p>
         <div className="overflow-hidden rounded-xl border border-border bg-card">
           <table className="w-full text-left text-sm">
@@ -72,9 +81,10 @@ function GradePage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold text-ink">Giải phẫu thuyết trình 8 phút theo vai — Dự án khởi nghiệp</h2>
+        <h2 className="text-xl font-semibold text-ink">Giải phẫu bài gọi vốn 7 phút theo vai — Đại hội Cổ đông</h2>
         <p className="text-sm text-muted-foreground">
-          Kỷ luật thời gian: quá giờ 30 giây trừ ngay 5 điểm, đồng hồ reo và phần trình bày bị ngắt.
+          Sau 7 phút trình bày: 8 phút Hội đồng đầu tư và lớp chất vấn, rồi 3 phút tự đánh giá nóng. Kỷ
+          luật thời gian: quá giờ 30 giây trừ ngay 5 điểm, đồng hồ reo và phần trình bày bị ngắt.
         </p>
         <div className="overflow-hidden rounded-xl border border-border bg-card">
           <table className="w-full text-left text-sm">
@@ -96,6 +106,37 @@ function GradePage() {
             </tbody>
           </table>
         </div>
+        <p className="text-sm text-muted-foreground">
+          Sau 7 phút trình bày: {PITCH_QA_MINUTES} phút Hội đồng đầu tư và lớp chất vấn, rồi{" "}
+          {PITCH_SELF_ASSESS_MINUTES} phút tự đánh giá nóng trước khi công bố mức cấp vốn. Mọi thành
+          viên đội phải thuộc lòng: {PITCH_MUST_KNOW_FIGURES.join(", ").toLowerCase()}.
+        </p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Khung PASTOR</h2>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {PASTOR.map((p) => (
+            <div key={p.letter} className="rounded-xl border border-border bg-card p-4">
+              <p className="text-2xl font-display font-semibold text-primary">
+                {p.letter} <span className="text-sm font-normal text-muted-foreground">{p.word}</span>
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">{p.vi}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Checklist 12 mục trước khi lên bục gọi vốn</h2>
+        <ol className="grid gap-2 sm:grid-cols-2">
+          {PRE_PITCH_CHECKLIST.map((item, i) => (
+            <li key={i} className="flex gap-2 rounded-lg border border-border bg-card p-3 text-sm">
+              <span className="font-medium tabular-nums text-primary">{i + 1}.</span>
+              <span className="text-muted-foreground">{item}</span>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="space-y-3">
@@ -130,7 +171,7 @@ function GradePage() {
         <div>
           <h2 className="text-xl font-semibold text-ink">Rubric đội &amp; cá nhân — 4 mức</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 10/20/20/50 ở trên). Từ bộ
+            Chấm chi tiết hơn khi cần minh chứng theo tiêu chí (ngoài rubric 8 cấu phần ở trên). Từ bộ
             hồ sơ triển khai BizOn Bật Nghiệp 2026.
           </p>
         </div>
@@ -208,6 +249,78 @@ function GradePage() {
                 {c.text}
               </span>
             </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Phụ lục 1 — Yêu cầu MVP</h2>
+        <p className="text-sm text-muted-foreground">{MVP_REQUIREMENTS.intro}</p>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <div className="rounded-xl border border-border bg-card p-4">
+            <p className="font-medium text-ink">Định dạng chấp nhận</p>
+            <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+              {MVP_REQUIREMENTS.formats.map((f) => (
+                <li key={f}>• {f}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-xl border border-border bg-card p-4">
+            <p className="font-medium text-ink">Yêu cầu bắt buộc</p>
+            <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+              {MVP_REQUIREMENTS.requirements.map((r) => (
+                <li key={r}>• {r}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Phụ lục 2 — Tổ chức kiểm thử người dùng</h2>
+        <p className="text-sm text-muted-foreground">Cỡ mẫu: {USER_TESTING_GUIDE.sampleSize}</p>
+        <ul className="space-y-1 text-sm text-muted-foreground">
+          {USER_TESTING_GUIDE.methods.map((m) => (
+            <li key={m}>• {m}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Phụ lục 3 — Cấu trúc báo cáo kiểm thử người dùng (5–7 trang)</h2>
+        <div className="overflow-hidden rounded-xl border border-border bg-card">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-muted/70 text-[11px] uppercase tracking-wider text-muted-foreground">
+              <tr>
+                <th className="px-4 py-3 font-medium">Phần</th>
+                <th className="px-4 py-3 font-medium">Độ dài</th>
+                <th className="hidden px-4 py-3 font-medium md:table-cell">Nội dung</th>
+              </tr>
+            </thead>
+            <tbody>
+              {USER_TESTING_REPORT_STRUCTURE.map((s) => (
+                <tr key={s.section} className="border-t border-border align-top">
+                  <td className="px-4 py-3 font-medium">{s.section}</td>
+                  <td className="px-4 py-3 tabular-nums text-muted-foreground">{s.length}</td>
+                  <td className="hidden px-4 py-3 text-muted-foreground md:table-cell">{s.content}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Thuyết trình case study nhóm</h2>
+        <p className="text-sm text-muted-foreground">{PRESENTATION_GUIDELINES.prep}</p>
+        <p className="text-sm text-muted-foreground">{PRESENTATION_GUIDELINES.timing}</p>
+      </section>
+
+      <section className="space-y-3">
+        <h2 className="text-xl font-semibold text-ink">Tài liệu tham khảo</h2>
+        <ul className="space-y-1 text-sm text-muted-foreground">
+          {RECOMMENDED_RESOURCES.map((r) => (
+            <li key={r}>• {r}</li>
           ))}
         </ul>
       </section>

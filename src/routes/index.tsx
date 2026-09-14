@@ -8,7 +8,18 @@ import { LuminaTour } from "@/components/LuminaTour";
 import { FoundersIntro } from "@/components/FoundersIntro";
 import { useT } from "@/lib/i18n";
 import { nextSession, teachingWeekOf, WEEK_CALENDAR } from "@/lib/calendar";
-import { CLASSES, CYCLES, DIFFS, EXAM_INFO, LINKS, OPTIONS, OUTLINE_NOTE, TA_INFO } from "@/lib/plan-data";
+import {
+  CLASSES,
+  COMPULSORY_TASKS,
+  CYCLES,
+  DIFFS,
+  DIGITAL_TOOLS,
+  EXAM_INFO,
+  LINKS,
+  OPTIONS,
+  OUTLINE_NOTE,
+  TA_INFO,
+} from "@/lib/plan-data";
 import { usePlanStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
@@ -114,8 +125,8 @@ function Home() {
         ) : null}
         <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
           {t(
-            "TKB chính thức bản v4 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối). F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Thuyết trình Dự án khởi nghiệp gọn trong Tuần 9 buổi A (không dùng phòng máy); Tuần 9 buổi B – Tuần 11 buổi A dạy lý thuyết Chương 9–12.",
-            "Official schedule v4 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one). F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). The Startup Project presentation is a single session in week 9 (no computer lab); week 9's second session through week 11's first session cover Chapters 9-12 lecture.",
+            "TKB chính thức bản v4 (06/9/2026): cả 2 buổi/tuần đều gồm 2 tiết lý thuyết + 1 tiết phòng máy (tiết cuối), trừ Tuần 9–10. F1: Thứ Ba 104/KT + Phòng máy 3.20 – Nhà học ATL (khác cơ sở, giải lao chỉ 10 phút); Thứ Năm 103/KT + Phòng máy tính 2 – Trường Kinh tế. F2: Thứ Tư 105/KT + Phòng máy tính 1; Thứ Sáu 202/KT + Phòng máy tính 1 (cùng phòng máy 2 buổi). Đại hội Cổ đông gọi vốn chiếm trọn Tuần 9–10 (không phòng máy); Tuần 11 buổi A là BizOn Grand Final ở phòng máy, buổi B tổng kết + họp phổ biến kỳ thi.",
+            "Official schedule v4 (06/9/2026): both weekly sessions include 2 periods of theory + 1 computer-lab period (the last one), except weeks 9–10. F1: Tuesday in 104/KT + Computer Lab 3.20 at the ATL building (a different campus building, only a 10-minute break to get there); Thursday in 103/KT + Computer Lab 2 at the School of Economics. F2: Wednesday in 105/KT + Computer Lab 1; Friday in 202/KT + Computer Lab 1 (same lab both days). The Shareholders' Meeting and Pitch for Funding takes over all of weeks 9–10 (no computer lab); week 11's first session is the BizOn Grand Final in the computer lab, the second wraps up the tournament and briefs the exam.",
           )}
         </p>
       </section>
@@ -166,6 +177,41 @@ function Home() {
         <p className="mt-2 text-sm leading-relaxed">{t(TA_INFO.vi, TA_INFO.en)}</p>
       </section>
 
+      <section className="rounded-xl border border-terracotta/40 bg-terracotta/5 p-5 shadow-soft sm:p-6">
+        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-terracotta">
+          {t("Hạn chót 10:00 Thứ Ba 15/9/2026", "Deadline 10:00 Tuesday, 15 Sept 2026")}
+        </p>
+        <h2 className="mt-1 text-xl font-semibold text-ink">
+          {t("Hai app bắt buộc — chỉ nhận tài khoản @student.ctu.edu.vn", "Two compulsory apps — @student.ctu.edu.vn accounts only")}
+        </h2>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          {DIGITAL_TOOLS.map((tool) => (
+            <div key={tool.id} className="rounded-lg bg-card p-4">
+              <p className="font-medium text-ink">{tool.name}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{tool.purpose}</p>
+              <p className="mt-2 break-words text-xs text-muted-foreground">Android: {tool.android}</p>
+              <p className="mt-1 break-words text-xs text-muted-foreground">iPhone: {tool.iphone}</p>
+            </div>
+          ))}
+        </div>
+        <ol className="mt-4 space-y-2">
+          {COMPULSORY_TASKS.map((task, i) => (
+            <li key={task.id} className="rounded-lg bg-card p-3 text-sm">
+              <span className="font-medium text-ink">
+                {i + 1}. {task.task}
+              </span>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{task.instructions}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-3 break-words text-xs text-muted-foreground">
+          {t("Khảo sát đầu khóa: ", "Entry survey: ")}
+          <a className="underline" href={LINKS.entrySurvey} target="_blank" rel="noreferrer">
+            {LINKS.entrySurvey}
+          </a>
+        </p>
+      </section>
+
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           { k: t("2 lớp CLC", "2 honors classes"), v: `${CLASSES.F1.code} · ${CLASSES.F2.code}` },
@@ -199,8 +245,12 @@ function Home() {
               {klass.code} · {t("nhóm", "group")} {klass.nhom}
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              {t(`${klass.students} SV · ${klass.teams} đội`, `${klass.students} students · ${klass.teams} teams`)} ·
-              Class ID <span className="font-medium text-foreground">{klass.classId}</span>
+              {t(`${klass.students} SV · ${klass.teams} đội`, `${klass.students} students · ${klass.teams} teams`)} ·{" "}
+              {t("Mã lớp BizOn", "BizOn class code")}{" "}
+              <span className="font-medium text-foreground">{klass.classId}</span> ·{" "}
+              <a className="underline" href={`mailto:${klass.groupEmail}`}>
+                {klass.groupEmail}
+              </a>
             </p>
           </div>
           <Badge variant="soft">
@@ -433,9 +483,13 @@ function Home() {
         <a className="underline" href={LINKS.benPhuSa} target="_blank" rel="noreferrer">
           {t("Bến Phù Sa (khởi nghiệp hàng rong)", "Bến Phù Sa (street-vendor sim)")}
         </a>
+        {" · "}
+        <a className="underline" href={LINKS.pecSurvey} target="_blank" rel="noreferrer">
+          {t("trắc nghiệm PEC", "PEC self-assessment")}
+        </a>
         {t(
-          ". Đề cương KT330H (Mariotti 2016, 3 TC). TKB cán bộ NH 2026–2027 HK1.",
-          ". KT330H syllabus (Mariotti 2016, 3 credits). Staff timetable, AY 2026–2027 Term 1.",
+          ". Đề cương chính thức KT330H, ban hành 14/9/2026 (Mariotti & Glackin 2015; Kuratko 2020; 3 TC). TKB cán bộ NH 2026–2027 HK1.",
+          ". Official KT330H syllabus, issued 14 Sept 2026 (Mariotti & Glackin 2015; Kuratko 2020; 3 credits). Staff timetable, AY 2026–2027 Term 1.",
         )}
       </p>
     </div>
