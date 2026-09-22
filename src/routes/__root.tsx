@@ -3,6 +3,7 @@ import { Toaster } from "sonner";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { AppShell } from "@/components/layout/AppShell";
+import { ClassroomGate } from "@/components/ClassroomGate";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "BizOn Classroom — KT330H";
@@ -39,9 +40,11 @@ export const Route = createRootRoute({
       <>
         <PreviewHostBridge />
         <AuthProvider>
-          <AppShell>
-            <Outlet />
-          </AppShell>
+          <ClassroomGate>
+            <AppShell>
+              <Outlet />
+            </AppShell>
+          </ClassroomGate>
           <Toaster position="bottom-right" duration={2500} closeButton />
         </AuthProvider>
         <Scripts />
