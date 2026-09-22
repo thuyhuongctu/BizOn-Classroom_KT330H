@@ -34,7 +34,7 @@ jobs:
           # xem src/lib/classroom-gate.ts. Đổi mật khẩu: tính lại SHA-256 rồi
           # sửa giá trị dưới đây (hoặc chuyển sang GitHub Secret nếu muốn giấu
           # khỏi lịch sử commit).
-          VITE_CLASSROOM_GATE_HASH: "ed59be32d73ece8e8827a72457e238969bc8b73bd3ca17561c855bf04c848dbf"
+          VITE_CLASSROOM_GATE_HASH: "0ce60e526c0fa08bf51be539681ebfe064b512c93907ac6190bb57e968445a65"
         run: npx vite build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
