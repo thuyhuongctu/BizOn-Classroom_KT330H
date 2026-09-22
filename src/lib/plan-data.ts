@@ -47,7 +47,7 @@ export const CLASSES: Record<"F1" | "F2", ClassInfo> = {
 		nhom: "M01",
 		students: 37,
 		teams: 7,
-		leftover: "5 đội × 5 và 2 đội × 6 (thành viên thứ sáu = CDO, phân tích dữ liệu)",
+		leftover: "5 đội × 5, Đội 7 × 6 (thành viên thứ sáu = CDO, phân tích dữ liệu), Đội 6 × 6 (ngoại lệ: không dùng CDO, ghép đôi vào vị trí COO — Hưng và Bảo)",
 		classId: "KT330H-M01",
 		groupEmail: "12627-KT330HM01@student.ctu.edu.vn",
 		meetings: {
@@ -234,15 +234,18 @@ export const F1_TEAMS: TeamSeed[] = [
 		],
 	},
 	{
+		// Ngoại lệ: 6 SV nhưng không dùng vai CDO — ghép đôi Hưng và Bảo cùng
+		// vào vị trí COO thay vì thêm vai thứ 6. Các đội 6 người khác (F1-T07,
+		// F2-T08) vẫn theo mô hình CDO chuẩn.
 		id: "F1-T06",
 		name: "Đội 6",
 		roles: [
 			"CEO",
 			"CMO",
 			"COO",
+			"COO",
 			"CFO",
 			"SEC",
-			"CDO",
 		],
 	},
 	{
