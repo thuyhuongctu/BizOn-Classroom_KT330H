@@ -29,6 +29,12 @@ jobs:
           VITE_STATIC_SPA: "true"
           VITE_BASE_PATH: /BizOn-Classroom_KT330H/
           VITE_AUTH_ENABLED: "false"
+          # Khóa nhẹ chặn sinh viên vào nhầm công cụ giảng viên (Điều hành,
+          # Đánh giá...) — chỉ so khớp SHA-256, không phải bảo mật thật sự,
+          # xem src/lib/classroom-gate.ts. Đổi mật khẩu: tính lại SHA-256 rồi
+          # sửa giá trị dưới đây (hoặc chuyển sang GitHub Secret nếu muốn giấu
+          # khỏi lịch sử commit).
+          VITE_CLASSROOM_GATE_HASH: "ed59be32d73ece8e8827a72457e238969bc8b73bd3ca17561c855bf04c848dbf"
         run: npx vite build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
