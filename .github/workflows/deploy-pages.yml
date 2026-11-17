@@ -27,7 +27,7 @@ jobs:
       - name: Build static SPA
         env:
           VITE_STATIC_SPA: "true"
-          VITE_BASE_PATH: /BizOn-Classroom_KT330H/
+          VITE_BASE_PATH: /
           VITE_AUTH_ENABLED: "false"
           # Khóa nhẹ chặn sinh viên vào nhầm công cụ giảng viên (Điều hành,
           # Đánh giá...) — chỉ so khớp SHA-256, không phải bảo mật thật sự,
