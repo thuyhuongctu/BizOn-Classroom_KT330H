@@ -20,7 +20,7 @@ export function SiteFooter() {
         <div className="space-x-2">
           <a
             className="underline underline-offset-2"
-            href="https://thuyhuongctu.github.io/BizOn/"
+            href="https://bizonland.com/"
             target="_blank"
             rel="noreferrer"
           >
@@ -29,7 +29,7 @@ export function SiteFooter() {
           <span>·</span>
           <a
             className="underline underline-offset-2"
-            href="https://thuyhuongctu.github.io/EnQuiz/"
+            href="https://enquiz.bizonland.com/"
             target="_blank"
             rel="noreferrer"
           >
@@ -38,7 +38,7 @@ export function SiteFooter() {
           <span>·</span>
           <a
             className="underline underline-offset-2"
-            href="https://thuyhuongctu.github.io/BizOn-Classroom_KT330H-KT338/"
+            href="https://hocphan.bizonland.com/"
             target="_blank"
             rel="noreferrer"
           >

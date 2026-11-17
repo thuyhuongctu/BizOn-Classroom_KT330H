@@ -1522,16 +1522,16 @@ export const DIFFS = [
 	},
 ];
 export const LINKS = {
-	hub: "https://thuyhuongctu.github.io/BizOn/",
-	game: "https://thuyhuongctu.github.io/BizOn/game.html",
+	hub: "https://bizonland.com/",
+	game: "https://bizonland.com/game.html",
 	guide: "https://github.com/thuyhuongctu/BizOn/blob/main/docs/huong-dan-giang-vien.md",
-	music: "https://thuyhuongctu.github.io/BizOn/am-nhac.html",
-	team: "https://thuyhuongctu.github.io/BizOn/doi-ngu.html",
-	brandPassport: "https://thuyhuongctu.github.io/BizOn/brand-passport.html",
-	benPhuSa: "https://thuyhuongctu.github.io/BizOn/ben-phu-sa.html",
-	enquiz: "https://thuyhuongctu.github.io/EnQuiz/",
-	entrySurvey: "https://thuyhuongctu.github.io/EnQuiz/khaosat/",
-	pecSurvey: "https://thuyhuongctu.github.io/EnQuiz/khaosat/pec/",
+	music: "https://bizonland.com/am-nhac.html",
+	team: "https://bizonland.com/doi-ngu.html",
+	brandPassport: "https://bizonland.com/brand-passport.html",
+	benPhuSa: "https://bizonland.com/ben-phu-sa.html",
+	enquiz: "https://enquiz.bizonland.com/",
+	entrySurvey: "https://enquiz.bizonland.com/khaosat/",
+	pecSurvey: "https://enquiz.bizonland.com/khaosat/pec/",
 	resourceDrive: "https://drive.google.com/drive/folders/14occOGp5FsRT2q0xN5lX-ywaFzEx2Yv_?usp=sharing",
 };
 
@@ -1549,7 +1549,7 @@ export const DIGITAL_TOOLS = [
 		name: "EnQuiz",
 		purpose: "Ôn tập trắc nghiệm cho thi cuối kỳ trên máy; dùng để tự học ngoài giờ lên lớp.",
 		android: "play.google.com/apps/testing/io.github.thuyhuongctu.enquiz",
-		iphone: "thuyhuongctu.github.io/EnQuiz/ (mở bằng Safari → Share → Add to Home Screen)",
+		iphone: "enquiz.bizonland.com (mở bằng Safari → Share → Add to Home Screen)",
 	},
 ];
 
@@ -1563,7 +1563,7 @@ export const COMPULSORY_TASKS = [
 	{
 		id: "survey",
 		task: "Hoàn thành khảo sát đầu khóa",
-		instructions: "Mở thuyhuongctu.github.io/EnQuiz/khaosat/ và chọn đúng lớp của mình. Khảo sát ẩn danh, mất khoảng 1 phút, không ảnh hưởng điểm số.",
+		instructions: "Mở enquiz.bizonland.comkhaosat/ và chọn đúng lớp của mình. Khảo sát ẩn danh, mất khoảng 1 phút, không ảnh hưởng điểm số.",
 	},
 ];
 
